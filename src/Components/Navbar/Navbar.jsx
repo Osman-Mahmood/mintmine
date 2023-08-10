@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 // import logo1 from '../../assets/logo1.png'
 import '../style.css'
 import { FiSettings } from 'react-icons/fi'
@@ -64,7 +65,7 @@ function NavbarMenu() {
                   }
                  
                 </div>
-                        <button className='me-auto btn_mask'>Connect</button>
+                <ConnectButton chainStatus="icon"  accountStatus="address"  showBalance={false} />
                     </Nav>
                 </Navbar.Collapse>
             </Container>
