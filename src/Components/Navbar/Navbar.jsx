@@ -31,13 +31,15 @@ function NavbarMenu() {
     }, [theme]);
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark" className='nav_bg'>
-            <Container>
-                <Navbar.Brand  className='text-dark fw-bold clr'><NavLink to="/">Logo</NavLink></Navbar.Brand>
+            <div className='container p-lg-0 p-2' style={{flexDirection:"inherit"}}>
+                <Navbar.Brand  className='text-dark fw-bold clr'>
+                  <NavLink to="/">Logo</NavLink>
+                  </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto px-3">
+                    <Nav className="me-auto px-0 text-start">
                     <NavDropdown className='text-dark clr_drop' title="u369" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">u369 self-serve</NavDropdown.Item>
+             <NavDropdown.Item><NavLink to="selfserve">u369 self-serve</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
                 open source code
@@ -68,7 +70,7 @@ function NavbarMenu() {
                 <ConnectButton chainStatus="icon"  accountStatus="address"  showBalance={false} />
                     </Nav>
                 </Navbar.Collapse>
-            </Container>
+            </div>
         </Navbar>
     );
 }
