@@ -1,12 +1,15 @@
 
 import { Contract, ethers } from "ethers";
 import factoryAbi from "./abis/factoryAbi.json"
+import { erc20ABI } from "wagmi";
 // const ethers = require("ethers")
+
+export const defaultrId = 5;
 const chains = [
     {
         id: 1,
         name: 'Ethereum',
-        // rpc_url:"https://rpc.ankr.com/eth_goerli",
+        rpc_url: "https://rpc.ankr.com/eth_goerli",
         contractAddress: '0x61c726dc8d65a4592445d26b0aee04a2f4940533',
         networkId: 5 // This is mainnet for Ethereum
 
@@ -22,7 +25,7 @@ const chains = [
     {
         id: 3,
         name: 'Polygon',
-        // rpc_url:"https://rpc-mumbai.maticvigil.com/",
+        rpc_url: "https://rpc-mumbai.maticvigil.com/",
         contractAddress: '0xc6afc7a07dd61972b65e04b6f57b2925bf2129bf',
         networkId: 80001 // Polygon's mainnet ID
 
@@ -41,8 +44,45 @@ export const factoryInstance = async (chainId) => {
         let chain = chains.find(c => c.networkId === chainId);
         let provider = new ethers.providers.Web3Provider(window.ethereum);
         let signer = provider.getSigner();
-        return new Contract(chain.contractAddress, factoryAbi, signer); 
+        return new Contract(chain.contractAddress, factoryAbi, signer);
     } catch (error) {
         console.error("errro while factory instance", error);
+    }
+}
+
+export const remortFactoryInstnce = async (chainId) => {
+    try {
+        let chain = chains.find(c => c.networkId === chainId);
+        if (chain) {
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(chain.contractAddress, factoryAbi, provider);
+        } else {
+            chain = chains.find(c => c.networkId === defaultrId);
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(chain.contractAddress, factoryAbi, provider);
+        }
+
+    } catch (error) {
+        console.error("errro while remote factory instance", error);
+    }
+}
+
+export const erc20Instance = async (tokenAddress) => {
+    try {
+        let provider = new ethers.providers.Web3Provider(window.ethereum);
+        let signer = provider.getSigner();
+        return new Contract(tokenAddress, erc20ABI, signer);
+    } catch (error) {
+        console.error("error while ecr20 instance", error);
+    }
+}
+
+export const walletBalance = async (address) => {
+    try {
+        let provider = new ethers.providers.Web3Provider(window.ethereum);
+        const balance = await provider.getBalance(address);
+        return ethers.utils.formatEther(balance)
+    } catch (error) {
+        console.error("error while wallet balance", error);
     }
 }
