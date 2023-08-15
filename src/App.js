@@ -22,8 +22,11 @@ import Home from './Components/Home';
 import { Toaster } from 'react-hot-toast';
 import { useMemo, useRef } from 'react';
 import TokenSelect from './Components/Tokens/TokenSelect';
+import WithdrawToken from './Components/Tokens/Withdraw';
+import TransferToken from './Components/Tokens/TransferToken';
 import More from "./Components/More"
 import Tokens from "./Components/Tokens"
+
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
@@ -97,6 +100,14 @@ function App() {
         {
           path: "select",
           element: <TokenSelect />,
+        },
+        {
+          path: "transfer",
+          element: <TransferToken />,
+        },
+        {
+          path: "withdraw",
+          element: <WithdrawToken />,
         },
         {
           path: "tokens",

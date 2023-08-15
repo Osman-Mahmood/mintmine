@@ -5,9 +5,11 @@ import { IoIosArrowDown } from 'react-icons/io'
 import All from '../../assets/All.svg'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { getChainDetails, remortFactoryInstnce, walletBalance } from '../../config';
+import { erc20Instance, factoryInstance, getChainDetails, remortFactoryInstnce, walletBalance } from '../../config';
 import ShowToken from '../Tokens/childComponents/ShowToken';
-function ModalA({ setSelectedToken, selectedToken }) {
+import { ethers } from 'ethers';
+import ShowUToken from '../Tokens/childComponents/ShowUToken';
+function ModalB({ setSelectedToken, selectedToken }) {
     const { address, isConnected } = useAccount();
     const [show, setShow] = useState(false);
 
@@ -28,19 +30,25 @@ function ModalA({ setSelectedToken, selectedToken }) {
     useEffect(() => {
         getUTokens()
     }, [chain?.id])
-    let [walletBal, setWalletBal] = useState("...")
-    
-    const getBal = async () => {
+    const [uNativeBal, setUNativeBal] = useState("...");
+    const [ethAddress, setEthAddress] = useState("...");
+    const nativeUBal = async () => {
         try {
-            let ethBal = await walletBalance(address);
-            setWalletBal(ethBal)
+
+            let contract = await factoryInstance(chain.id)
+            let u_eth_address = await contract.deployedAddressOfEth();
+            setEthAddress(u_eth_address);
+            const new_instance = await erc20Instance (u_eth_address);
+            const u_eth_bal = await new_instance.balanceOf(address);
+            setUNativeBal(ethers.utils.formatEther(u_eth_bal));
+
         } catch (error) {
             console.error("error while get bal", error);
         }
     }
     useEffect(() => {
         if (window.ethereum && isConnected && getChainDetails(chain?.id))
-            getBal()
+        nativeUBal()
     }, [])
     return (
         <>
@@ -57,10 +65,10 @@ function ModalA({ setSelectedToken, selectedToken }) {
                 <Modal.Body>
                     <div >
                         <div className={
-                            walletBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
+                            uNativeBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
                          onClick={()=>{setSelectedToken({
                                 name:chain?.nativeCurrency.symbol,
-                                address:"native",
+                                address:ethAddress,
                                 type:"native"
                             })
                             handleClose()
@@ -71,16 +79,16 @@ function ModalA({ setSelectedToken, selectedToken }) {
                             <div className='d-flex align-items-center'>
                                 <img src={All} alt="" />
                                 <div className='d-block ms-3'>
-                                    <p className='mb-0 eth'>{chain?.nativeCurrency.symbol}</p>
+                                    <p className='mb-0 eth'>u-{chain?.nativeCurrency.symbol}</p>
                                 </div>
                             </div>
                             <div className=''>
-                                {walletBal}
+                                {uNativeBal}
                             </div>
                         </div>
                         {
                             tokensList.map((token, index) => {
-                                return <ShowToken setSelectedToken={setSelectedToken} key={index} token={token} handleClose={handleClose} />
+                                return <ShowUToken setSelectedToken={setSelectedToken} key={index} token={token} handleClose={handleClose} />
                             })
                         }
                     </div>
@@ -91,4 +99,4 @@ function ModalA({ setSelectedToken, selectedToken }) {
     );
 }
 
-export default ModalA;
+export default ModalB;

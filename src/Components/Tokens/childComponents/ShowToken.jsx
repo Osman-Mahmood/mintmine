@@ -31,7 +31,8 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
     useEffect(() => {
         getTokenName()
     }, [])
- 
+    const [uNativeBal, setUNativeBal] = useState(null);
+    const [ethAddress, setEthAddress] = useState(null);
     const getBal = async () => {
         try {
           

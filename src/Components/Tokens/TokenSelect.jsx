@@ -147,7 +147,7 @@ const TokenSelect = () => {
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-            <h5 className='text-white pt-5 pb-5'>Reward</h5>
+            <h5 className='text-white pt-5 pb-5'>Protect</h5>
             <div className='modalselect'>
               <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
               onChange={(e)=> setEtherAmount(e.target.value)}
