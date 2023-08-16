@@ -10,7 +10,7 @@ const chains = [
         id: 1,
         name: 'Ethereum',
         rpc_url: "https://rpc.ankr.com/eth_goerli",
-        contractAddress: '0x61c726dc8d65a4592445d26b0aee04a2f4940533',
+        contractAddress: '0x3712d5034ea617658d3c3aac0Fe34b60Cc8e09e8',
         networkId: 5 // This is mainnet for Ethereum
 
     },

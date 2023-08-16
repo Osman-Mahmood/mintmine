@@ -46,7 +46,7 @@ function NavbarMenu() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">protect</NavLink>
-            <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">tokens</NavLink>
+            <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">reward</NavLink>
             <NavDropdown className='text-dark clr_drop' title="more" id="navbarScrollingDropdown">
               <NavDropdown.Item><NavLink to="transfer">transfer</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
