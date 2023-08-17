@@ -70,7 +70,7 @@ const TokenSelect = () => {
         }
         if (selectedToken.type === "native") {
           let ethBal = await walletBalance(address);
-          if(ethBal < etherAmount){
+          if (ethBal < etherAmount) {
             toast.error(`Insufficent ${selectedToken.name} amount`);
             return;
           }
@@ -148,16 +148,26 @@ const TokenSelect = () => {
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
             <h5 className='text-white pt-5 pb-5'>Protect</h5>
+            <p className='text-end mb-0 text-wid'>1234564829</p>
             <div className='modalselect'>
-              <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
-              placeholder='amount'
-              onChange={(e)=> setEtherAmount(e.target.value)}
+
+              <input type="number" name="" id="" className='token_inp p-4 w-75 mb-1 text-dark'
+                placeholder='amount'
+                onChange={(e) => setEtherAmount(e.target.value)}
               />
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
             </div>
+            <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
+              <button>25%</button>
+              <button>50%</button>
+              <button>75%</button>
+              <button>
+100%
+              </button>
+            </div>
             <div className='modalselect'>
               <input type={isSeePass ? "text" : "password"} name="" id="" className='token_inp p-4 w-75 mb-3' placeholder='0'
-              onChange={(e)=> setPass(e.target.value)}
+                onChange={(e) => setPass(e.target.value)}
               />
               {/* <ModalB className="modala" /> */}
               <Button className='select_token' variant="primary"
@@ -171,13 +181,13 @@ const TokenSelect = () => {
             >
               Forgot Password
             </div>
-            
+
             <Button className='w-75 protect mb-5 pb-3' variant="primary"
-            // !isConnected && !getChainDetails(chain?.id) && 
-            disabled={ !isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
-            onClick={mintU_tokens}
+              // !isConnected && !getChainDetails(chain?.id) && 
+              disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
+              onClick={mintU_tokens}
             >
-             {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
+              {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
             </Button>
           </div>
         </div>

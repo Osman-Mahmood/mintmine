@@ -1,8 +1,11 @@
 .clr_drop a{
-    color: var(--clr-) !important;
+    /* color: var(--clr-) !important; */
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
+}
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link,.navbar-dark .navbar-nav .nav-link{
+  color: var(--clr-) !important;
 }
 .clr{
     color: var(--clr-) !important;
@@ -302,4 +305,24 @@ a{
 }
 .active{
   color: #2C42C9;
+}
+.text-wid{
+  width: 88%;
+}
+.btn_small button{
+  margin: 2px;
+  height: 20px;
+  width: 50px;
+  font-size: 10px;
+  outline: none;
+  border: 1px solid blueviolet;
+  background-color: transparent;
+  font-weight: bold;
+}
+.btn_small button:hover{
+  opacity: 0.65;
+  color:white;
+}
+.dropdown-menu .show{
+  color: black !important;
 }

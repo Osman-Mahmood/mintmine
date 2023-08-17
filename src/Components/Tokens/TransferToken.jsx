@@ -125,14 +125,23 @@ const TransferToken = () => {
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
                         <h5 className='text-white pt-5 pb-5'>Transfer</h5>
+                        <p className='text-end mb-0 text-wid'>1234564829</p>
                         <div className='modalselect'>
-                            <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
+                            <input type="number" name="" id="" className='token_inp p-4 w-75 mb-1 text-dark'
                                 placeholder='amount'
                                 autocomplete="new-password"
                                 onChange={(e) => setEtherAmount(e.target.value)}
                             />
                             <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
                         </div>
+                        <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
+              <button>25%</button>
+              <button>50%</button>
+              <button>75%</button>
+              <button>
+100%
+              </button>
+            </div>
                         <div className='modalselect'>
                             <input type="text" name="" id="" className='token_inp p-4 w-75 mb-3' autocomplete="new-password"
                                 placeholder='recipient address '
