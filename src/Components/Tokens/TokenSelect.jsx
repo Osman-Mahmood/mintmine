@@ -150,6 +150,7 @@ const TokenSelect = () => {
             <h5 className='text-white pt-5 pb-5'>Protect</h5>
             <div className='modalselect'>
               <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
+              placeholder='amount'
               onChange={(e)=> setEtherAmount(e.target.value)}
               />
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />

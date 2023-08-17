@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import { useNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import SelfService from './Components/SelfService';
 import Crypto from './Components/Crypto';
 import Address from './Components/Address';
@@ -30,6 +30,7 @@ import Tokens from "./Components/Tokens"
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
+  const {address} = useAccount()
   console.log("chain", chain);
   const firstRender = useRef(true)
   useMemo(() => {
@@ -40,7 +41,7 @@ function App() {
       } else {
         window.location.reload(true)
       }
-  }, [chain?.id])
+  }, [chain?.id, address])
 
 
   const router = createBrowserRouter([

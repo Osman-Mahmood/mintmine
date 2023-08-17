@@ -10,7 +10,7 @@ const chains = [
         id: 1,
         name: 'Ethereum',
         rpc_url: "https://rpc.ankr.com/eth_goerli",
-        contractAddress: '0x3712d5034ea617658d3c3aac0Fe34b60Cc8e09e8',
+        contractAddress: '0xAd9aa2510C13057A313A2fF775C29B3717439CDA',
         networkId: 5 // This is mainnet for Ethereum
 
     },
@@ -26,7 +26,7 @@ const chains = [
         id: 3,
         name: 'Polygon',
         rpc_url: "https://rpc-mumbai.maticvigil.com/",
-        contractAddress: '0xc6afc7a07dd61972b65e04b6f57b2925bf2129bf',
+        contractAddress: '0xb4bCC893E97838318E5c30b9417B4928bf205952',
         networkId: 80001 // Polygon's mainnet ID
 
     },
