@@ -16,7 +16,8 @@ const WithdrawToken = () => {
     let [selectedToken, setSelectedToken] = useState({
         name: "Select Token",
         address: null,
-        type: ""
+        type: "",
+        showBalance: null
     })
     const [isSeePass, setIsSeePass] = useState(false);
     const [show, setShow] = useState(false);
@@ -39,6 +40,33 @@ const WithdrawToken = () => {
                 getDeatil()
         }
     }, [])
+    const [showBalance, setShowBalance] = useState(null)
+    const getBal = async () => {
+        try {
+            if (selectedToken.type === "native") {
+                let contract = await factoryInstance(chain.id)
+                let u_eth_address = await contract.deployedAddressOfEth();
+                const new_instance = await erc20Instance(u_eth_address);
+                const u_eth_bal = await new_instance.balanceOf(address);
+                setShowBalance(ethers.utils.formatEther(u_eth_bal));
+            } else if (selectedToken.type === "token") {
+                // const contract = await factoryInstance(chain?.id);
+                // const alternateAddress = await contract.get_TokenAddressOfuToken(selectedToken.address);
+                const token = await erc20Instance(selectedToken.address);
+                let bal = await token.balanceOf(address);
+                setShowBalance(ethers.utils.formatEther(bal))
+            }
+        } catch (error) {
+            console.error("error while get bal", error);
+        }
+    }
+    useEffect(() => {
+        if (window.ethereum && isConnected && getChainDetails(chain?.id) && selectedToken.type)
+            getBal()
+    }, [chain?.id, selectedToken.address, selectedToken.type])
+    const maxAmount = (percent) => {
+        setEtherAmount((showBalance * percent) / 100)
+    }
     let [etherAmount, setEtherAmount] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [pass, setPass] = useState();
@@ -79,6 +107,7 @@ const WithdrawToken = () => {
                 toast.success(`u-${selectedToken.name} Claimed`)
                 setEtherAmount(0)
                 setIsLoading(false)
+                getBal()
             } else if (selectedToken.type == "token") {
                 const tokenInstance = await erc20Instance(selectedToken.address);
                 let bal = await tokenInstance.balanceOf(address);
@@ -92,7 +121,7 @@ const WithdrawToken = () => {
                 )
                 await tx.wait();
                 toast.success(`u-${selectedToken.name} Claimed`)
-
+                getBal()
                 setEtherAmount(0)
                 setIsLoading(false)
             }
@@ -120,18 +149,30 @@ const WithdrawToken = () => {
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
                         <h5 className='text-white pt-5 pb-5'>Withdraw</h5>
+                        <p className='text-end mb-0 text-wid'>
+                            {
+                                showBalance && `Avbl ${selectedToken.name}: ${showBalance}`
+                            }
+                        </p>
                         <div className='modalselect'>
                             <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
-                            autocomplete="new-password"
-                            placeholder='amount'
+                            value={etherAmount}
+                                autocomplete="new-password"
+                                placeholder='amount'
                                 onChange={(e) => setEtherAmount(e.target.value)}
                             />
                             <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
                         </div>
+                        <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
+                            <button disabled={!showBalance} onClick={() => maxAmount(25)} >25%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(50)}>50%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(75)}>75%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(100)}>max</button>
+                        </div>
                         <div className='modalselect'>
                             <input type={isSeePass ? "text" : "password"} name="" id="" className='token_inp p-4 w-75 mb-3'
-                            autocomplete="new-password"
-                            placeholder='password'
+                                autocomplete="new-password"
+                                placeholder='password'
                                 onChange={(e) => setPass(e.target.value)}
                             />
                             {/* <ModalB className="modala" /> */}

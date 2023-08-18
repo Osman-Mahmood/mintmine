@@ -32,13 +32,13 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
             const token = await erc20Instance(tokenAddress);
             let bal = await token.balanceOf(address);
             console.log("bal", ethers.utils.formatEther(bal));
-            setTokenBal( ethers.utils.formatEther(bal))
+            setTokenBal(ethers.utils.formatEther(bal))
         } catch (error) {
             console.error("error while get bal", error);
         }
     }
     useEffect(() => {
-        if (window.ethereum && isConnected && getChainDetails(chain?.id))
+        if (window.ethereum && isConnected && getChainDetails(chain?.id) && tokenAddress)
             getBal()
     }, [chain?.id, tokenAddress])
     return (
@@ -46,15 +46,17 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
             <div className={
                 tokenBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"
             }
-            onClick={()=>{setSelectedToken({
-                name:tokenDetail,
-                address:token,
-                type:"token"
-            })
-            handleClose()
-        }}
+                onClick={() => {
+                    setSelectedToken({
+                        name: tokenDetail,
+                        address: token,
+                        type: "token",
+                        showBalance:tokenBal
+                    })
+                    handleClose()
+                }}
             >
-                
+
                 {tokenDetail ? <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>

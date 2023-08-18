@@ -15,7 +15,8 @@ const TokenSelect = () => {
   let [selectedToken, setSelectedToken] = useState({
     name: "Select Token",
     address: null,
-    type: ""
+    type: "",
+    showBalance: null
   })
   const [isSeePass, setIsSeePass] = useState(false);
   const [show, setShow] = useState(false);
@@ -38,7 +39,31 @@ const TokenSelect = () => {
         getDeatil()
     }
   }, [])
+  const [showBalance, setShowBalance] = useState(null)
+  const getBal = async () => {
+    try {
+      if (selectedToken.type === "native") {
+        let ethBal = await walletBalance(address);
+        setShowBalance(ethBal);
+      } else if (selectedToken.type === "token") {
+        const contract = await factoryInstance(chain?.id);
+        const alternateAddress = await contract.get_TokenAddressOfuToken(selectedToken.address);
+        const token = await erc20Instance(alternateAddress);
+        let bal = await token.balanceOf(address);
+        setShowBalance(ethers.utils.formatEther(bal))
+      }
+    } catch (error) {
+      console.error("error while get bal", error);
+    }
+  }
+  useEffect(() => {
+    if (window.ethereum && isConnected && getChainDetails(chain?.id) && selectedToken.type)
+      getBal()
+  }, [chain?.id, selectedToken.address, selectedToken.type])
   let [etherAmount, setEtherAmount] = useState();
+  const maxAmount = (percent) => {
+    setEtherAmount((showBalance * percent) / 100)
+  }
   const [isLoading, setIsLoading] = useState(false);
   const [pass, setPass] = useState();
   const mintU_tokens = async () => {
@@ -83,8 +108,7 @@ const TokenSelect = () => {
             gasLimit: 1000000,
           });
           await tx.wait();
-
-
+          getBal()
           toast.success("U-token minted");
           setIsLoading(false);
         } else if (selectedToken.type == "token") {
@@ -120,7 +144,7 @@ const TokenSelect = () => {
           let receipt = await tx.wait();
           toast.success("U-token minted");
           setIsLoading(false);
-          console.log(receipt);
+          getBal()
         }
       } else {
         toast.error("Wrong Network");
@@ -148,22 +172,25 @@ const TokenSelect = () => {
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
             <h5 className='text-white pt-5 pb-5'>Protect</h5>
-            <p className='text-end mb-0 text-wid'>1234564829</p>
+            <p className='text-end mb-0 text-wid'>
+              {
+                showBalance && `Avbl ${selectedToken.name}: ${showBalance}`
+              }
+            </p>
             <div className='modalselect'>
 
               <input type="number" name="" id="" className='token_inp p-4 w-75 mb-1 text-dark'
+                value={etherAmount}
                 placeholder='amount'
                 onChange={(e) => setEtherAmount(e.target.value)}
               />
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
             </div>
             <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
-              <button>25%</button>
-              <button>50%</button>
-              <button>75%</button>
-              <button>
-100%
-              </button>
+              <button disabled={!showBalance} onClick={() => maxAmount(25)} >25%</button>
+              <button disabled={!showBalance} onClick={() => maxAmount(50)}>50%</button>
+              <button disabled={!showBalance} onClick={() => maxAmount(75)}>75%</button>
+              <button disabled={!showBalance} onClick={() => maxAmount(100)}>max</button>
             </div>
             <div className='modalselect'>
               <input type={isSeePass ? "text" : "password"} name="" id="" className='token_inp p-4 w-75 mb-3' placeholder='0'

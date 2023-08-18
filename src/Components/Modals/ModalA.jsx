@@ -61,7 +61,8 @@ function ModalA({ setSelectedToken, selectedToken }) {
                          onClick={()=>{setSelectedToken({
                                 name:chain?.nativeCurrency.symbol,
                                 address:"native",
-                                type:"native"
+                                type:"native",
+                                showBalance:walletBal
                             })
                             handleClose()
                         }

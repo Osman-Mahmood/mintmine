@@ -16,7 +16,8 @@ const TransferToken = () => {
     let [selectedToken, setSelectedToken] = useState({
         name: "Select Token",
         address: null,
-        type: ""
+        type: "",
+        showBalance: null
     })
     const [isSeePass, setIsSeePass] = useState(false);
     const [show, setShow] = useState(false);
@@ -39,6 +40,33 @@ const TransferToken = () => {
                 getDeatil()
         }
     }, [])
+    const [showBalance, setShowBalance] = useState(null)
+    const getBal = async () => {
+        try {
+            if (selectedToken.type === "native") {
+                let contract = await factoryInstance(chain.id)
+                let u_eth_address = await contract.deployedAddressOfEth();
+                const new_instance = await erc20Instance(u_eth_address);
+                const u_eth_bal = await new_instance.balanceOf(address);
+                setShowBalance(ethers.utils.formatEther(u_eth_bal));
+            } else if (selectedToken.type === "token") {
+                // const contract = await factoryInstance(chain?.id);
+                // const alternateAddress = await contract.get_TokenAddressOfuToken(selectedToken.address);
+                const token = await erc20Instance(selectedToken.address);
+                let bal = await token.balanceOf(address);
+                setShowBalance(ethers.utils.formatEther(bal))
+            }
+        } catch (error) {
+            console.error("error while get bal", error);
+        }
+    }
+    useEffect(() => {
+        if (window.ethereum && isConnected && getChainDetails(chain?.id) && selectedToken.type)
+            getBal()
+    }, [chain?.id, selectedToken.address, selectedToken.type])
+    const maxAmount = (percent) => {
+        setEtherAmount((showBalance * percent) / 100)
+    }
     let [etherAmount, setEtherAmount] = useState();
     const [transferAddress, setTransferAddress] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -84,6 +112,7 @@ const TransferToken = () => {
                 toast.success(`u-${selectedToken.name} transfered`)
                 setEtherAmount(0)
                 setIsLoading(false)
+                getBal()
             } else if (selectedToken.type == "token") {
                 const tokenInstance = await erc20Instance(selectedToken.address);
                 let bal = await tokenInstance.balanceOf(address);
@@ -99,6 +128,7 @@ const TransferToken = () => {
                 toast.success("U-Token transfered")
                 setEtherAmount(0)
                 setIsLoading(false)
+                getBal()
             }
 
 
@@ -107,13 +137,13 @@ const TransferToken = () => {
             const errorData = JSON.parse(JSON.stringify(error));
             console.error("error while calim u tokens", errorData);
             if (errorData.reason) {
-              toast.error(errorData.reason);
-              return
+                toast.error(errorData.reason);
+                return
             }
             if (errorData.error.message && chain.id === 5) {
-              toast.error(errorData.error.message);
+                toast.error(errorData.error.message);
             } else if (errorData.error.message && chain.id === 80001) {
-              toast.error(errorData.data.message);
+                toast.error(errorData.data.message);
             }
         }
     }
@@ -125,9 +155,14 @@ const TransferToken = () => {
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
                         <h5 className='text-white pt-5 pb-5'>Transfer</h5>
-                        <p className='text-end mb-0 text-wid'>1234564829</p>
+                        <p className='text-end mb-0 text-wid'>
+                            {
+                                showBalance && `Avbl ${selectedToken.name}: ${showBalance}`
+                            }
+                        </p>
                         <div className='modalselect'>
                             <input type="number" name="" id="" className='token_inp p-4 w-75 mb-1 text-dark'
+                            value={etherAmount}
                                 placeholder='amount'
                                 autocomplete="new-password"
                                 onChange={(e) => setEtherAmount(e.target.value)}
@@ -135,13 +170,11 @@ const TransferToken = () => {
                             <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
                         </div>
                         <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
-              <button>25%</button>
-              <button>50%</button>
-              <button>75%</button>
-              <button>
-100%
-              </button>
-            </div>
+                            <button disabled={!showBalance} onClick={() => maxAmount(25)} >25%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(50)}>50%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(75)}>75%</button>
+                            <button disabled={!showBalance} onClick={() => maxAmount(100)}>max</button>
+                        </div>
                         <div className='modalselect'>
                             <input type="text" name="" id="" className='token_inp p-4 w-75 mb-3' autocomplete="new-password"
                                 placeholder='recipient address '
@@ -168,7 +201,7 @@ const TransferToken = () => {
                         <Button className='w-75 protect mb-5 pb-3' variant="primary"
                             // !isConnected && !getChainDetails(chain?.id) && 
                             disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
-                        onClick={transferUTokens}
+                            onClick={transferUTokens}
                         >
                             {isLoading ? <BeatLoader color="#fff" /> : "Transfer"}
                         </Button>
