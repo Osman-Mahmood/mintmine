@@ -65,7 +65,7 @@ const WithdrawToken = () => {
             getBal()
     }, [chain?.id, selectedToken.address, selectedToken.type])
     const maxAmount = (percent) => {
-        setEtherAmount((showBalance * percent) / 100)
+        setEtherAmount(((showBalance * percent) / 100).toString())
     }
     let [etherAmount, setEtherAmount] = useState();
     const [isLoading, setIsLoading] = useState(false);
@@ -111,7 +111,7 @@ const WithdrawToken = () => {
             } else if (selectedToken.type == "token") {
                 const tokenInstance = await erc20Instance(selectedToken.address);
                 let bal = await tokenInstance.balanceOf(address);
-                if (ethers.utils.formatEther(bal) < etherAmount) {
+                if (ethers.utils.formatEther(bal) < Number(etherAmount)) {
                     toast.error(`Insufficent u-${selectedToken.name} amount`);
                     return;
                 }
@@ -156,7 +156,7 @@ const WithdrawToken = () => {
                         </p>
                         <div className='modalselect'>
                             <input type="number" name="" id="" className='token_inp p-4 w-75 mb-3 text-dark'
-                            value={etherAmount}
+                                value={etherAmount}
                                 autocomplete="new-password"
                                 placeholder='amount'
                                 onChange={(e) => setEtherAmount(e.target.value)}

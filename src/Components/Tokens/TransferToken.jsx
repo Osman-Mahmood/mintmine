@@ -65,7 +65,7 @@ const TransferToken = () => {
             getBal()
     }, [chain?.id, selectedToken.address, selectedToken.type])
     const maxAmount = (percent) => {
-        setEtherAmount((showBalance * percent) / 100)
+        setEtherAmount(((showBalance * percent) / 100).toString())
     }
     let [etherAmount, setEtherAmount] = useState();
     const [transferAddress, setTransferAddress] = useState(null);
@@ -100,7 +100,7 @@ const TransferToken = () => {
                 const etherAddress = await contract.deployedAddressOfEth()
                 const new_instance = await erc20Instance(etherAddress);
                 const u_eth_bal = await new_instance.balanceOf(address);
-                if (ethers.utils.formatEther(u_eth_bal) < etherAmount) {
+                if (ethers.utils.formatEther(u_eth_bal) < Number(etherAmount)) {
                     toast.error(`Insufficent u-${selectedToken.name} amount`);
                     return;
                 }

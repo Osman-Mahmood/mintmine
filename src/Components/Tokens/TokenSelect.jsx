@@ -62,7 +62,7 @@ const TokenSelect = () => {
   }, [chain?.id, selectedToken.address, selectedToken.type])
   let [etherAmount, setEtherAmount] = useState();
   const maxAmount = (percent) => {
-    setEtherAmount((showBalance * percent) / 100)
+    setEtherAmount(((showBalance * percent) / 100).toString())
   }
   const [isLoading, setIsLoading] = useState(false);
   const [pass, setPass] = useState();
@@ -117,7 +117,7 @@ const TokenSelect = () => {
           );
           const erc_20_instnace = await erc20Instance(erc_token_address)
           const bal = await erc_20_instnace.balanceOf(address);
-          if (Number(ethers.utils.formatEther(bal)) < etherAmount) {
+          if (Number(ethers.utils.formatEther(bal)) < Number(etherAmount)) {
             toast.error(`Insufficient ${selectedToken.name} Tokens`);
             return;
           }
