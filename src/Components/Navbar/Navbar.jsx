@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md"
 // import logo1 from '../../assets/logo1.png'
 import '../style.css'
 import { FiSettings } from 'react-icons/fi'
@@ -55,8 +56,13 @@ function NavbarMenu() {
 
           </Nav>
           <Nav className='gap-lg-4 gap-3'>
-            <div className="form-check form-switch switch ms-lg-auto ms-0 p-0">
-              <input
+            <div className="form-check form-switch switch ms-lg-auto ms-0 p-0" 
+            onClick={toggleThem}
+            >
+              {
+                theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span>  : <span className='text-light fs-4'><MdOutlineLightMode /></span>
+              }
+              {/* <input
                 className="form-check-input change ms-auto text-lg-end text-start light_mode"
                 onClick={() => toggleThem()}
                 type="checkbox"
@@ -65,9 +71,10 @@ function NavbarMenu() {
               />
               {
                 theme === "dark-theme" ? <p className='mode_text2 text-dark'>Dark Mode</p> : <p className='mode_text'>Light Mode</p>
-              }
+              } */}
 
             </div>
+
             <ConnectButton chainStatus="icon" accountStatus="address" showBalance={false} />
           </Nav>
         </Navbar.Collapse>
