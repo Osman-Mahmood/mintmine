@@ -62,16 +62,6 @@ function NavbarMenu() {
               {
                 theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span>  : <span className='text-light fs-4'><MdOutlineLightMode /></span>
               }
-              {/* <input
-                className="form-check-input change ms-auto text-lg-end text-start light_mode"
-                onClick={() => toggleThem()}
-                type="checkbox"
-                role="switch"
-                id="flexSwitchCheckChecked"
-              />
-              {
-                theme === "dark-theme" ? <p className='mode_text2 text-dark'>Dark Mode</p> : <p className='mode_text'>Light Mode</p>
-              } */}
 
             </div>
 

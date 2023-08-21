@@ -151,7 +151,7 @@ const WithdrawToken = () => {
                         <h5 className='text-white pt-5 pb-5'>Withdraw</h5>
                         <p className='text-end mb-0 text-wid'>
                             {
-                                showBalance && `Avbl ${selectedToken.name}: ${showBalance}`
+                                showBalance && `Available ${selectedToken.name}: ${showBalance}`
                             }
                         </p>
                         <div className='modalselect'>
