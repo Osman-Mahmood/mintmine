@@ -38,24 +38,20 @@ function NavbarMenu() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto px-0 text-start">
-            <NavDropdown className='text-dark clr_drop' title="u369" id="navbarScrollingDropdown">
-              <NavDropdown.Item><NavLink to="selfserve">u369 self-serve</NavLink> </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                open source code
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/">u369</NavLink>
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">protect</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">transfer</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">withdraw</NavLink>
             <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">reward</NavLink>
             <NavDropdown className='text-dark clr_drop' title="more" id="navbarScrollingDropdown">
-              <NavDropdown.Item><NavLink to="transfer">transfer</NavLink> </NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="transfer">What is u369?</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item ><NavLink to="withdraw">withdraw</NavLink></NavDropdown.Item>
+              <NavDropdown.Item ><NavLink to="withdraw">How u369 works?</NavLink></NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">Open source code</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item><NavLink to="selfserve">Self-serve</NavLink> </NavDropdown.Item>
             </NavDropdown>
-            {/* <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="more">more</NavLink> */}
-            {/* <NavLink className="ms-3 p-1 text-decoration-none" eventKey={2} to="transfer">
-                            Transfer
-                        </NavLink> */}
 
           </Nav>
           <Nav className='gap-lg-4 gap-3'>
