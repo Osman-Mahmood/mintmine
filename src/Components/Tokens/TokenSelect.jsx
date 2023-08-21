@@ -4,6 +4,7 @@ import PasswordModal from '../Modals/PassworModal'
 import ProtectModal from '../Modals/ProtectModal'
 import { useAccount, useNetwork } from 'wagmi'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
+import { MdOutlineAccountBalanceWallet } from "react-icons/md"
 import { erc20Instance, factoryInstance, getChainDetails, walletBalance } from '../../config'
 import { Button } from 'react-bootstrap'
 import RecoverPasswordModal from '../Modals/RecoverPasswordModal'
@@ -61,7 +62,9 @@ const TokenSelect = () => {
       getBal()
   }, [chain?.id, selectedToken.address, selectedToken.type])
   let [etherAmount, setEtherAmount] = useState();
-  const maxAmount = (percent) => {
+  let [percentValue, setPercentValue] = useState(0)
+  const barAmount = (percent) => {
+    setPercentValue(percent)
     setEtherAmount(((showBalance * percent) / 100).toString())
   }
   const [isLoading, setIsLoading] = useState(false);
@@ -177,31 +180,63 @@ const TokenSelect = () => {
                 showBalance && `Available ${selectedToken.name}: ${showBalance}`
               }
             </p>
-            <div className='modalselect'>
-
-              <input type="number" name="" id="" className='token_inp p-4 w-75 mb-1 text-dark'
-                value={etherAmount}
-                placeholder='amount'
-                onChange={(e) => setEtherAmount(e.target.value)}
-              />
+            <div className='modalselect w-100 d-flex justify-content-center'>
+              <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
+                <p className="form-label text-start ms-3 p-2">Send</p>
+                <input type="number"
+                  style={{ border: "none", outline: "none", boxShadow: "none" }}
+                  placeholder='amount'
+                  value={etherAmount}
+                  onChange={(e) => setEtherAmount(e.target.value)}
+                  className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              </div>
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
+            </div >
+            <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
+              <div className='w-75 d-flex'>
+                <div className='w-25 fs-4 text-primary'>
+                  <MdOutlineAccountBalanceWallet />
+                </div>
+                <div class=" w-75 rounded mt-2" >
+                  <input type="range" min="0" max="100"
+                    className="form-range" id="customRange"
+                    onChange={(e) => barAmount(e.target.value)}
+                    value={percentValue}
+                  />
+                </div>
+                <div className='w-25 mt-2'>
+                  {selectedToken.showBalance && `${percentValue}%`}
+                </div>
+              </div>
             </div>
-            <div className='btn_small justify-content-end text-wid mb-2  align-items-center text-end'>
-              <button disabled={!showBalance} onClick={() => maxAmount(25)} >25%</button>
-              <button disabled={!showBalance} onClick={() => maxAmount(50)}>50%</button>
-              <button disabled={!showBalance} onClick={() => maxAmount(75)}>75%</button>
-              <button disabled={!showBalance} onClick={() => maxAmount(100)}>max</button>
+
+            <div className=' w-100 d-flex justify-content-center mb-3'>
+              <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
+                <p className="form-label text-start ms-3 p-2">Receive</p>
+                <input type="number"
+                  style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
+                  placeholder='amount'
+                  value={selectedToken.name ? (etherAmount - (etherAmount * 0.369) / 100) : 0}
+                  disabled
+                  className="form-control p-3   mb-1 text-dark" />
+              </div>
             </div>
-            <div className='modalselect'>
-              <input type={isSeePass ? "text" : "password"} name="" id="" className='token_inp p-4 w-75 mb-3' placeholder='0'
-                onChange={(e) => setPass(e.target.value)}
-              />
-              {/* <ModalB className="modala" /> */}
-              <Button className='select_token' variant="primary"
-                onClick={() => setIsSeePass(!isSeePass)}
-              >
-                {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
-              </Button>
+            <div className='w-100 d-flex justify-content-center mb-3'>
+              <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
+                <p className="form-label text-start ms-3 p-2">Password</p>
+                <input type={isSeePass ? "text" : "password"} name="" id=""
+                  style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
+                  className='token_inp w-100 p-3 text-dark' placeholder='0'
+                  onChange={(e) => setPass(e.target.value)}
+                />
+                <div
+                  style={{ background: "rgba(225, 55, 190, 0.45)" }}
+                  className='bg-primary text-light'
+                  onClick={() => setIsSeePass(!isSeePass)}
+                >
+                  {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </div>
+              </div>
             </div>
             <div className='col-10 text-end ms-4 mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
               onClick={handleShowRModal}
@@ -209,7 +244,7 @@ const TokenSelect = () => {
               Forgot Password
             </div>
 
-            <Button className='w-75 protect mb-5 pb-3' variant="primary"
+            <Button className='w-75 protect mb-5 pb-3 bg-primary'
               // !isConnected && !getChainDetails(chain?.id) && 
               disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
               onClick={mintU_tokens}
