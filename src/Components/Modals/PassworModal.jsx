@@ -118,7 +118,9 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                   type="password"
                 />
                 <button
-                  className="w-25 btn btn-light border rounded ms-1"
+                style={{borderRadius:"15px"}}
+                  className="w-25  ms-1 btn btn-primary bg-primary"
+                  
                   onClick={(e) => {
                     copyPhrase(e);
                   }}
@@ -149,16 +151,9 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
               <div className="d-flex">
                 <input type="checkbox" onChange={(e) => { setIsEnable(e.target.checked); }} />
                 <label htmlFor="" className="ms-3 mt-3">
-                  I understand that u369.eth cannot recover this password for me.
+                  I understand that u369 cannot recover this password for me.
                 </label>
               </div>
-
-
-
-              {/* <LearnMore /> */}
-
-
-
             </Form.Group>
             {isEnable && <>
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -173,7 +168,8 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                     }}
                   />
                   <button
-                    className="w-25 btn btn-light border rounded ms-1"
+                  style={{borderRadius:"15px"}}
+                    className="w-25 btn btn-primary bg-primary  ms-1"
                     onClick={(e) => seePass(e)}
                   >
                     {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
@@ -194,7 +190,8 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                   />
 
                   <button
-                    className="w-25 btn btn-light border rounded ms-1"
+                  style={{borderRadius:"15px"}}
+                    className="w-25 btn btn-primary bg-primary  ms-1"
                     onClick={(e) => seeCPass(e)}
                   >
                     {isSeeCPass ? <AiFillEyeInvisible /> : <AiFillEye />}
@@ -209,12 +206,12 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           </Form>
         </Modal.Body>
         {isEnable && <Modal.Footer>
-          <Button variant="primary" onClick={savePssword}>
+          <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={savePssword}>
             {isLoading ? <BeatLoader color="#fff" /> : "Save Password"}
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
+          </button>
+          <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={handleClose}>
             Close
-          </Button>
+          </button>
         </Modal.Footer>}
       </Modal>
     </>

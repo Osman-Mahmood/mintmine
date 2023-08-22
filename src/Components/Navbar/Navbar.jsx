@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md"
+import logo from '../../assets/logo.png'
 // import logo1 from '../../assets/logo1.png'
 import '../style.css'
 import { FiSettings } from 'react-icons/fi'
@@ -34,17 +35,18 @@ function NavbarMenu() {
     <Navbar collapseOnSelect expand="lg" variant="dark" className='nav_bg'>
       <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
         <Navbar.Brand className='text-dark fw-bold clr'>
-          <NavLink to="/">Logo</NavLink>
+          <NavLink to="/"><img src={logo} className='img-fluid logo'/></NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto px-0 text-start">
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/">u369</NavLink>
-            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">protect</NavLink>
-            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">transfer</NavLink>
-            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">withdraw</NavLink>
-            <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">reward</NavLink>
-            <NavDropdown className='text-dark clr_drop' title="more" id="navbarScrollingDropdown">
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">Protecting</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Withdraw</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">Tokens</NavLink>
+            <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward">Rewards</NavLink>
+            <NavDropdown className='text-dark clr_drop ms-3' title="More" id="navbarScrollingDropdown">
               <NavDropdown.Item><NavLink to="transfer">What is u369?</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item ><NavLink to="withdraw">How u369 works?</NavLink></NavDropdown.Item>

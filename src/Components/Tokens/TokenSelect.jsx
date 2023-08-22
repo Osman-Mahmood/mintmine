@@ -168,13 +168,13 @@ const TokenSelect = () => {
     }
   };
   return (
-    <div className='container mt-5 mb-5'>
+    <div className='container pt-5 mb-5'>
       <PasswordModal show={show} handleClose={handleClose} />
       <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-            <h5 className='text-white pt-5 pb-5'>Protect</h5>
+            <h5 className='text-white pt-5 pb-5'>Protecting</h5>
             <p className='text-end mb-0 text-wid'>
               {
                 showBalance && `Available ${selectedToken.name}: ${showBalance}`

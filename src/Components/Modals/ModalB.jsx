@@ -52,9 +52,9 @@ function ModalB({ setSelectedToken, selectedToken }) {
     }, [])
     return (
         <>
-            <Button className='select_token text-capitalize' variant="primary" onClick={handleShow}>
+            <button className='select_token text-capitalize btn btn-primary bg-primary'  variant="primary" onClick={handleShow}>
                 {selectedToken.name} <IoIosArrowDown />
-            </Button>
+            </button>
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>

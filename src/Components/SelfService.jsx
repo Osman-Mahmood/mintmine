@@ -14,39 +14,39 @@ import { NavLink, Outlet } from 'react-router-dom';
 const SelfService = () => {
   return (
     <>
-      <div className='bg_home hright p-5'>
+      <div className='hright p-5'>
         <h1 className='text-white '>u369 self-serve</h1>
-        <h1 className='text-white mt-5 pt-4'>Happy Crypto Days! & Power to the people!</h1>
+        <h1 className='text-white mt-5 pt-4'>Happy Crypto Days & Power to the people!</h1>
       </div>
 
       <div className='d-lg-flex d-block'>
 
 
 
-        <div className='col-lg-4 col-12  bd_color'>
+        <div className='col-lg-4 col-12 bg-transparent text-light '>
           <h2 className='px-3'><strong>Subject matter:</strong> </h2>
-          <Accordion className="custom-accordion">
+          <Accordion className="bg-transparent">
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Crypto wallet</Accordion.Header>
+              <Accordion.Header className='text-white'><p className='text-white mb-0'>Crypto wallet</p></Accordion.Header>
               <Accordion.Body>
                 <Row>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
-                      <Nav.Item>  <NavLink to="crypto" eventKey="first">What is a crypto wallet</NavLink>
+                      <Nav.Item>  <NavLink to="crypto" eventKey="first" className="text-white">What is a crypto wallet</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="adres">What is a Crypto wallet Public Address</NavLink>
+                        <NavLink to="adres" className="text-white">What is a Public Address</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="ueth">How to connect my wallet to u369</NavLink>
+                        <NavLink to="ueth" className="text-white">How to connect to u369</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -56,23 +56,23 @@ const SelfService = () => {
           </Accordion>
           <Accordion className="custom-accordion">
             <Accordion.Item eventKey="1">
-              <Accordion.Header>Network/blockchains</Accordion.Header>
+              <Accordion.Header className="text-white"><p className='text-white mb-0'>Network/blockchains</p></Accordion.Header>
               <Accordion.Body>
                 <Row>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                      <NavLink to="network" >What is a network/blockchain</NavLink>
-                        
+                        <NavLink to="network" className="text-white">What is a network/blockchain</NavLink>
+
                       </Nav.Item>
                     </Nav>
                   </Col>
-                 
+
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="deploy">On which networks is the u369 smart 
-contract deployed?</NavLink>
+                        <NavLink to="deploy" className="text-white">On which networks is the u369 smart
+                          contract deployed?</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -80,10 +80,10 @@ contract deployed?</NavLink>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-         <NavLink to="uethside" ><p className="side_menu">u369</p></NavLink> 
-         <NavLink to="utoken" ><p className="side_menu">uTokens</p></NavLink> 
-         <NavLink to="system" ><p className="side_menu">Reward system</p></NavLink> 
-         <NavLink to="goods"><p  className="side_menu">Public goods</p></NavLink> 
+          <NavLink to="uethside" ><p className="side_menu text-light">u369</p></NavLink>
+          <NavLink to="utoken" ><p className="side_menu text-light">uTokens</p></NavLink>
+          <NavLink to="system" ><p className="side_menu text-light">Reward system</p></NavLink>
+          <NavLink to="goods"><p className="side_menu text-light">Public goods</p></NavLink>
         </div>
         <div className='col-lg-8 col-12' id=''>
           <Outlet />

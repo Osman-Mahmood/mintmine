@@ -25,12 +25,12 @@ import TokenSelect from './Components/Tokens/TokenSelect';
 import WithdrawToken from './Components/Tokens/Withdraw';
 import TransferToken from './Components/Tokens/TransferToken';
 import More from "./Components/More"
-import Tokens from "./Components/Tokens"
-
+import Reward from "./Components/Reward"
+import Tokens from './Components/Tokens';
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
-  const {address} = useAccount()
+  const { address } = useAccount()
   console.log("chain", chain);
   const firstRender = useRef(true)
   useMemo(() => {
@@ -111,8 +111,12 @@ function App() {
           element: <WithdrawToken />,
         },
         {
+          path: "reward",
+          element: <Reward />,
+        },
+        {
           path: "tokens",
-          element: <Tokens />,
+          element: <Tokens />
         },
         {
           path: "more",
