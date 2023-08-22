@@ -388,7 +388,9 @@ a {
 .active {
   color: #2C42C9;
 }
-
+[data-rk] .iekbcc0{
+  justify-content: center;
+}
 .text-wid {
   width: 88%;
 }
@@ -420,4 +422,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 .bor{
   border-bottom: 1px solid #d1c6c6;
+}
+.hright{
+  height: 50vh !important;
 }

@@ -35,16 +35,17 @@ function NavbarMenu() {
     <Navbar collapseOnSelect expand="lg" variant="dark" className='nav_bg'>
       <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
         <Navbar.Brand className='text-dark fw-bold clr'>
-          <NavLink to="/"><img src={logo} className='img-fluid logo'/></NavLink>
+          <NavLink to="/"><img src={logo} className='img-fluid logo' /></NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto px-0 text-start">
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/">u369</NavLink>
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">Protecting</NavLink>
-            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
-            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Withdraw</NavLink>
+
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">Tokens</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
+            <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Claim</NavLink>
             <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward">Rewards</NavLink>
             <NavDropdown className='text-dark clr_drop ms-3' title="More" id="navbarScrollingDropdown">
               <NavDropdown.Item><NavLink to="transfer">What is u369?</NavLink> </NavDropdown.Item>
@@ -58,16 +59,16 @@ function NavbarMenu() {
 
           </Nav>
           <Nav className='gap-lg-4 gap-3'>
-            <div className="form-check form-switch switch ms-lg-auto ms-0 p-0" 
-            onClick={toggleThem}
+            <div className="form-check form-switch switch ms-lg-auto ms-0 p-0"
+              onClick={toggleThem}
             >
               {
-                theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span>  : <span className='text-light fs-4'><MdOutlineLightMode /></span>
+                theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span> : <span className='text-light fs-4'><MdOutlineLightMode /></span>
               }
 
             </div>
 
-            <ConnectButton chainStatus="icon" accountStatus="address" showBalance={false} />
+            <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
           </Nav>
         </Navbar.Collapse>
       </div>

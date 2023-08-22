@@ -38,3 +38,34 @@ input[type=number] {
 .bg-transparent .accordion-body {
     background-color: transparent !important; /* Using !important to ensure override */
 }
+
+/* Set the scrollbar width to 10px */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Set the scrollbar height for horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 10px;
+}
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll thumb */
+  border-radius: 4px; /* Rounded corners on thumb */
+}
+
+/* Hover effect for thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 4px; /* Rounded corners on track */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 4px; /* Rounded corners on track */
+}
