@@ -153,15 +153,15 @@ const WithdrawToken = () => {
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
-                        <h5 className='text-white pt-5 pb-5'>Withdraw</h5>
+                        <h5 className='text-dark pt-5 pb-5'>Withdraw</h5>
                         <p className='text-end mb-0 text-wid'>
                             {
                                 showBalance && `Available ${selectedToken.name}: ${showBalance}`
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
-                                <p className="form-label text-dark text-start ms-2 p-2">Receive</p>
+                            <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+                                <p className="form-label text-dark text-start ms-2 p-2"><strong>Receive</strong></p>
                                 <input type="number"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='amount'
@@ -191,7 +191,7 @@ const WithdrawToken = () => {
                         </div>
                         <div className='w-100 d-flex justify-content-center mb-3'>
                             <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
-                                <p className="form-label text-start text-dark ms-2 p-2">Password</p>
+                                <p className="form-label text-start text-dark ms-2 p-2"><strong>Password</strong></p>
                                 <input type={isSeePass ? "text" : "password"} name="" id=""
                                     style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
                                     className='token_inp w-100 p-3 text-dark' placeholder='0'

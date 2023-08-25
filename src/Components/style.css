@@ -218,11 +218,14 @@
 
 .box {
   border-radius: 10px;
-  background: rgba(44, 66, 201, 0.54);
+  /* background: rgba(44, 66, 201, 0.54); */
+  background-color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   justify-content: center;
 }
-
+.token_inp::placeholder {
+  color: black; /* Change this to the desired color */
+}
 .token_inp {
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.22);
@@ -328,10 +331,13 @@
   font-weight: 400;
   line-height: normal;
 }
-
+.rounded_icon{
+  /* border-radius: 20px !important; */
+}
 .time_box {
   border-radius: 9px;
-  background: rgba(44, 66, 201, 0.54);
+  /* background: rgba(44, 66, 201, 0.54); */
+  background-color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 

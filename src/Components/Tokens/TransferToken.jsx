@@ -158,15 +158,15 @@ const TransferToken = () => {
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
-                        <h5 className='text-white pt-5 pb-5'>Transfer</h5>
+                        <h5 className='text-dark pt-5 pb-5'>Transfer</h5>
                         <p className='text-end mb-0 text-wid'>
                             {
                                 showBalance && `Available ${selectedToken.name}: ${showBalance}`
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
-                                <p className="form-label text-start text-dark ms-2 p-2">Transfer</p>
+                            <div class=" w-75 rounded border" style={{ backgroundColor: "rgb(232, 240, 254)" }}>
+                                <p className="form-label text-start text-dark ms-2 p-2"><strong>Transfer</strong></p>
                                 <input type="number"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='amount'
@@ -182,7 +182,7 @@ const TransferToken = () => {
                                 <div className='w-25 fs-4 text-primary'>
                                     <MdOutlineAccountBalanceWallet />
                                 </div>
-                                <div class=" w-75 rounded mt-2" >
+                                <div class=" w-75 rounded mt-2 "  >
                                     <input type="range" min="0" max="100"
                                         className="form-range" id="customRange"
                                         onChange={(e) => barAmount(e.target.value)}
@@ -195,8 +195,8 @@ const TransferToken = () => {
                             </div>
                         </div>
                         <div className=' w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
-                                <p className="form-label text-start ms-2 p-2 text-dark ">Address</p>
+                            <div class=" w-75 rounded border" style={{backgroundColor:"rgb(232, 240, 254)"}}>
+                                <p className="form-label text-start ms-2 p-2 text-dark "><strong>Address</strong></p>
                                 <input type="text"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='recipient address '
@@ -207,10 +207,10 @@ const TransferToken = () => {
 
                         <div className='w-100 d-flex justify-content-center mb-3'>
                             <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
-                                <p className="form-label text-start ms-2 p-2 text-dark ">Password</p>
+                                <p className="form-label text-start ms-2 p-2 text-dark "><strong>Password</strong></p>
                                 <input type={isSeePass ? "text" : "password"} name="" id=""
                                     style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                                    className='token_inp w-100 p-3 text-dark' placeholder='0'
+                                    className='token_inp w-100 p-3 text-dark ' placeholder='0'
                                     onChange={(e) => setPass(e.target.value)}
                                 />
                                 <div

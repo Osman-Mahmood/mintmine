@@ -174,15 +174,15 @@ const TokenSelect = () => {
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-            <h5 className='text-white pt-5 pb-5'>Protecting</h5>
+            <h5 className='text-dark pt-5 pb-5'>Protect</h5>
             <p className='text-end mb-0 text-wid'>
               {
                 showBalance && `Available ${selectedToken.name}: ${showBalance}`
               }
             </p>
             <div className='modalselect w-100 d-flex justify-content-center'>
-              <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
-                <p className="form-label text-start ms-3 p-2">Send</p>
+              <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+                <p className="form-label text-start text-dark ms-3 p-2"><strong>Send</strong></p>
                 <input type="number"
                   style={{ border: "none", outline: "none", boxShadow: "none" }}
                   placeholder='amount'
@@ -195,7 +195,7 @@ const TokenSelect = () => {
             <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
               <div className='w-75 d-flex'>
                 <div className='w-25 fs-4 text-primary'>
-                  <MdOutlineAccountBalanceWallet />
+                  {/* <MdOutlineAccountBalanceWallet /> */}
                 </div>
                 <div class=" w-75 rounded mt-2" >
                   <input type="range" min="0" max="100"
@@ -204,15 +204,15 @@ const TokenSelect = () => {
                     value={percentValue}
                   />
                 </div>
-                <div className='w-25 mt-2'>
+                <div className='w-25 mt-2 text-dark'>
                   {selectedToken.showBalance && `${percentValue}%`}
                 </div>
               </div>
             </div>
 
             <div className=' w-100 d-flex justify-content-center mb-3'>
-              <div class=" w-75 rounded" style={{ backgroundColor: "#E8F0FE" }}>
-                <p className="form-label text-start ms-3 p-2">Receive</p>
+              <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+                <p className="form-label text-dark text-start ms-3 p-2"><strong>You Receive</strong></p>
                 <input type="number"
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
                   placeholder='amount'
@@ -223,7 +223,7 @@ const TokenSelect = () => {
             </div>
             <div className='w-100 d-flex justify-content-center mb-3'>
               <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
-                <p className="form-label text-start ms-3 p-2">Password</p>
+                <p className="form-label text-start text-dark ms-3 p-2"><strong>Password</strong></p>
                 <input type={isSeePass ? "text" : "password"} name="" id=""
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
                   className='token_inp w-100 p-3 text-dark' placeholder='0'

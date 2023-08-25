@@ -109,7 +109,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               {/* <Form.Label>Phrase</Form.Label> */}
-              <div className="d-flex">
+              <div className="d-flex gap-3">
                 <Form.Control
                   className="w-75"
                   value={phrase}
@@ -158,7 +158,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
             {isEnable && <>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Set Password</Form.Label>
-                <div className="d-flex">
+                <div className="d-flex gap-3">
                   <Form.Control
                     className="w-75"
                     type={isSeePass ? "text" : "password"}
@@ -179,7 +179,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
-                <div className="d-flex">
+                <div className="d-flex gap-3">
                   <Form.Control
                     type={isSeeCPass ? "text" : "password"}
                     placeholder=""
@@ -207,11 +207,11 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
         </Modal.Body>
         {isEnable && <Modal.Footer>
           <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={savePssword}>
-            {isLoading ? <BeatLoader color="#fff" /> : "Save Password"}
+            {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
           </button>
-          <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={handleClose}>
+          {/* <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={handleClose}>
             Close
-          </button>
+          </button> */}
         </Modal.Footer>}
       </Modal>
     </>
