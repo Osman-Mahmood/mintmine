@@ -54,7 +54,7 @@ code {
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 3px;
-  background-color: rgb(134, 49, 0);
+  /* background-color: rgb(134, 49, 0); */
   color: #fff;
 }
 

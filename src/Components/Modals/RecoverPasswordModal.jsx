@@ -137,9 +137,9 @@ export default function RecoverPasswordModal({ show, handleClose }) {
                         {isLoading ? <BeatLoader color="#fff" /> : "Update Password"}
 
                     </Button>
-                    <Button variant="danger" onClick={handleClose}>
+                    {/* <Button variant="danger" onClick={handleClose}>
                         Close
-                    </Button>
+                    </Button> */}
                 </Modal.Footer>}
             </Modal>
         </>

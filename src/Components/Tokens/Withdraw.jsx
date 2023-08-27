@@ -177,13 +177,26 @@ const WithdrawToken = () => {
                                 <div className='w-25 fs-4 text-primary'>
                                     <MdOutlineAccountBalanceWallet />
                                 </div>
-                                <div class=" w-75 rounded mt-2" >
+                                {/* <div class=" w-75 rounded mt-2" >
                                     <input type="range" min="0" max="100"
                                         className="form-range" id="customRange"
                                         onChange={(e) => barAmount(e.target.value)}
                                         value={percentValue}
                                     />
-                                </div>
+                                </div> */}
+                                <div class="w-75 rounded mt-2">
+    <input
+        type="range"
+        min="0"
+        max="100"
+        step="25"
+        className="form-range"
+        id="customRange"
+        onChange={(e) => barAmount(e.target.value)}
+        value={percentValue}
+    />
+</div>
+
                                 <div className='w-25 mt-2'>
                                     {showBalance && `${percentValue}%`}
                                 </div>
