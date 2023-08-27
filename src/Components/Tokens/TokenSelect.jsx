@@ -45,6 +45,7 @@ const TokenSelect = () => {
     try {
       if (selectedToken.type === "native") {
         let ethBal = await walletBalance(address);
+        console.log("bal", ethBal);
         setShowBalance(ethBal);
       } else if (selectedToken.type === "token") {
         const contract = await factoryInstance(chain?.id);
@@ -175,9 +176,9 @@ const TokenSelect = () => {
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
             <h5 className='text-dark pt-5 pb-5'>Protect</h5>
-            <p className='text-end mb-0 text-wid'>
+            <p className='text-end mb-0 text-wid text-dark'>
               {
-                showBalance && `Available ${selectedToken.name}: ${showBalance}`
+                showBalance && `Balance: ${showBalance} Max`
               }
             </p>
             <div className='modalselect w-100 d-flex justify-content-center'>
@@ -210,7 +211,7 @@ const TokenSelect = () => {
               </div>
             </div>
 
-            <div className=' w-100 d-flex justify-content-center mb-3'>
+            <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
               <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
                 <p className="form-label text-dark text-start ms-3 p-2"><strong>You Receive</strong></p>
                 <input type="number"
@@ -220,6 +221,11 @@ const TokenSelect = () => {
                   disabled
                   className="form-control p-3   mb-1 text-dark" />
               </div>
+              {
+                selectedToken.address && <button disabled className='select_token  bg-primary' >
+                  u{selectedToken.name}
+                </button>
+              }
             </div>
             <div className='w-100 d-flex justify-content-center mb-3'>
               <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>

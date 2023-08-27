@@ -79,7 +79,7 @@ function ModalB({ setSelectedToken, selectedToken }) {
                             <div className='d-flex align-items-center'>
                                 <img src={All} alt="" />
                                 <div className='d-block ms-3'>
-                                    <p className='mb-0 eth'>u-{chain?.nativeCurrency.symbol}</p>
+                                    <p className='mb-0 eth'>u{chain?.nativeCurrency.symbol}</p>
                                 </div>
                             </div>
                             <div className=''>

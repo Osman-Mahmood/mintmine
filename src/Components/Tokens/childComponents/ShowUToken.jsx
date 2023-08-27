@@ -54,7 +54,7 @@ function ShowUToken({ token, setSelectedToken, handleClose }) {
                 {tokenDetail ? <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>
-                        <p className='mb-0 eth'>u-{
+                        <p className='mb-0 eth'>u{
                             tokenDetail
                         }</p>
                     </div>
@@ -63,9 +63,6 @@ function ShowUToken({ token, setSelectedToken, handleClose }) {
                     "Loading..."}
                 <div className=''>
                 {tokenBalance}
-                    {/* {
-                        tokenDetail.balance !== null ? tokenDetail.balance : "..."
-                    } */}
                 </div>
             </div>
         </>
