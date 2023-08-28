@@ -33,7 +33,7 @@ function NavbarMenu() {
       setTheme(localStorage.getItem("theme"));
     }
   }, [theme]);
- 
+
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" className='nav_bg'>
       <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
@@ -44,30 +44,30 @@ function NavbarMenu() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto px-0 text-start">
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/">u369</NavLink>
-              <NavDropdown className='text-dark clr_drop ms-3' title="Operations" id="navbarScrollingDropdown" show={isOpen}
-             onMouseEnter={() => setIsOpen(true)}
-             onMouseLeave={() => setIsOpen(false)}>
-          <NavDropdown.Item>
-              <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">Protecting</NavLink>
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item>
-              <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item>
-              <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Claim</NavLink>
-          </NavDropdown.Item>
-    
-  </NavDropdown>
+            <NavDropdown className='text-dark clr_drop ms-lg-3 ms-0' title="Operations" id="navbarScrollingDropdown" show={isOpen}
+              onMouseEnter={() => setIsOpen(true)}
+              onMouseLeave={() => setIsOpen(false)}>
+              <NavDropdown.Item>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">Protecting</NavLink>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Claim</NavLink>
+              </NavDropdown.Item>
+
+            </NavDropdown>
 
 
-            
+
 
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens">Tokens</NavLink>
 
             <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward">Rewards</NavLink>
-            <NavDropdown className='text-dark new_clr ms-3' title="More" id="navbarScrollingDropdown" >
+            <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdown" >
               <NavDropdown.Item><NavLink to="transfer">What is u369?</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item ><NavLink to="withdraw">How u369 works?</NavLink></NavDropdown.Item>

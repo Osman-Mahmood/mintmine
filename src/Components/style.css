@@ -22,6 +22,7 @@
   position: fixed;
   margin-bottom: 200px;
   width: 100%;
+  z-index: 999999;
 }
 .clr {
   color: var(--clr-) !important;
@@ -29,6 +30,15 @@
 
 .nav_bg {
   background-color: var(--nav-bg);
+}
+
+@media screen and (max-width:600px) {
+  .nav_bg{
+    position: relative;
+    margin-bottom: 0px;
+    width: 100%;
+    z-index: 999999;
+  }
 }
 
 .navlinks {

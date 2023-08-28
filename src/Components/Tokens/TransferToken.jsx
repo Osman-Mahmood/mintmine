@@ -13,6 +13,7 @@ import { toast } from 'react-hot-toast'
 import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
 import ModalB from '../Modals/ModalB'
+import TransactionModal from '../Modals/TransactionModal'
 
 const TransferToken = () => {
     let [selectedToken, setSelectedToken] = useState({
@@ -23,6 +24,8 @@ const TransferToken = () => {
     })
     const [isSeePass, setIsSeePass] = useState(false);
     const [show, setShow] = useState(false);
+    const [showTrx, setShowTrx] = useState(false)
+    const [trxHash, setTrxHash] = useState(null)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [showRModal, setShowRModal] = useState(false);
@@ -112,7 +115,10 @@ const TransferToken = () => {
                 let tx = await contract.transfer(
                     pass, etherAddress, transferAddress, ethers.utils.parseEther(etherAmount)
                 )
-                await tx.wait();
+                let receipt = await tx.wait();
+                let { explorer } = getChainDetails(chain.id)
+                setTrxHash(`${explorer}/${receipt.transactionHash}`);
+                setShowTrx(true)
                 toast.success(`u-${selectedToken.name} transfered`)
                 setEtherAmount(0)
                 setIsLoading(false)
@@ -128,13 +134,15 @@ const TransferToken = () => {
                 let tx = await contract.transfer(
                     pass, selectedToken.address, transferAddress, ethers.utils.parseEther(etherAmount)
                 )
-                await tx.wait();
+                let receipt = await tx.wait();
+                let { explorer } = getChainDetails(chain.id)
+                setTrxHash(`${explorer}/${receipt.transactionHash}`);
+                setShowTrx(true)
                 toast.success("U-Token transfered")
                 setEtherAmount(0)
                 setIsLoading(false)
                 getBal()
             }
-
 
         } catch (error) {
             setIsLoading(false);
@@ -153,15 +161,16 @@ const TransferToken = () => {
     }
     return (
         <div className='container pt-5 mb-5'>
+            <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
             <PasswordModal show={show} handleClose={handleClose} />
             <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
                         <h5 className='text-dark pt-5 pb-5'>Transfer</h5>
-                        <p className='text-end mb-0 text-wid'>
+                        <p className='text-end mb-0 text-wid text-dark'>
                             {
-                                showBalance && `Available ${selectedToken.name}: ${showBalance}`
+                                showBalance && `Balance: ${showBalance} Max`
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
@@ -171,7 +180,11 @@ const TransferToken = () => {
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='amount'
                                     value={etherAmount}
-                                    onChange={(e) => setEtherAmount(e.target.value)}
+                                    onChange={(e) => {
+                                        setEtherAmount(e.target.value)
+                                        setPercentValue(parseInt((e.target.value / showBalance) * 100))
+
+                                    }}
                                     className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                             </div>
 
@@ -187,15 +200,16 @@ const TransferToken = () => {
                                         className="form-range" id="customRange"
                                         onChange={(e) => barAmount(e.target.value)}
                                         value={percentValue}
+                                        disabled={!showBalance}
                                     />
                                 </div>
-                                <div className='w-25 mt-2'>
+                                <div className='w-25 mt-2 text-dark'>
                                     {showBalance && `${percentValue}%`}
                                 </div>
                             </div>
                         </div>
                         <div className=' w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded border" style={{backgroundColor:"rgb(232, 240, 254)"}}>
+                            <div class=" w-75 rounded border" style={{ backgroundColor: "rgb(232, 240, 254)" }}>
                                 <p className="form-label text-start ms-2 p-2 text-dark "><strong>Address</strong></p>
                                 <input type="text"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
@@ -222,7 +236,7 @@ const TransferToken = () => {
                                 </div>
                             </div>
                         </div>
-                       
+
 
                         <Button className='w-75 protect mb-4 pb-3' variant="primary"
                             // !isConnected && !getChainDetails(chain?.id) && 
@@ -232,12 +246,12 @@ const TransferToken = () => {
                             {isLoading ? <BeatLoader color="#fff" /> : "Transfer"}
                         </Button>
                         <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
-              onClick={handleShowRModal}
-            >
-              <div className="w-75 box_forget p-2 rounded">
-             <strong>Forgot Password</strong> 
-              </div>
-              </div>
+                            onClick={handleShowRModal}
+                        >
+                            <div className="w-75 box_forget p-2 rounded">
+                                <strong>Forgot Password</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

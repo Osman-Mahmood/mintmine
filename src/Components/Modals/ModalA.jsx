@@ -30,35 +30,26 @@ function ModalA({ setSelectedToken, selectedToken }) {
     };
     const searchToken = async (searchElement) => {
         try {
-            console.log("filterToken", searchElement.toUpperCase());
-
+            console.log("filterToken", searchElement.length);
             const contract = await remortFactoryInstnce(chain?.id);
-
-            const fetchingTokens = tokensList.map(async (token) => {
-                const symbol = await contract.get_CurrencyOfuToken(token);
-                return { token, symbol };
-            });
-
-            const fetchedTokens = await Promise.all(fetchingTokens);
-
-            const result = fetchedTokens.filter(item => item.token.includes(searchElement) || item.symbol.includes(searchElement.toUpperCase()));
-            setTokensList(result)
-            console.log("filterToken", result);
+            if (searchElement.length > 0) {
+                const fetchingTokens = tokensList.map(async (token) => {
+                    const symbol = await contract.get_CurrencyOfuToken(token);
+                    return { token, symbol };
+                });
+                const fetchedTokens = await Promise.all(fetchingTokens);
+                const result = fetchedTokens.filter(item => item.token.includes(searchElement) || item.symbol.includes(searchElement.toUpperCase()));
+                setTokensList(result)
+            } else {
+                const u_tokens = await contract.all_uTokensOfAllowedTokens();
+                setTokensList(u_tokens);
+            }
+           
         } catch (error) {
             console.error("Error searching tokens:", error);
         }
     };
 
-    // const searchToekn = (searchElement) => {
-    //     console.log("filterToken", searchElement.toUpperCase());
-    //     let filterToken = tokensList.filter(async (token) => {
-    //         const contract = await remortFactoryInstnce(chain?.id);
-    //         const symbol = await contract.get_CurrencyOfuToken(token);
-    //         console.log("filterToken", symbol);
-    //         return token.includes(searchElement) || symbol.includes(searchElement.toUpperCase())
-    //     })
-    //     console.log("filterToken", filterToken);
-    // }
     useEffect(() => {
         getUTokens()
     }, [chain?.id])
@@ -83,7 +74,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
                 {selectedToken.name} <IoIosArrowDown />
             </button>
 
-            <Modal show={show} onHide={handleClose} animation={false} className="rounded_icon">
+            <Modal show={show} onHide={handleClose} animation={false} className="rounded_icon pt-5">
                 <Modal.Header closeButton>
                     <Modal.Title>Select a token</Modal.Title>
 
@@ -99,7 +90,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
                                 aria-describedby="basic-addon2"
                             />
                         </InputGroup>
-                        <div className={
+                       {tokensList.length > 0 && <div className={
                             walletBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
                             onClick={() => {
                                 setSelectedToken({
@@ -122,7 +113,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
                             <div className=''>
                                 {walletBal}
                             </div>
-                        </div>
+                        </div>}
                         {
                             tokensList.map((token, index) => {
                                 return <ShowToken setSelectedToken={setSelectedToken} key={index} token={token} handleClose={handleClose} />

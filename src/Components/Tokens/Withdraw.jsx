@@ -13,6 +13,7 @@ import { toast } from 'react-hot-toast'
 import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
 import ModalB from '../Modals/ModalB'
+import TransactionModal from '../Modals/TransactionModal'
 
 const WithdrawToken = () => {
     let [selectedToken, setSelectedToken] = useState({
@@ -23,6 +24,8 @@ const WithdrawToken = () => {
     })
     const [isSeePass, setIsSeePass] = useState(false);
     const [show, setShow] = useState(false);
+    const [showTrx, setShowTrx] = useState(false)
+    const [trxHash, setTrxHash] = useState(null)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [showRModal, setShowRModal] = useState(false);
@@ -108,7 +111,10 @@ const WithdrawToken = () => {
                 let tx = await contract.withdraw(
                     pass, etherAddress, ethers.utils.parseEther(etherAmount)
                 )
-                await tx.wait();
+                let receipt = await tx.wait();
+                let { explorer } = getChainDetails(chain.id)
+                setTrxHash(`${explorer}/${receipt.transactionHash}`);
+                setShowTrx(true)
                 toast.success(`u-${selectedToken.name} Claimed`)
                 setEtherAmount(0)
                 setIsLoading(false)
@@ -124,7 +130,10 @@ const WithdrawToken = () => {
                 let tx = await contract.withdraw(
                     pass, selectedToken.address, ethers.utils.parseEther(etherAmount)
                 )
-                await tx.wait();
+                let receipt = await tx.wait();
+                let { explorer } = getChainDetails(chain.id)
+                setTrxHash(`${explorer}/${receipt.transactionHash}`);
+                setShowTrx(true)
                 toast.success(`u-${selectedToken.name} Claimed`)
                 getBal()
                 setEtherAmount(0)
@@ -148,15 +157,16 @@ const WithdrawToken = () => {
     }
     return (
         <div className='container pt-5 mb-5'>
+            <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
             <PasswordModal show={show} handleClose={handleClose} />
             <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
                         <h5 className='text-dark pt-5 pb-5'>Withdraw</h5>
-                        <p className='text-end mb-0 text-wid'>
+                        <p className='text-end mb-0 text-wid text-dark'>
                             {
-                                showBalance && `Available ${selectedToken.name}: ${showBalance}`
+                                showBalance && `Balance: ${showBalance} Max`
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
@@ -166,7 +176,10 @@ const WithdrawToken = () => {
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='amount'
                                     value={etherAmount}
-                                    onChange={(e) => setEtherAmount(e.target.value)}
+                                    onChange={(e) => {
+                                        setEtherAmount(e.target.value)
+                                        setPercentValue(parseInt((e.target.value / showBalance) * 100))
+                                    }}
                                     className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                             </div>
 
@@ -177,27 +190,20 @@ const WithdrawToken = () => {
                                 <div className='w-25 fs-4 text-primary'>
                                     <MdOutlineAccountBalanceWallet />
                                 </div>
-                                {/* <div class=" w-75 rounded mt-2" >
-                                    <input type="range" min="0" max="100"
-                                        className="form-range" id="customRange"
+                                <div class="w-75 rounded mt-2">
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100"
+                                        className="form-range"
+                                        id="customRange"
                                         onChange={(e) => barAmount(e.target.value)}
                                         value={percentValue}
+                                        disabled={!showBalance}
                                     />
-                                </div> */}
-                                <div class="w-75 rounded mt-2">
-    <input
-        type="range"
-        min="0"
-        max="100"
-        step="25"
-        className="form-range"
-        id="customRange"
-        onChange={(e) => barAmount(e.target.value)}
-        value={percentValue}
-    />
-</div>
+                                </div>
 
-                                <div className='w-25 mt-2'>
+                                <div className='w-25 mt-2 text-dark'>
                                     {showBalance && `${percentValue}%`}
                                 </div>
                             </div>
@@ -219,7 +225,7 @@ const WithdrawToken = () => {
                                 </div>
                             </div>
                         </div>
-                     
+
 
                         <Button className='w-75 protect mb-4 pb-3' variant="primary"
                             disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
@@ -228,12 +234,12 @@ const WithdrawToken = () => {
                             {isLoading ? <BeatLoader color="#fff" /> : "Claim"}
                         </Button>
                         <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
-              onClick={handleShowRModal}
-            >
-              <div className="w-75 box_forget p-2 rounded">
-             <strong>Forgot Password</strong> 
-              </div>
-              </div>
+                            onClick={handleShowRModal}
+                        >
+                            <div className="w-75 box_forget p-2 rounded">
+                                <strong>Forgot Password</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

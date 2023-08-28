@@ -139,7 +139,7 @@ const Tokens = () => {
       </div>
       <div className='row p-3 mt-5 bg-light rounded-lg time_box'>
         <div className='col-lg-12'>
-          <h3 className='text-center text-dark'>Winner: {winnerAddress}</h3>
+          <h3 className='text-center text-dark text-truncate'>Winner: {winnerAddress}</h3>
           <Table striped bordered hover >
             <thead>
               <tr>

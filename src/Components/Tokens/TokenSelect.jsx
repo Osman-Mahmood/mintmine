@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ModalA from '../Modals/ModalA'
 import PasswordModal from '../Modals/PassworModal'
-import ProtectModal from '../Modals/ProtectModal'
+import TransactionModal from '../Modals/TransactionModal'
 import { useAccount, useNetwork } from 'wagmi'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { MdOutlineAccountBalanceWallet } from "react-icons/md"
@@ -20,6 +20,8 @@ const TokenSelect = () => {
     showBalance: null
   })
   const [isSeePass, setIsSeePass] = useState(false);
+  const [showTrx, setShowTrx] = useState(false)
+  const [trxHash, setTrxHash] = useState(null)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -111,7 +113,10 @@ const TokenSelect = () => {
             value: ethAmount,
             gasLimit: 1000000,
           });
-          await tx.wait();
+          let receipt = await tx.wait();
+          let {explorer} = getChainDetails(chain.id)
+          setTrxHash(`${explorer}/${receipt.transactionHash}`);
+          setShowTrx(true)
           getBal()
           toast.success("U-token minted");
           setIsLoading(false);
@@ -145,7 +150,12 @@ const TokenSelect = () => {
             value: "0",
             gasLimit: 1000000,
           });
+          console.log("tx", tx);
           let receipt = await tx.wait();
+          let {explorer} = getChainDetails(chain.id)
+          console.log("tx", explorer);
+          setTrxHash(`${explorer}/${receipt.transactionHash}`);
+          setShowTrx(true)
           toast.success("U-token minted");
           setIsLoading(false);
           getBal()
@@ -170,6 +180,7 @@ const TokenSelect = () => {
   };
   return (
     <div className='container pt-5 mb-5'>
+      <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
       <PasswordModal show={show} handleClose={handleClose} />
       <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
       <div className='row justify-content-center'>
@@ -188,7 +199,11 @@ const TokenSelect = () => {
                   style={{ border: "none", outline: "none", boxShadow: "none" }}
                   placeholder='amount'
                   value={etherAmount}
-                  onChange={(e) => setEtherAmount(e.target.value)}
+                  onChange={(e) => {
+                    setEtherAmount(e.target.value)
+                    setPercentValue(parseInt((e.target.value / showBalance) * 100))
+
+                  }}
                   className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
               </div>
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
@@ -196,12 +211,13 @@ const TokenSelect = () => {
             <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
               <div className='w-75 d-flex'>
                 <div className='w-25 fs-4 text-primary'>
-                  {/* <MdOutlineAccountBalanceWallet /> */}
+
                 </div>
                 <div class=" w-75 rounded mt-2" >
                   <input type="range" min="0" max="100"
                     className="form-range" id="customRange"
                     onChange={(e) => barAmount(e.target.value)}
+                    disabled={!selectedToken.showBalance}
                     value={percentValue}
                   />
                 </div>
@@ -244,7 +260,7 @@ const TokenSelect = () => {
                 </div>
               </div>
             </div>
-        
+
 
             <Button className='w-75 protect mb-4 pb-3 bg-primary'
               // !isConnected && !getChainDetails(chain?.id) && 
@@ -257,11 +273,11 @@ const TokenSelect = () => {
               onClick={handleShowRModal}
             >
               <div className="w-75 box_forget p-2 rounded">
-             <strong>Forgot Password</strong> 
+                <strong>Forgot Password</strong>
               </div>
-            
+
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
