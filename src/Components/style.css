@@ -9,12 +9,20 @@
   font-size: 20px;
   line-height: 30px;
 }
+.box_forget{
+  /* border: 1px solid black; */
+  background-color: #d0e1ff;
+}
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .show>.nav-link,
 .navbar-dark .navbar-nav .nav-link {
   color: var(--clr-) !important;
 }
-
+.nav_bg{
+  position: fixed;
+  margin-bottom: 200px;
+  width: 100%;
+}
 .clr {
   color: var(--clr-) !important;
 }

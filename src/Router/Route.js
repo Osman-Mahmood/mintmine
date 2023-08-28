@@ -17,7 +17,7 @@ export default function Root() {
         <Navbar />
       </div>
 
-      <div id="detail" className="text-light">
+      <div id="detail" className="text-light margin">
         <Outlet />
       </div>
       <div id="footer">

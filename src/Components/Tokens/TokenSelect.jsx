@@ -244,20 +244,24 @@ const TokenSelect = () => {
                 </div>
               </div>
             </div>
-            <div className='col-10 text-end ms-4 mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
-              onClick={handleShowRModal}
-            >
-              Forgot Password
-            </div>
+        
 
-            <Button className='w-75 protect mb-5 pb-3 bg-primary'
+            <Button className='w-75 protect mb-4 pb-3 bg-primary'
               // !isConnected && !getChainDetails(chain?.id) && 
               disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
               onClick={mintU_tokens}
             >
               {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
             </Button>
-          </div>
+            <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
+              onClick={handleShowRModal}
+            >
+              <div className="w-75 box_forget p-2 rounded">
+             <strong>Forgot Password</strong> 
+              </div>
+            
+            </div>
+          </div>  
         </div>
       </div>
     </div>

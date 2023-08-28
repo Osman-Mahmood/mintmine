@@ -71,7 +71,7 @@ const Tokens = () => {
             <h1 className='time_box2 text-white p-3'>
               {hours}
             </h1>
-            <p className='text-white'>Hours</p>
+            <p className='text-dark'>Hours</p>
           </div>
           <div className='text-center px-3'>
             <h1 className='time_box2 text-white p-3'>
@@ -95,8 +95,8 @@ const Tokens = () => {
       <div className='row time_box mt-3'>
         <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3'>
           <div className='col-lg-6 col-12'>
-            <h5 className='text-dark'>Every 369 hours a participant  is randomly selected.</h5>
-            <h5 className='text-dark'>Follow u369 on social media to get notified if you win.</h5>
+            <h5 className='text-dark text-start'>30% of all the smart-contract's service-fee is used to randomly reward one end-user. Every 369 hours the system post a result.</h5>
+            <h5 className='text-dark text-start'>The winner is announced in this page and in our social media.</h5>
 
           </div>
           <div className='col-lg-6'>
@@ -143,9 +143,9 @@ const Tokens = () => {
           <Table striped bordered hover >
             <thead>
               <tr>
-                <th className='text-dark'>#</th>
-                <th className='text-dark'>Symbol</th>
-                <th className='text-dark'>Amount</th>
+                {/* <th className='text-dark'>#</th> */}
+                <th className='text-dark'>Prize Pool</th>
+                <th className='text-dark'>Protected Amount</th>
                 {/* <th className='text-dark'>Time</th> */}
               </tr>
             </thead>
@@ -153,7 +153,7 @@ const Tokens = () => {
               {
                 winnerHistory?.map((item, index) => {
                   return <tr>
-                    <td className='text-dark'>{index+1}</td>
+                    {/* <td className='text-dark'>{index+1}</td> */}
                     <td align='center' className='text-dark'> <ShowSymbol token={item.uTokenAddress} /> </td>
                     <td className='text-dark'>{ethers.utils.formatEther(item.amount)}</td>
                     {/* <td className='text-dark'>{Date.now()}</td> */}
