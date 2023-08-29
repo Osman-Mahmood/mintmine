@@ -70,5 +70,11 @@ input[type=number] {
   border-radius: 4px; /* Rounded corners on track */
 }
 .margin{
-  padding-top: 80px !important;
+  /* padding-top: 80px !important; */
+}
+[data-rk] .iekbcc0{
+  justify-content: start !important;
+}
+.nav-item{
+  color: white !important;
 }

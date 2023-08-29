@@ -174,7 +174,7 @@ const TransferToken = () => {
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded border" style={{ backgroundColor: "rgb(232, 240, 254)" }}>
+                            <div class=" w-75 rad p-2 border" style={{ backgroundColor: "rgb(118 168 255)" }}>
                                 <p className="form-label text-start text-dark ms-2 p-2"><strong>Transfer</strong></p>
                                 <input type="number"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
@@ -195,7 +195,7 @@ const TransferToken = () => {
                                 <div className='w-25 fs-4 text-primary'>
                                     <MdOutlineAccountBalanceWallet />
                                 </div>
-                                <div class=" w-75 rounded mt-2 "  >
+                                <div class=" w-75 rad mt-2 "  >
                                     <input type="range" min="0" max="100"
                                         className="form-range" id="customRange"
                                         onChange={(e) => barAmount(e.target.value)}
@@ -208,8 +208,8 @@ const TransferToken = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className=' w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded border" style={{ backgroundColor: "rgb(232, 240, 254)" }}>
+                        <div className=' w-100 d-flex justify-content-center mb-3 mt-3'>
+                            <div class=" w-75 rad p-2 border" style={{ backgroundColor: "rgb(118 168 255)" }}>
                                 <p className="form-label text-start ms-2 p-2 text-dark "><strong>Address</strong></p>
                                 <input type="text"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
@@ -219,8 +219,8 @@ const TransferToken = () => {
                             </div>
                         </div>
 
-                        <div className='w-100 d-flex justify-content-center mb-3'>
-                            <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
+                        <div className='w-100 d-flex justify-content-center mb-3 mt-3'>
+                            <div className=" w-75 rad p-2 " style={{ backgroundColor: "rgb(118 168 255)" }}>
                                 <p className="form-label text-start ms-2 p-2 text-dark "><strong>Password</strong></p>
                                 <input type={isSeePass ? "text" : "password"} name="" id=""
                                     style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
@@ -238,17 +238,17 @@ const TransferToken = () => {
                         </div>
 
 
-                        <Button className='w-75 protect mb-4 pb-3' variant="primary"
+                        <Button className='w-75 protect mb-4 mt-3 pb-3 rad' variant="primary"
                             // !isConnected && !getChainDetails(chain?.id) && 
                             disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
                             onClick={transferUTokens}
                         >
                             {isLoading ? <BeatLoader color="#fff" /> : "Transfer"}
                         </Button>
-                        <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
+                        <div className='w-100 rad d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
                             onClick={handleShowRModal}
                         >
-                            <div className="w-75 box_forget p-2 rounded">
+                            <div className="w-75 box_forget p-2 rad">
                                 <strong>Forgot Password</strong>
                             </div>
                         </div>

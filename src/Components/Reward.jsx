@@ -64,26 +64,26 @@ const Tokens = () => {
           <div className='text-center px-3'>
             <h1 className='time_box2 text-white p-3'>
               {days}
-            </h1>
-            <p className='text-dark'>Days</p>
+            </h1> 
+            <p className='text-white'>Days</p>
           </div>
           <div className='text-dark px-3'>
             <h1 className='time_box2 text-white p-3'>
               {hours}
             </h1>
-            <p className='text-dark'>Hours</p>
+            <p className='text-white'>Hours</p>
           </div>
           <div className='text-center px-3'>
             <h1 className='time_box2 text-white p-3'>
               {minutes}
             </h1>
-            <p className='text-dark'>Minutes</p>
+            <p className='text-white'>Minutes</p>
           </div>
           <div className='text-center px-3'>
-            <h1 className='time_box2 text-dark p-3'>
+            <h1 className='time_box2 text-white p-3'>
               {seconds}
             </h1>
-            <p className='text-dark'>Seconds</p>
+            <p className='text-white'>Seconds</p>
           </div>
         </div>
       );
@@ -95,8 +95,8 @@ const Tokens = () => {
       <div className='row time_box mt-3'>
         <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3'>
           <div className='col-lg-6 col-12'>
-            <h5 className='text-dark text-start'>30% of all the smart-contract's service-fee is used to randomly reward one end-user. Every 369 hours the system post a result.</h5>
-            <h5 className='text-dark text-start'>The winner is announced in this page and in our social media.</h5>
+            <h5 className='text-white text-start' style={{fontSize:'18px'}}>30% of all the smart-contract's service-fee is used to randomly reward one end-user. Every 369 hours the system post a result.</h5>
+            {/* <h5 className='text-dark text-start'>The winner is announced in this page and in our social media.</h5> */}
 
           </div>
           <div className='col-lg-6'>
@@ -104,28 +104,28 @@ const Tokens = () => {
               // <Skeleton  />
               <div className='d-flex justify-content-between mt-3'>
                 <div className='text-center px-3'>
-                  <h1 className='time_box2 text-dark p-3'>
+                  <h1 className='time_box2 text-white p-3'>
                     0
                   </h1>
-                  <p className='text-dark'>Days</p>
+                  <p className='text-white'>Days</p>
                 </div>
                 <div className='text-center px-3'>
-                  <h1 className='time_box2 text-dark p-3'>
+                  <h1 className='time_box2 text-white p-3'>
                     0
                   </h1>
-                  <p className='text-dark'>Hours</p>
+                  <p className='text-white'>Hours</p>
                 </div>
                 <div className='text-center px-3'>
-                  <h1 className='time_box2 text-dark p-3'>
+                  <h1 className='time_box2 text-white p-3'>
                     0
                   </h1>
                   <p className='text-dark'>Minutes</p>
                 </div>
                 <div className='text-center px-3'>
-                  <h1 className='time_box2 text-dark p-3'>
+                  <h1 className='time_box2 text-white p-3'>
                     0
                   </h1>
-                  <p className='text-dark'>Seconds</p>
+                  <p className='text-white'>Seconds</p>
                 </div>
               </div>
             ) : (
@@ -137,15 +137,15 @@ const Tokens = () => {
           </div>
         </div>
       </div>
-      <div className='row p-3 mt-5 bg-light rounded-lg time_box'>
+      <div className='row p-3 mt-5 rounded-lg time_box'>
         <div className='col-lg-12'>
-          <h3 className='text-center text-dark text-truncate'>Winner: {winnerAddress}</h3>
+          <h3 className='text-center text-white text-truncate'>Winner: {winnerAddress}</h3>
           <Table striped bordered hover >
             <thead>
               <tr>
                 {/* <th className='text-dark'>#</th> */}
-                <th className='text-dark'>Prize Pool</th>
-                <th className='text-dark'>Protected Amount</th>
+                <th className='text-white'>Prize Pool</th>
+                <th className='text-white'>Protected Amount</th>
                 {/* <th className='text-dark'>Time</th> */}
               </tr>
             </thead>
@@ -154,8 +154,8 @@ const Tokens = () => {
                 winnerHistory?.map((item, index) => {
                   return <tr>
                     {/* <td className='text-dark'>{index+1}</td> */}
-                    <td align='center' className='text-dark'> <ShowSymbol token={item.uTokenAddress} /> </td>
-                    <td className='text-dark'>{ethers.utils.formatEther(item.amount)}</td>
+                    <td align='center' className='text-white'> <ShowSymbol token={item.uTokenAddress} /> </td>
+                    <td className='text-white'>{ethers.utils.formatEther(item.amount)}</td>
                     {/* <td className='text-dark'>{Date.now()}</td> */}
                   </tr>
                 })

@@ -35,28 +35,28 @@ function NavbarMenu() {
   }, [theme]);
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" className='nav_bg'>
+    <Navbar collapseOnSelect expand="lg" variant="dark" className=''>
       <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
-        <Navbar.Brand className='text-dark fw-bold clr'>
-          <NavLink to="/"><img src={logo} className='img-fluid logo' /></NavLink>
+        <Navbar.Brand className='text-dark fw-bold clr '>
+          <NavLink to="/" className="d-flex align-items-center"><img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block ms-1 mt-3'>u369</p></NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto px-0 text-start">
             <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/">u369</NavLink>
-            <NavDropdown className='text-dark clr_drop ms-lg-3 ms-0' title="Operations" id="navbarScrollingDropdown" show={isOpen}
+            <NavDropdown className='text-white ms-lg-3 ms-0' title="Operations" id="navbarScrollingDropdown" show={isOpen}
               onMouseEnter={() => setIsOpen(true)}
               onMouseLeave={() => setIsOpen(false)}>
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="select">Protecting</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark " to="select">Protect</NavLink>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="transfer">Transfer</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark " to="transfer">Transfer</NavLink>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="withdraw">Claim</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark " to="withdraw">Claim</NavLink>
               </NavDropdown.Item>
 
             </NavDropdown>

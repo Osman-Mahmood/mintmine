@@ -170,7 +170,7 @@ const WithdrawToken = () => {
                             }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center mb-3'>
-                            <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+                            <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                                 <p className="form-label text-dark text-start ms-2 p-2"><strong>Receive</strong></p>
                                 <input type="number"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
@@ -209,7 +209,7 @@ const WithdrawToken = () => {
                             </div>
                         </div>
                         <div className='w-100 d-flex justify-content-center mb-3'>
-                            <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
+                            <div className=" w-75  p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                                 <p className="form-label text-start text-dark ms-2 p-2"><strong>Password</strong></p>
                                 <input type={isSeePass ? "text" : "password"} name="" id=""
                                     style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
@@ -227,7 +227,7 @@ const WithdrawToken = () => {
                         </div>
 
 
-                        <Button className='w-75 protect mb-4 pb-3' variant="primary"
+                        <Button className='w-75 protect rad mb-4 pb-3' variant="primary"
                             disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
                             onClick={claimUTokens}
                         >
@@ -236,7 +236,7 @@ const WithdrawToken = () => {
                         <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
                             onClick={handleShowRModal}
                         >
-                            <div className="w-75 box_forget p-2 rounded">
+                            <div className="w-75 box_forget p-2 rad">
                                 <strong>Forgot Password</strong>
                             </div>
                         </div>

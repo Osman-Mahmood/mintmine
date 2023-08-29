@@ -70,7 +70,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
 
     return (
         <>
-            <button className='select_token text-capitalize bg-primary ' onClick={handleShow}>
+            <button className='select_token text-capitalize bg-primary rad' onClick={handleShow}>
                 {selectedToken.name} <IoIosArrowDown />
             </button>
 

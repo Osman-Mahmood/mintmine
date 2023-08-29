@@ -193,7 +193,7 @@ const TokenSelect = () => {
               }
             </p>
             <div className='modalselect w-100 d-flex justify-content-center'>
-              <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+              <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                 <p className="form-label text-start text-dark ms-3 p-2"><strong>Send</strong></p>
                 <input type="number"
                   style={{ border: "none", outline: "none", boxShadow: "none" }}
@@ -213,7 +213,7 @@ const TokenSelect = () => {
                 <div className='w-25 fs-4 text-primary'>
 
                 </div>
-                <div class=" w-75 rounded mt-2" >
+                <div class=" w-75 rad mt-2" >
                   <input type="range" min="0" max="100"
                     className="form-range" id="customRange"
                     onChange={(e) => barAmount(e.target.value)}
@@ -228,7 +228,7 @@ const TokenSelect = () => {
             </div>
 
             <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
-              <div class=" w-75 rounded border" style={{ backgroundColor: "#E8F0FE" }}>
+              <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                 <p className="form-label text-dark text-start ms-3 p-2"><strong>You Receive</strong></p>
                 <input type="number"
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
@@ -244,7 +244,7 @@ const TokenSelect = () => {
               }
             </div>
             <div className='w-100 d-flex justify-content-center mb-3'>
-              <div className=" w-75 rounded " style={{ backgroundColor: "#E8F0FE" }}>
+              <div className=" w-75 rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                 <p className="form-label text-start text-dark ms-3 p-2"><strong>Password</strong></p>
                 <input type={isSeePass ? "text" : "password"} name="" id=""
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
@@ -262,17 +262,17 @@ const TokenSelect = () => {
             </div>
 
 
-            <Button className='w-75 protect mb-4 pb-3 bg-primary'
+            <Button className='w-75 protect rad mb-4 pb-3 bg-primary'
               // !isConnected && !getChainDetails(chain?.id) && 
               disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
               onClick={mintU_tokens}
             >
               {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
             </Button>
-            <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
+            <div className='w-100 d-flex rad justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
               onClick={handleShowRModal}
             >
-              <div className="w-75 box_forget p-2 rounded">
+              <div className="w-75 rad box_forget p-2 ">
                 <strong>Forgot Password</strong>
               </div>
 
