@@ -1,10 +1,14 @@
 
 import { Contract, ethers } from "ethers";
 import factoryAbi from "./abis/factoryAbi.json"
+import swapFactoryAbi from "./abis/swapFactory.json";
+import pairAbi from "./abis/pairAbi.json"
 import { erc20ABI } from "wagmi";
 // const ethers = require("ethers")
 
 export const defaultrId = 5;
+
+
 const chains = [
     {
         id: 1,
@@ -12,23 +16,17 @@ const chains = [
         rpc_url: "https://rpc.ankr.com/eth_goerli",
         contractAddress: '0x141f1986cf226ec06b512b0ee9c7d1068691c4c0',
         networkId: 5, // This is mainnet for Ethereum
-        explorer:"https://goerli.etherscan.io/tx"
+        explorer: "https://goerli.etherscan.io/tx",
+        wEthAddress: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+        factoryAddress: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
     },
-    // {
-    //   id: 2,
-    //   name: 'BSC',
-    //   details: {
-    //     contractAddress: '0xYourBSCContractAddressHere',
-    //     networkId: 56 // BSC's mainnet ID
-    //   }
-    // },
     {
         id: 3,
         name: 'Polygon',
         rpc_url: "https://rpc-mumbai.maticvigil.com/",
         contractAddress: '0xe2578f8a53d3e0b4999d241be4cf647cb4735657',
         networkId: 80001, // Polygon's mainnet ID
-        explorer:"https://mumbai.polygonscan.com/tx"
+        explorer: "https://mumbai.polygonscan.com/tx"
     },
     // Add more chains as needed...
 ];
@@ -76,7 +74,38 @@ export const erc20Instance = async (tokenAddress) => {
         console.error("error while ecr20 instance", error);
     }
 }
+export const pairInstance = async (pairAddress, chainId) => {
+    try {
+        let chain = chains.find(c => c.networkId === chainId);
+        if (chain) {
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(pairAddress, pairAbi, provider);
+        } else {
+            chain = chains.find(c => c.networkId === defaultrId);
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(pairAddress, pairAbi, provider);
+        }
 
+    } catch (error) {
+        console.error("errro while remote factory instance", error);
+    }
+}
+export const swapFactoryInstance = async (chainId) => {
+    try {
+        let chain = chains.find(c => c.networkId === chainId);
+        if (chain) {
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(chain.factoryAddress, swapFactoryAbi, provider);
+        } else {
+            chain = chains.find(c => c.networkId === defaultrId);
+            const provider = new ethers.providers.JsonRpcProvider(chain.rpc_url);
+            return new Contract(chain.factoryAddress, swapFactoryAbi, provider);
+        }
+
+    } catch (error) {
+        console.error("errro while remote factory instance", error);
+    }
+}
 export const walletBalance = async (address) => {
     try {
         let provider = new ethers.providers.Web3Provider(window.ethereum);

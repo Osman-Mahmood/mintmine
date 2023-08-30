@@ -4,7 +4,6 @@ import PasswordModal from '../Modals/PassworModal'
 import TransactionModal from '../Modals/TransactionModal'
 import { useAccount, useNetwork } from 'wagmi'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
-import { MdOutlineAccountBalanceWallet } from "react-icons/md"
 import { erc20Instance, factoryInstance, getChainDetails, walletBalance } from '../../config'
 import { Button } from 'react-bootstrap'
 import RecoverPasswordModal from '../Modals/RecoverPasswordModal'

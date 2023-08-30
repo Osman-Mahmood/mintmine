@@ -1,5 +1,8 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
+import { etherTokens } from '../tokenConfig';
+import PairPrice from './PairPrice';
+
 function Tokens() {
     return (
         <div className='container '>
@@ -14,30 +17,22 @@ function Tokens() {
                                 <th>#</th>
                                 <th >Token Name</th>
                                 <th>Price</th>
-                                <th>Change</th>
-                                <th>Graph</th>
+                                {/* <th>Change</th>
+                                <th>Graph</th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                            </tr>
-                            {/* <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr> */}
+                            {
+                                etherTokens.map((item, index) => {
+                                    return <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.name}</td>
+                                        <td><PairPrice address={item.address} /></td>
+                                    </tr>
+                                })
+                            }
+
+
                         </tbody>
                     </Table>
                 </div>
