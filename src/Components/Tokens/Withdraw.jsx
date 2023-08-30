@@ -14,6 +14,7 @@ import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
 import ModalB from '../Modals/ModalB'
 import TransactionModal from '../Modals/TransactionModal'
+import Range from '../Range'
 
 const WithdrawToken = () => {
     let [selectedToken, setSelectedToken] = useState({
@@ -191,7 +192,8 @@ const WithdrawToken = () => {
                                     <MdOutlineAccountBalanceWallet />
                                 </div>
                                 <div class="w-75 rounded mt-2">
-                                    <input
+                                <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
+                                    {/* <input
                                         type="range"
                                         min="0"
                                         max="100"
@@ -200,12 +202,12 @@ const WithdrawToken = () => {
                                         onChange={(e) => barAmount(e.target.value)}
                                         value={percentValue}
                                         disabled={!showBalance}
-                                    />
+                                    /> */}
                                 </div>
 
-                                <div className='w-25 mt-2 text-dark'>
+                                {/* <div className='w-25 mt-2 text-dark'>
                                     {showBalance && `${percentValue}%`}
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className='w-100 d-flex justify-content-center mb-3'>

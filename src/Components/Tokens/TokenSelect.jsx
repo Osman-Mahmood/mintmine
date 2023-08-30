@@ -11,6 +11,7 @@ import RecoverPasswordModal from '../Modals/RecoverPasswordModal'
 import { toast } from 'react-hot-toast'
 import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
+import Range from '../Range'
 
 const TokenSelect = () => {
   let [selectedToken, setSelectedToken] = useState({
@@ -208,22 +209,18 @@ const TokenSelect = () => {
               </div>
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
             </div >
+            
             <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
               <div className='w-75 d-flex'>
                 <div className='w-25 fs-4 text-primary'>
 
                 </div>
-                <div class=" w-75 rad mt-2" >
-                  <input type="range" min="0" max="100"
-                    className="form-range" id="customRange"
-                    onChange={(e) => barAmount(e.target.value)}
-                    disabled={!selectedToken.showBalance}
-                    value={percentValue}
-                  />
+                <div class=" w-100 rad mt-2" >
+                  <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance}  />
                 </div>
-                <div className='w-25 mt-2 text-dark'>
+                {/* <div className='w-25 mt-2 text-dark'>
                   {selectedToken.showBalance && `${percentValue}%`}
-                </div>
+                </div> */}
               </div>
             </div>
 

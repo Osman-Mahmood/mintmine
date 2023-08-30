@@ -13,8 +13,8 @@ const Home = () => {
             <h1 className='text-white font'>Protecting your tokens ✨</h1>
             <h1 className='text-white font'>Funding public goods & rewarding you ✨</h1>
             {/* <button className='reward mt-4' onClick={()=>{ConnectButton()}}>Get Started</button> */}
-           <div className='text-start justify-content-start mb-4'>
-            <ConnectButton label='Get Started' className="text-start" chainStatus="icon" accountStatus="address" showBalance={false} />
+           <div className='text-center justify-content-center mb-4'>
+            <ConnectButton label='Get Started' className="text-center" chainStatus="icon" accountStatus="address" showBalance={false} />
             
            </div>
           </div>
