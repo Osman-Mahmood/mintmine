@@ -2,7 +2,7 @@ import React from 'react'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 const Home = () => {
   return (
-    <div className=' hright'>
+    <div className=' hright' style={{marginTop:"100px"}}>
       <div className='container-fluid'>
         <div className='row justify-content-center align-items-center text-start'>
           <div className='col-lg-3'>

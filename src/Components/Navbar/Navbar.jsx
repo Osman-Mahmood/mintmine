@@ -68,11 +68,11 @@ function NavbarMenu() {
 
             <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward">Rewards</NavLink>
             <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdown" >
-              <NavDropdown.Item><NavLink to="transfer">What is u369?</NavLink> </NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="/">What is u369?</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item ><NavLink to="withdraw">How u369 works?</NavLink></NavDropdown.Item>
+              <NavDropdown.Item ><NavLink to="/">How u369 works?</NavLink></NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Open source code</NavDropdown.Item>
+              <NavDropdown.Item ><NavLink to="/"> Open source code</NavLink></NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item><NavLink to="selfserve">Self-serve</NavLink> </NavDropdown.Item>
             </NavDropdown>

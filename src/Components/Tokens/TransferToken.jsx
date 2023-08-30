@@ -160,6 +160,30 @@ const TransferToken = () => {
             }
         }
     }
+    const addToken = async () => {
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await window.ethereum.request({
+              method: 'wallet_watchAsset',
+              params: {
+                type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                options: {
+                    address: selectedToken.address, // The address that the token is at.
+                    symbol: selectedToken.name, // A ticker symbol or shorthand, up to 5 chars.
+                    decimals: 18,
+                },
+              },
+            });
+
+            if (wasAdded) {
+              toast.success('Added successfully');
+            } else {
+              toast.error('Your loss!');
+            }
+          } catch (error) {
+            console.log(error);
+          }
+    }
     return (
         <div className='container pt-5 mb-5'>
             <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
@@ -193,21 +217,16 @@ const TransferToken = () => {
                         </div>
                         <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
                             <div className='w-75 d-flex'>
-                                <div className='w-25 fs-4 text-primary'>
-                                    <MdOutlineAccountBalanceWallet />
+                                <div className='w-25 fs-4 text-primary' data-toggle="tooltip" data-placement="top" title="Add to wallet">
+                                   <span onClick={addToken}>
+                                     <MdOutlineAccountBalanceWallet />
+                                    </span>
+                                   
                                 </div>
+                                
                                 <div class=" w-75 rad mt-2 "  >
                                 <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
-                                    {/* <input type="range" min="0" max="100"
-                                        className="form-range" id="customRange"
-                                        onChange={(e) => barAmount(e.target.value)}
-                                        value={percentValue}
-                                        disabled={!showBalance}
-                                    /> */}
                                 </div>
-                                {/* <div className='w-25 mt-2 text-dark'>
-                                    {showBalance && `${percentValue}%`}
-                                </div> */}
                             </div>
                         </div>
                         <div className=' w-100 d-flex justify-content-center mb-3 mt-3'>

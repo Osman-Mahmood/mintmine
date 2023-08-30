@@ -12,17 +12,17 @@ export default function Root() {
     }
   }, [location.pathname,navigate]);
   return (
-    <>
-      <div id="navbar">
+    <div className="d-flex flex-column" style={{height:"100vh"}} >
+      <div id="navbar" className="">
         <Navbar />
       </div>
 
-      <div id="detail" className="text-light margin">
+      <div id="detail" className="text-light margin flex-grow-1 ">
         <Outlet />
       </div>
       <div id="footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }

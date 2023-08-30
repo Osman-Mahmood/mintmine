@@ -12,8 +12,8 @@ function ShowUToken({ token, setSelectedToken, handleClose }) {
     let [tokenBalance ,  setTokenBalance ] = useState(null)
     const getTokenName = async () => {
         try {
-            const contract = await remortFactoryInstnce(chain?.id);
-            const symbol = await contract.get_CurrencyOfuToken(token);
+            const instance = await erc20Instance(token)
+            const symbol =await instance.symbol();
             setTokenDetail(symbol)
         } catch (error) {
             console.error("error while get token name", error);
@@ -54,7 +54,7 @@ function ShowUToken({ token, setSelectedToken, handleClose }) {
                 {tokenDetail ? <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>
-                        <p className='mb-0 eth'>u{
+                        <p className='mb-0 eth'>{
                             tokenDetail
                         }</p>
                     </div>

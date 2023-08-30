@@ -1,17 +1,18 @@
-.light-theme{
-  
-  --bg-img:url('./assets/light.png');
-  --bg-offhead:#CECECE6B;
-  --nav-bg:black;
-  --clr-:white;
+.light-theme {
+
+  --bg-img: url('./assets/light.png');
+  --bg-offhead: #CECECE6B;
+  --nav-bg: black;
+  --clr-: white;
 }
-.dark-theme{
+
+.dark-theme {
 
 
-  --bg-img:url('./assets/dark.png');
+  --bg-img: url('./assets/dark.png');
   --bg-offhead: #000000B8;
-  --nav-bg:white;
-  --clr-:black;
+  --nav-bg: white;
+  --clr-: black;
 }
 
 .disabledDiv {
@@ -19,9 +20,10 @@
   opacity: 0.4;
 }
 
-.enabledDiv{
+.enabledDiv {
   cursor: pointer;
 }
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -36,7 +38,8 @@ input[type=number] {
 
 .bg-transparent .accordion-button,
 .bg-transparent .accordion-body {
-    background-color: transparent !important; /* Using !important to ensure override */
+  background-color: transparent !important;
+  /* Using !important to ensure override */
 }
 
 /* Set the scrollbar width to 10px */
@@ -48,33 +51,62 @@ input[type=number] {
 ::-webkit-scrollbar {
   height: 10px;
 }
+
 /* Style the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scroll thumb */
-  border-radius: 4px; /* Rounded corners on thumb */
+  background: #888;
+  /* Color of the scroll thumb */
+  border-radius: 4px;
+  /* Rounded corners on thumb */
 }
 
 /* Hover effect for thumb */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 /* Style the scrollbar track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
-  border-radius: 4px; /* Rounded corners on track */
+  background: #f1f1f1;
+  /* Color of the track */
+  border-radius: 4px;
+  /* Rounded corners on track */
 }
 
 /* Style the scrollbar track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
-  border-radius: 4px; /* Rounded corners on track */
+  background: #f1f1f1;
+  /* Color of the track */
+  border-radius: 4px;
+  /* Rounded corners on track */
 }
-.margin{
+
+.margin {
   /* padding-top: 80px !important; */
 }
+
 /* [data-rk] .iekbcc0{
   justify-content: start !important;
 } */
-.nav-item{
+.nav-item {
   color: white !important;
+}
+
+.main_grid {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.div_tooltip {
+  display: inline-block;
+}
+.div_tooltip:hover .tooltip {
+  visibility: visible;
+}
+.tooltip {
+  position: relative;
+  top: 20px;
+  left: -50%;
+  display: inline;
+  visibility: hidden;
+  background: #eee;
 }
