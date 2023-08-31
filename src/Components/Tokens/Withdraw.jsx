@@ -15,8 +15,10 @@ import { BeatLoader } from 'react-spinners'
 import ModalB from '../Modals/ModalB'
 import TransactionModal from '../Modals/TransactionModal'
 import Range from '../Range'
-
+import { AiOutlineClose } from "react-icons/ai";
 const WithdrawToken = () => {
+  const [hideIcon,setHideIcon] = useState(false);
+
     let [selectedToken, setSelectedToken] = useState({
         name: "Select Token",
         address: null,
@@ -181,14 +183,23 @@ const WithdrawToken = () => {
           }
     }
     return (
-        <div className='container pt-5 mb-5'>
+        <>
+        {
+            !hideIcon ?    <div className='container pt-5 mb-5'>
             <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
             <PasswordModal show={show} handleClose={handleClose} />
             <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
-                        <h5 className='text-dark pt-5 pb-5'>Withdraw</h5>
+                    <div className="d-flex justify-content-end mx-4 mt-4">
+                <AiOutlineClose
+                  className="text-dark text-end fs-3"
+                  style={{ cursor: "pointer" }}
+                  onClick={()=>setHideIcon(true)}
+                />
+              </div>
+                        <h5 className='text-dark'>Withdraw</h5>
                         <p className='text-end mb-0 text-wid text-dark'>
                             {
                                 showBalance && `Balance: ${showBalance} Max`
@@ -210,15 +221,10 @@ const WithdrawToken = () => {
 
                             <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
                         </div>
-                        <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
-                            <div className='w-75 d-flex'>
-                            <div className='w-25 fs-4 text-primary' data-toggle="tooltip" data-placement="top" title="Add to wallet">
-                                   <span onClick={addToken}>
-                                     <MdOutlineAccountBalanceWallet />
-                                    </span>
-                                   
-                                </div>
-                                <div class="w-75 rounded mt-2">
+                        <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
+                <div className="w-100 d-lg-flex d-block">
+               <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button>
+                                <div class="w-75 ms-3 rounded mt-2">
                                 <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
                                   
                                 </div>
@@ -260,7 +266,10 @@ const WithdrawToken = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  : <div className='' style={{height:'100vh'}}></div>
+        }
+        </>
+     
     )
 }
 

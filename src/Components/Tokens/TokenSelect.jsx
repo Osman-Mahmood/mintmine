@@ -11,8 +11,10 @@ import { toast } from 'react-hot-toast'
 import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
 import Range from '../Range'
+import { AiOutlineClose } from "react-icons/ai";
 
 const TokenSelect = () => {
+  const [hideIcon,setHideIcon] = useState(false);
   let [selectedToken, setSelectedToken] = useState({
     name: "Select Token",
     address: null,
@@ -179,14 +181,23 @@ const TokenSelect = () => {
     }
   };
   return (
-    <div className='container pt-5 mb-5'>
+    <>
+    {
+      !hideIcon ?   <div className='container pt-5 mb-5'>
       <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
       <PasswordModal show={show} handleClose={handleClose} />
       <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-            <h5 className='text-dark pt-5 pb-5'>Protect</h5>
+          <div className="d-flex justify-content-end mx-4 mt-4">
+                <AiOutlineClose
+                  className="text-dark text-end fs-3"
+                  style={{ cursor: "pointer" }}
+                  onClick={()=>setHideIcon(true)}
+                />
+              </div>
+            <h5 className='text-dark '>Protect</h5>
             <p className='text-end mb-0 text-wid text-dark'>
               {
                 showBalance && `Balance: ${showBalance} Max`
@@ -209,12 +220,10 @@ const TokenSelect = () => {
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
             </div >
             
-            <div className='w-100 d-flex justify-content-center align-items-center mb-3'>
-              <div className='w-75 d-flex'>
-                <div className='w-25 fs-4 text-primary'>
-
-                </div>
-                <div class=" w-100 rad mt-2" >
+            <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
+                <div className="w-100 d-lg-flex d-block">
+               <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button>
+                <div class=" w-75 ms-3 rad mt-2" >
                   <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance}  />
                 </div>
                 {/* <div className='w-25 mt-2 text-dark'>
@@ -276,7 +285,13 @@ const TokenSelect = () => {
           </div>
         </div>
       </div>
+    </div> :
+    <div className='' style={{height:'100vh'}}>
+
     </div>
+    }
+    </>
+  
   )
 }
 

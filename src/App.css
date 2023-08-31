@@ -110,3 +110,34 @@ input[type=number] {
   visibility: hidden;
   background: #eee;
 }
+/* .iekbcc0 .ju367va .ju367v1n{
+ 
+}
+[data-rk] .ju367v1n{
+  gap: 0px !important;
+  background-color: white !important;
+  border-radius: 20px !important;
+}
+[data-rk] ._12cbo8i6, [data-rk] ._12cbo8i6::after{
+  border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+[data-rk] ._12cbo8i4, [data-rk] ._12cbo8i4::after{
+  border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+[data-rk] .ju367vec{
+  box-shadow: 0px !important;
+} */
+.dropdown-menu{
+  background-color: #270515;
+  color: white;
+  border-radius: 10px;
+}
+.dropdown-item:hover{
+  background-color: #270515 !important;
+  font-weight: bolder;
+}
+.new_clr a:hover{
+  font-weight: bolder;
+}

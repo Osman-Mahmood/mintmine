@@ -474,3 +474,8 @@ tbody, td, tfoot, th, thead, tr {
 .hright{
   height: 50vh !important;
 }
+.add {
+  width: 78px !important;
+  font-size: 12px;
+  height: 40px;
+}
