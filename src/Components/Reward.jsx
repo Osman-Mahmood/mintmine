@@ -119,7 +119,7 @@ const Tokens = () => {
                   <h1 className='time_box2 text-white p-3'>
                     0
                   </h1>
-                  <p className='text-dark'>Minutes</p>
+                  <p className='text-white'>Minutes</p>
                 </div>
                 <div className='text-center px-3'>
                   <h1 className='time_box2 text-white p-3'>

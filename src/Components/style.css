@@ -416,6 +416,9 @@ height: 71px; */
   .select_token {
     font-size: 12px;
   }
+  .mobile_height{
+    height: 100%;
+  }
 }
 
 .side_menu {

@@ -5,19 +5,33 @@ import PairPrice from './PairPrice';
 import All from '../assets/All.svg'
 function Tokens() {
     return (
-        <div className='container ' style={{height:'70vh'}}>
-            <div className='row'>
-                <div className='col-lg-12'>
-                    <h3 className='text-start'>
-                    Tokens available to protect
-                    </h3>
-                    <Table className='mt-5 border rad text-light' >
+        <div className='container mobile_height' style={{height:'70vh'}}>
+            <div className='row align-items-center'>
+                <div className='col-lg-12 '>
+                    <div className='d-lg-flex d-block align-items-center'>
+                        <div className='col-lg-6 col-12'>
+                        <h4 className='text-lg-start text-center '>
+                    Tokens to protect
+                    </h4>
+                        </div>
+                 <div className='col-lg-6 col-12'>
+                 <h4 className=''>
+                    Your token not on this list?
+                    </h4>
+                    <h4 className=''>
+                    Reach out and it will be added.
+                    </h4>
+                 </div>
+                   
+                    </div>
+                    
+                    <Table className='mt-2 border rad text-light' >
                         <thead className='bor'>
                             <tr>
                                 <th>#</th>
                                 <th></th>
-                                <th className='text-start'>Token</th>
-                                <th className='text-start'>Symbol</th>
+                                <th className='text-start'>Name</th>
+                                {/* <th className='text-start'>Symbol</th> */}
                                 <th>Price</th>
 
                                 {/* <th>Change</th>
@@ -30,8 +44,8 @@ function Tokens() {
                                     return <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td className='text-end'><img src={All} alt="" style={{width:'20px',height:'20px'}}/></td>
-                                        <td className='text-start fw-bold'>{item.name}</td>
-                                        <td className='text-start'>{item.symbol}</td>
+                                        <td className='text-start fw-bold'>{item.name} <span className='ms-3 fw-normal' style={{fontSize:'14px'}}>{item.symbol}</span> </td>
+                                        {/* <td className='text-start'>{item.symbol}</td> */}
                                         <td><PairPrice address={item.address} /></td>
                                     </tr>
                                 })

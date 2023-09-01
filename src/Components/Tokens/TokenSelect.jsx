@@ -233,7 +233,7 @@ const TokenSelect = () => {
             
             <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
                 <div className="w-100 d-lg-flex d-block">
-               <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button>
+               <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button>
                 <div class=" w-75 ms-3 rad mt-2" >
                   <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance}  />
                 </div>

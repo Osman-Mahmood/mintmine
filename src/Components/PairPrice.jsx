@@ -41,7 +41,7 @@ function PairPrice({ address }) {
     return (
         <div>
             {
-                price ? `${price} WETH`: "..."
+                price ? `${price} USDT`: "..."
             }
         </div>
     )
