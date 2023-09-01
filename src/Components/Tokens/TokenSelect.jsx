@@ -180,6 +180,13 @@ const TokenSelect = () => {
       }
     }
   };
+  const valueHandler = (value) =>{
+    if(value>showBalance){
+      setEtherAmount(showBalance)
+    }else{
+      setEtherAmount(value)
+    }
+}
   return (
     <>
     {
@@ -211,7 +218,11 @@ const TokenSelect = () => {
                   placeholder='amount'
                   value={etherAmount}
                   onChange={(e) => {
-                    setEtherAmount(e.target.value)
+                    if(window.ethereum){
+                      valueHandler(e.target.value);
+                    }else{
+                      setEtherAmount(e.target.value);
+                    }
                     setPercentValue(parseInt((e.target.value / showBalance) * 100))
 
                   }}

@@ -479,3 +479,6 @@ tbody, td, tfoot, th, thead, tr {
   font-size: 12px;
   height: 40px;
 }
+.navbar-dark .navbar-toggler-icon {
+  background-image: url(https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png) !important;
+}
