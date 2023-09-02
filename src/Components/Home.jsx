@@ -2,13 +2,11 @@ import React from 'react'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 const Home = () => {
   return (
-    <div className=' hright' style={{marginTop:"100px"}}>
-      <div className='container-fluid'>
+    <div className='' style={{marginTop:"100px",height:'55vh'}}>
+      <div className='container'>
         <div className='row justify-content-center align-items-center text-start'>
-          <div className='col-lg-4'>
-
-          </div>
-          <div className='col-lg-6 col-12 pt-lg-0 ms-0   pt-0'>
+        
+          <div className='col-lg-12 col-12 pt-lg-0 ms-0   pt-0'>
             <h1 className='text-white mt-0 font'>Non-custodial & open-source✨</h1>
             <h1 className='text-white font'>Protecting your tokens ✨</h1>
             <h1 className='text-white font'>Funding public goods & rewarding you ✨</h1>
@@ -18,9 +16,7 @@ const Home = () => {
             
            </div> */}
           </div>
-          <div className='col-lg-2'>
-            
-            </div>
+         
         </div>
       </div> 
     </div>

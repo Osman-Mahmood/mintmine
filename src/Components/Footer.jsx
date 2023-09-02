@@ -9,7 +9,10 @@ const Footer = () => {
    <div className='container p-0 mb-lg-0 mb-5 pb-lg-0 pb-5'>
         <div className='row text-center'>
             <div className='col-lg-12 mt-1'>
-            <p className='footer_font'>Ascribing meaningful-safety to your cryptographic assets <br /> &  <br /> contributing to the sustainable expansion of the ecosystem.</p>
+              <p></p>
+              <p className=''></p>
+            {/* <p className='footer_font'>Ascribing meaningful-safety to your cryptographic assets <br /> &  <br /> contributing to the sustainable expansion of the ecosystem.</p> */}
+        <p className='footer_font'>Ascribing allodial state to your cryptoassets</p>
             <div className='d-flex justify-content-center text-center gap-2 mb-3'>
            
             <a href="https://www.instagram.com/u369.eth/" target='blank' > < AiOutlineInstagram className='icon'  /></a>

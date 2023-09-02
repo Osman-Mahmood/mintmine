@@ -199,22 +199,24 @@ const WithdrawToken = () => {
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
-                    <div className="d-flex justify-content-end mx-4 mt-4">
+                    <div className="d-flex justify-content-between mx-4 mt-4">
+                        <h5></h5>
+                        <h5 className='text-dark'>Withdraw</h5>
                 <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
                   onClick={()=>setHideIcon(true)}
                 />
               </div>
-                        <h5 className='text-dark'>Withdraw</h5>
+                        
                         <p className='text-end mb-0 text-wid text-dark'>
                             {
                                 showBalance && `Balance: ${showBalance} Max`
                             }
                         </p>
-                        <div className='modalselect w-100 d-flex justify-content-center mb-3'>
+                        <div className='modalselect w-100 d-flex justify-content-center'>
                             <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                                <p className="form-label text-dark text-start ms-2 p-2"><strong>Receive</strong></p>
+                                <p className="form-label text-dark text-start"><strong>Receive</strong></p>
                                 <input type="number"
                                     style={{ border: "none", outline: "none", boxShadow: "none" }}
                                     placeholder='amount'
@@ -227,27 +229,28 @@ const WithdrawToken = () => {
                                           }
                                         setPercentValue(parseInt((e.target.value / showBalance) * 100))
                                     }}
-                                    className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                             </div>
 
                             <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
                         </div>
-                        <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
-                <div className="w-100 d-lg-flex d-block">
-               <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button>
-                                <div class="w-75 ms-3 rounded mt-2">
+                        <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+              
+               {/* <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button> */}
+                                <div class="w-75 ms-3 rounded ">
                                 <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
                                   
                                 </div>
 
-                            </div>
+                         
                         </div>
                         <div className='w-100 d-flex justify-content-center mb-3'>
                             <div className=" w-75  p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                                <p className="form-label text-start text-dark ms-2 p-2"><strong>Password</strong></p>
+                                <p className="form-label text-start text-dark"><strong>Password</strong></p>
+
                                 <input type={isSeePass ? "text" : "password"} name="" id=""
                                     style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                                    className='token_inp w-100 p-3 text-dark' placeholder='0'
+                                    className='token_inp p-1 w-100 text-dark' placeholder='0'
                                     onChange={(e) => setPass(e.target.value)}
                                 />
                                 <div
@@ -261,7 +264,7 @@ const WithdrawToken = () => {
                         </div>
 
 
-                        <Button className='w-75 protect rad mb-4 pb-3' variant="primary"
+                        <Button className='w-75 protect rad mb-4 p-2' variant="primary"
                             disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
                             onClick={claimUTokens}
                         >

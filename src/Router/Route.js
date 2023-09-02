@@ -12,7 +12,7 @@ export default function Root() {
     }
   }, [location.pathname,navigate]);
   return (
-    <div className="d-flex flex-column" >
+    <div className="d-flex flex-column">
       <div id="navbar" className="">
         <Navbar />
       </div>
@@ -20,7 +20,7 @@ export default function Root() {
       <div id="detail" className="text-light margin flex-grow-1 ">
         <Outlet />
       </div>
-      <div id="footer">
+      <div id="footer" className="">
         <Footer />
       </div>
     </div>

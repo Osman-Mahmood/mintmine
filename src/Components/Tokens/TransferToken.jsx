@@ -233,22 +233,24 @@ const TransferToken = () => {
           <div className="col-lg-12 text-center justify-content-center d-flex">
             <div className="col-lg-6 col-12 box">
               <div className="d-flex justify-content-end mx-4 mt-4">
+                <h5></h5>
+              <h5 className="text-dark">Transfer</h5>
                 <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
                   onClick={()=>setHideIcon(true)}
                 />
               </div>
-              <h5 className="text-dark">Transfer</h5>
+             
               <p className="text-end mb-0 text-wid text-dark">
                 {showBalance && `Balance: ${showBalance} Max`}
               </p>
-              <div className="modalselect w-100 d-flex justify-content-center mb-3">
+              <div className="modalselect w-100 d-flex justify-content-center ">
                 <div
                   class=" w-75 rad p-2 border"
                   style={{ backgroundColor: "rgb(118 168 255)" }}
                 >
-                  <p className="form-label text-start text-dark ms-2 p-2">
+                  <p className="form-label text-start text-dark ">
                     <strong>Transfer</strong>
                   </p>
                   <input
@@ -273,7 +275,7 @@ const TransferToken = () => {
                         parseInt((e.target.value / showBalance) * 100)
                       );
                     }}
-                    className="form-control p-3  mb-1 text-dark"
+                    className="form-control  mb-1 text-dark"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                   />
@@ -285,27 +287,31 @@ const TransferToken = () => {
                   selectedToken={selectedToken}
                 />
               </div>
-              <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
-                <div className="w-100 d-lg-flex d-block">
-               <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button>
+              <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+              
+               {/*  */}
 
-                  <div class=" w-75 rad mt-2 ms-3 ">
+                  <div class=" w-75 rad ms-3 ">
                     <Range
                       percentValue={percentValue}
                       barAmount={barAmount}
                       isDisable={showBalance}
                     />
-                  </div>
+               
                 </div>
               </div>
-              <div className=" w-100 d-flex justify-content-center mb-3 mt-3">
+              <div className=" w-100 d-flex justify-content-center mb-3">
                 <div
                   class=" w-75 rad p-2 border"
                   style={{ backgroundColor: "rgb(118 168 255)" }}
                 >
-                  <p className="form-label text-start ms-2 p-2 text-dark ">
+                  <div className="d-flex justify-content-between">
+                  <p className="form-label text-start text-dark ">
                     <strong>Address</strong>
                   </p>
+                  <button className="btn btn-primary m-0" style={{fontSize:'11px'}}>Add to Wallet</button>
+                  </div>
+                
                   <input
                     type="text"
                     style={{
@@ -315,7 +321,7 @@ const TransferToken = () => {
                     }}
                     placeholder="recipient address "
                     onChange={(e) => setTransferAddress(e.target.value)}
-                    className="form-control p-3   mb-1 text-dark"
+                    className="form-control  mb-1 text-dark"
                   />
                 </div>
               </div>
@@ -325,7 +331,7 @@ const TransferToken = () => {
                   className=" w-75 rad p-2 "
                   style={{ backgroundColor: "rgb(118 168 255)" }}
                 >
-                  <p className="form-label text-start ms-2 p-2 text-dark ">
+                  <p className="form-label text-start text-dark ">
                     <strong>Password</strong>
                   </p>
                   <input
@@ -337,7 +343,7 @@ const TransferToken = () => {
                       outline: "none",
                       backgroundColor: "#E8F0FE",
                     }}
-                    className="token_inp w-100 p-3 text-dark "
+                    className="token_inp w-100 p-1 text-dark "
                     placeholder="0"
                     onChange={(e) => setPass(e.target.value)}
                   />
@@ -352,7 +358,7 @@ const TransferToken = () => {
               </div>
 
               <Button
-                className="w-75 protect mb-4 mt-3 pb-3 rad"
+                className="w-75 protect mb-2 p-2 rad"
                 variant="primary"
                 // !isConnected && !getChainDetails(chain?.id) &&
                 disabled={

@@ -48,7 +48,7 @@ export default function Range({ percentValue, barAmount, isDisable }) {
     ];
     
     return (
-        <Box sx={{ width: 300 }}>
+        <Box sx={{ width: 300 ,ml: 1 ,mb:0}}>
             <StyledSlider
                 theme={theme} // Pass the theme to StyledSlider
                 value={percentValue}
@@ -60,7 +60,7 @@ export default function Range({ percentValue, barAmount, isDisable }) {
                 defaultValue={0}
                 step={1}
                 marks={marks.map((mark) => ({ ...mark, label: mark.label === "Max" ? mark.label : mark.label + '%' }))}
-                valueLabelDisplay="on"
+                // valueLabelDisplay="on"
             />
         </Box>
     );

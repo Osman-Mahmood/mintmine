@@ -52,7 +52,7 @@ function ModalB({ setSelectedToken, selectedToken }) {
     }, [])
     return (
         <>
-            <button className='select_token text-capitalize btn btn-primary bg-primary '  variant="primary" onClick={handleShow}>
+            <button className='select_token text-capitalize btn btn-primary bg-primary p-1'  variant="primary" onClick={handleShow}>
                 {selectedToken.name} <IoIosArrowDown />
             </button>
 

@@ -197,14 +197,19 @@ const TokenSelect = () => {
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-          <div className="d-flex justify-content-end mx-4 mt-4">
-                <AiOutlineClose
+          <div className="d-flex justify-content-between mx-4 mt-4">
+            <h5></h5>
+          <h5 className='text-dark text-center'>Protect</h5>
+          <div className='justify-content-end d-flex'>
+          <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
                   onClick={()=>setHideIcon(true)}
                 />
+          </div>
+              
+                
               </div>
-            <h5 className='text-dark '>Protect</h5>
             <p className='text-end mb-0 text-wid text-dark'>
               {
                 showBalance && `Balance: ${showBalance} Max`
@@ -212,7 +217,7 @@ const TokenSelect = () => {
             </p>
             <div className='modalselect w-100 d-flex justify-content-center'>
               <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <p className="form-label text-start text-dark ms-3 p-2"><strong>Send</strong></p>
+                <p className="form-label text-start text-dark"><strong>Send</strong></p>
                 <input type="number"
                   style={{ border: "none", outline: "none", boxShadow: "none" }}
                   placeholder='amount'
@@ -226,32 +231,37 @@ const TokenSelect = () => {
                     setPercentValue(parseInt((e.target.value / showBalance) * 100))
 
                   }}
-                  className="form-control p-3  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
               </div>
               <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
             </div >
             
-            <div className="w-100 d-lg-flex d-block justify-content-center align-items-center mb-3">
-                <div className="w-100 d-lg-flex d-block">
-               <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button>
-                <div class=" w-75 ms-3 rad mt-2" >
-                  <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance}  />
+            <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+              
+               {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
+                <div class=" w-75 rad d-flex justify-content-center" >
+                  <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance} />
                 </div>
-                {/* <div className='w-25 mt-2 text-dark'>
+                <div className=' mt-2 text-dark'>
                   {selectedToken.showBalance && `${percentValue}%`}
-                </div> */}
+                </div>
               </div>
-            </div>
+         
 
             <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
               <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <p className="form-label text-dark text-start ms-3 p-2"><strong>You Receive</strong></p>
+                <div className='d-flex justify-content-between'>
+                <p className="form-label text-dark text-start"><strong>You Receive</strong></p>
+                <button className="btn btn-primary ms-0 m-0  p-0 text-end" style={{fontSize:'11px'}}>Add to Wallet</button>
+                </div>
+               
                 <input type="number"
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
                   placeholder='amount'
                   value={selectedToken.name ? (etherAmount - (etherAmount * 0.369) / 100) : 0}
                   disabled
-                  className="form-control p-3   mb-1 text-dark" />
+                  className="form-control   mb-1 text-dark" />
+                   
               </div>
               {
                 selectedToken.address && <button disabled className='select_token  bg-primary' >
@@ -261,10 +271,10 @@ const TokenSelect = () => {
             </div>
             <div className='w-100 d-flex justify-content-center mb-3'>
               <div className=" w-75 rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <p className="form-label text-start text-dark ms-3 p-2"><strong>Password</strong></p>
+                <p className="form-label text-start text-dark"><strong>Password</strong></p>
                 <input type={isSeePass ? "text" : "password"} name="" id=""
                   style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                  className='token_inp w-100 p-3 text-dark' placeholder='0'
+                  className='token_inp w-100 p-1 text-dark' placeholder='0'
                   onChange={(e) => setPass(e.target.value)}
                 />
                 <div
@@ -278,7 +288,7 @@ const TokenSelect = () => {
             </div>
 
 
-            <Button className='w-75 protect rad mb-4 pb-3 bg-primary'
+            <Button className='w-75 protect rad mb-1 p-2 bg-primary'
               // !isConnected && !getChainDetails(chain?.id) && 
               disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
               onClick={mintU_tokens}
