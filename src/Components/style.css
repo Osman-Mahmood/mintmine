@@ -307,6 +307,20 @@
   font-weight: 500;
   line-height: normal;
 }
+.add_wallet{
+  border-radius: 12px;
+  /* background: rgba(225, 55, 190, 0.45) !important; */
+  /* padding: 10px; */
+  color: #FFF;
+  text-align: center;
+  /* font-family: Poppins; */
+  font-size: 20px;
+  /* font-style: normal; */
+  font-weight: 500;
+  line-height: normal;
+  border-top: none;
+  border-right: none;
+}
 .rad{
   border-radius: 12px;
 }

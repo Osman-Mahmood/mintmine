@@ -16,6 +16,7 @@ import ModalB from '../Modals/ModalB'
 import TransactionModal from '../Modals/TransactionModal'
 import Range from '../Range'
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from 'react-router-dom'
 const WithdrawToken = () => {
   const [hideIcon,setHideIcon] = useState(false);
 
@@ -192,21 +193,23 @@ const WithdrawToken = () => {
     return (
         <>
         {
-            !hideIcon ?    <div className='container pt-5 mb-5'>
+            !hideIcon ?    <div className='container pt-1 mb-5'>
             <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
             <PasswordModal show={show} handleClose={handleClose} />
             <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
             <div className='row justify-content-center'>
                 <div className='col-lg-12 text-center justify-content-center d-flex'>
                     <div className='col-lg-6 col-12 box'>
-                    <div className="d-flex justify-content-between mx-4 mt-4">
+                    <div className="d-flex justify-content-between mx-4 mt-2">
                         <h5></h5>
                         <h5 className='text-dark'>Withdraw</h5>
-                <AiOutlineClose
+                        <Link to="/home">
+            <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
-                  onClick={()=>setHideIcon(true)}
+                  // onClick={()=>setHideIcon(true)}
                 />
+            </Link>
               </div>
                         
                         <p className='text-end mb-0 text-wid text-dark'>
@@ -239,7 +242,9 @@ const WithdrawToken = () => {
                {/* <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button> */}
                                 <div class="w-75 ms-3 rounded ">
                                 <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
-                                  
+                                <div className=' mt-2 text-dark'>
+                  {selectedToken.showBalance && `${percentValue}%`}
+                </div>
                                 </div>
 
                          

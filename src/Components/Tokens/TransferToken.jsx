@@ -21,6 +21,7 @@ import ModalB from "../Modals/ModalB";
 import TransactionModal from "../Modals/TransactionModal";
 import Range from "../Range";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const TransferToken = () => {
   const [hideIcon, setHideIcon] = useState(false);
   let [selectedToken, setSelectedToken] = useState({
@@ -80,6 +81,7 @@ const TransferToken = () => {
       getBal();
   }, [chain?.id, selectedToken.address, selectedToken.type]);
   let [percentValue, setPercentValue] = useState(0);
+  console.log("percentValue",percentValue);
   const barAmount = (percent) => {
     setPercentValue(percent);
     setEtherAmount(((showBalance * percent) / 100).toString());
@@ -208,186 +210,190 @@ const TransferToken = () => {
       console.log(error);
     }
   };
-  const valueHandler = (value) =>{
-      if(value>showBalance){
-        setEtherAmount(showBalance)
-      }else{
-        setEtherAmount(value)
-      }
+  const valueHandler = (value) => {
+    if (value > showBalance) {
+      setEtherAmount(showBalance)
+    } else {
+      setEtherAmount(value)
+    }
   }
   return (
     <>
       {
-        !hideIcon ?   <div className="container pt-5 mb-5">
-        <TransactionModal
-          showTrx={showTrx}
-          setShowTrx={setShowTrx}
-          trxHash={trxHash}
-        />
-        <PasswordModal show={show} handleClose={handleClose} />
-        <RecoverPasswordModal
-          show={showRModal}
-          handleClose={handleCloseRModal}
-        />
-        <div className="row justify-content-center">
-          <div className="col-lg-12 text-center justify-content-center d-flex">
-            <div className="col-lg-6 col-12 box">
-              <div className="d-flex justify-content-end mx-4 mt-4">
-                <h5></h5>
-              <h5 className="text-dark">Transfer</h5>
-                <AiOutlineClose
+        !hideIcon ? <div className="container pt-1 mb-5">
+          <TransactionModal
+            showTrx={showTrx}
+            setShowTrx={setShowTrx}
+            trxHash={trxHash}
+          />
+          <PasswordModal show={show} handleClose={handleClose} />
+          <RecoverPasswordModal
+            show={showRModal}
+            handleClose={handleCloseRModal}
+          />
+          <div className="row justify-content-center">
+            <div className="col-lg-12 text-center justify-content-center d-flex">
+              <div className="col-lg-6 col-12 box">
+                <div className="d-flex justify-content-between mx-4 mt-4">
+                  <h5></h5>
+                  <h5 className="text-dark">Transfer</h5>
+                  <Link to="/home">
+            <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
-                  onClick={()=>setHideIcon(true)}
+                  // onClick={()=>setHideIcon(true)}
                 />
-              </div>
-             
-              <p className="text-end mb-0 text-wid text-dark">
-                {showBalance && `Balance: ${showBalance} Max`}
-              </p>
-              <div className="modalselect w-100 d-flex justify-content-center ">
-                <div
-                  class=" w-75 rad p-2 border"
-                  style={{ backgroundColor: "rgb(118 168 255)" }}
-                >
-                  <p className="form-label text-start text-dark ">
-                    <strong>Transfer</strong>
-                  </p>
-                  <input
-                    type="number"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                    }}
-                    placeholder="amount"
-                    value={etherAmount}
-
-                    onChange={(e) => {
-                     
-                      if(window.ethereum){
-                        valueHandler(e.target.value);
-                      }else{
-                        setEtherAmount(e.target.value);
-                      }
-                   
-                      setPercentValue(
-                        parseInt((e.target.value / showBalance) * 100)
-                      );
-                    }}
-                    className="form-control  mb-1 text-dark"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
+            </Link>
                 </div>
 
-                <ModalB
-                  className="modala"
-                  setSelectedToken={setSelectedToken}
-                  selectedToken={selectedToken}
-                />
-              </div>
-              <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
-              
-               {/*  */}
+                <p className="text-end mb-0 text-wid text-dark">
+                  {showBalance && `Balance: ${showBalance} Max`}
+                </p>
+                <div className="modalselect w-100 d-flex justify-content-center ">
+                  <div
+                    class=" w-75 rad p-2 border"
+                    style={{ backgroundColor: "rgb(118 168 255)" }}
+                  >
+                    <p className="form-label text-start text-dark ">
+                      <strong>Transfer</strong>
+                    </p>
+                    <input
+                      type="number"
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        boxShadow: "none",
+                      }}
+                      placeholder="amount"
+                      value={etherAmount}
 
-                  <div class=" w-75 rad ms-3 ">
+                      onChange={(e) => {
+
+                        if (window.ethereum) {
+                          valueHandler(e.target.value);
+                        } else {
+                          setEtherAmount(e.target.value);
+                        }
+
+                        setPercentValue(
+                          parseInt((e.target.value / showBalance) * 100)
+                        );
+                      }}
+                      className="form-control  mb-1 text-dark"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                    />
+                  </div>
+
+                  <ModalB
+                    className="modala"
+                    setSelectedToken={setSelectedToken}
+                    selectedToken={selectedToken}
+                  />
+                </div>
+                <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+
+                  {/*  */}
+
+                  <div class="d-flex w-75 rad ms-3 ">
                     <Range
                       percentValue={percentValue}
                       barAmount={barAmount}
                       isDisable={showBalance}
                     />
-               
-                </div>
-              </div>
-              <div className=" w-100 d-flex justify-content-center mb-3">
-                <div
-                  class=" w-75 rad p-2 border"
-                  style={{ backgroundColor: "rgb(118 168 255)" }}
-                >
-                  <div className="d-flex justify-content-between">
-                  <p className="form-label text-start text-dark ">
-                    <strong>Address</strong>
-                  </p>
-                  <button className="btn btn-primary m-0" style={{fontSize:'11px'}}>Add to Wallet</button>
+                    <div className=' mt-2 text-dark'>
+                      {selectedToken.showBalance && `${percentValue}%`}
+                    </div>
                   </div>
-                
-                  <input
-                    type="text"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                    }}
-                    placeholder="recipient address "
-                    onChange={(e) => setTransferAddress(e.target.value)}
-                    className="form-control  mb-1 text-dark"
-                  />
                 </div>
-              </div>
-
-              <div className="w-100 d-flex justify-content-center mb-3 mt-3">
-                <div
-                  className=" w-75 rad p-2 "
-                  style={{ backgroundColor: "rgb(118 168 255)" }}
-                >
-                  <p className="form-label text-start text-dark ">
-                    <strong>Password</strong>
-                  </p>
-                  <input
-                    type={isSeePass ? "text" : "password"}
-                    name=""
-                    id=""
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      backgroundColor: "#E8F0FE",
-                    }}
-                    className="token_inp w-100 p-1 text-dark "
-                    placeholder="0"
-                    onChange={(e) => setPass(e.target.value)}
-                  />
+                <div className=" w-100 d-flex justify-content-center mb-3">
                   <div
-                    style={{ background: "rgba(225, 55, 190, 0.45)" }}
-                    className="bg-primary text-light"
-                    onClick={() => setIsSeePass(!isSeePass)}
+                    class=" w-75 rad p-2 border"
+                    style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
-                    {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    <div className="d-flex justify-content-between">
+                      <p className="form-label text-start text-dark ">
+                        <strong>Address</strong>
+                      </p>
+                      {/* <button className="btn btn-primary add_wallet tex" style={{fontSize:'11px'}}>Add to Wallet</button> */}
+                    </div>
+
+                    <input
+                      type="text"
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        boxShadow: "none",
+                      }}
+                      placeholder="recipient address "
+                      onChange={(e) => setTransferAddress(e.target.value)}
+                      className="form-control  mb-1 text-dark"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <Button
-                className="w-75 protect mb-2 p-2 rad"
-                variant="primary"
-                // !isConnected && !getChainDetails(chain?.id) &&
-                disabled={
-                  !isConnected ||
-                  selectedToken.address == null ||
-                  !getChainDetails(chain?.id)
-                }
-                onClick={transferUTokens}
-              >
-                {isLoading ? <BeatLoader color="#fff" /> : "Transfer"}
-              </Button>
-              <div
-                className="w-100 rad d-flex justify-content-center text-center p-3  mb-2 text-primary"
-                style={{ marginTop: "-10px", cursor: "pointer" }}
-                onClick={handleShowRModal}
-              >
-                <div className="w-75 box_forget p-2 rad">
-                  <strong>Forgot Password</strong>
+                <div className="w-100 d-flex justify-content-center mb-3 mt-3">
+                  <div
+                    className=" w-75 rad p-2 "
+                    style={{ backgroundColor: "rgb(118 168 255)" }}
+                  >
+                    <p className="form-label text-start text-dark ">
+                      <strong>Password</strong>
+                    </p>
+                    <input
+                      type={isSeePass ? "text" : "password"}
+                      name=""
+                      id=""
+                      style={{
+                        border: "none",
+                        outline: "none",
+                        backgroundColor: "#E8F0FE",
+                      }}
+                      className="token_inp w-100 p-1 text-dark "
+                      placeholder="0"
+                      onChange={(e) => setPass(e.target.value)}
+                    />
+                    <div
+                      style={{ background: "rgba(225, 55, 190, 0.45)" }}
+                      className="bg-primary text-light"
+                      onClick={() => setIsSeePass(!isSeePass)}
+                    >
+                      {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  className="w-75 protect mb-2 p-2 rad"
+                  variant="primary"
+                  // !isConnected && !getChainDetails(chain?.id) &&
+                  disabled={
+                    !isConnected ||
+                    selectedToken.address == null ||
+                    !getChainDetails(chain?.id)
+                  }
+                  onClick={transferUTokens}
+                >
+                  {isLoading ? <BeatLoader color="#fff" /> : "Transfer"}
+                </Button>
+                <div
+                  className="w-100 rad d-flex justify-content-center text-center p-3  mb-2 text-primary"
+                  style={{ marginTop: "-10px", cursor: "pointer" }}
+                  onClick={handleShowRModal}
+                >
+                  <div className="w-75 box_forget p-2 rad">
+                    <strong>Forgot Password</strong>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      : <div className="" style={{height:'100vh'}}>
+          : <div className="" style={{ height: '100vh' }}>
 
-      </div>
-      } 
-     
+          </div>
+      }
+
     </>
   );
 };

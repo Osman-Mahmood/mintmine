@@ -12,6 +12,7 @@ import { ethers } from 'ethers'
 import { BeatLoader } from 'react-spinners'
 import Range from '../Range'
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from 'react-router-dom'
 
 const TokenSelect = () => {
   const [hideIcon,setHideIcon] = useState(false);
@@ -190,22 +191,25 @@ const TokenSelect = () => {
   return (
     <>
     {
-      !hideIcon ?   <div className='container pt-5 mb-5'>
+      !hideIcon ?   <div className='container pt-1 mb-5'>
       <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
       <PasswordModal show={show} handleClose={handleClose} />
       <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
       <div className='row justify-content-center'>
         <div className='col-lg-12 text-center justify-content-center d-flex'>
           <div className='col-lg-6 col-12 box'>
-          <div className="d-flex justify-content-between mx-4 mt-4">
+          <div className="d-flex justify-content-between mx-4 mt-2">
             <h5></h5>
           <h5 className='text-dark text-center'>Protect</h5>
           <div className='justify-content-end d-flex'>
-          <AiOutlineClose
+            <Link to="/home">
+            <AiOutlineClose
                   className="text-dark text-end fs-3"
                   style={{ cursor: "pointer" }}
-                  onClick={()=>setHideIcon(true)}
+                  // onClick={()=>setHideIcon(true)}
                 />
+            </Link>
+         
           </div>
               
                 
@@ -249,10 +253,22 @@ const TokenSelect = () => {
          
 
             <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
-              <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <div className='d-flex justify-content-between'>
-                <p className="form-label text-dark text-start"><strong>You Receive</strong></p>
-                <button className="btn btn-primary ms-0 m-0  p-0 text-end" style={{fontSize:'11px'}}>Add to Wallet</button>
+              <div class=" w-75 rad border p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                <div className='d-flex justify-content-between pb-2'>
+                <p className="form-label text-dark text-start "><strong>You Receive</strong></p>
+                {
+                
+                selectedToken.address &&
+                
+                <>
+                  <button className="btn btn-primary ms-0 m-0 fw-bold text-end add_wallet" style={{fontSize:'11px'}}>Add to Wallet</button>
+                 <button disabled className='text-start  bg-primary add_wallet' > 
+                  u{selectedToken.name}
+                </button>
+
+              
+                </>
+              }
                 </div>
                
                 <input type="number"
@@ -263,11 +279,7 @@ const TokenSelect = () => {
                   className="form-control   mb-1 text-dark" />
                    
               </div>
-              {
-                selectedToken.address && <button disabled className='select_token  bg-primary' >
-                  u{selectedToken.name}
-                </button>
-              }
+           
             </div>
             <div className='w-100 d-flex justify-content-center mb-3'>
               <div className=" w-75 rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
