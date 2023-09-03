@@ -18,7 +18,7 @@ import Range from '../Range'
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom'
 const WithdrawToken = () => {
-  const [hideIcon,setHideIcon] = useState(false);
+    const [hideIcon, setHideIcon] = useState(false);
 
     let [selectedToken, setSelectedToken] = useState({
         name: "Select Token",
@@ -163,132 +163,131 @@ const WithdrawToken = () => {
         try {
             // wasAdded is a boolean. Like any RPC method, an error may be thrown.
             const wasAdded = await window.ethereum.request({
-              method: 'wallet_watchAsset',
-              params: {
-                type: 'ERC20', // Initially only supports ERC20, but eventually more!
-                options: {
-                    address: selectedToken.address, // The address that the token is at.
-                    symbol: selectedToken.name, // A ticker symbol or shorthand, up to 5 chars.
-                    decimals: 18,
+                method: 'wallet_watchAsset',
+                params: {
+                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                    options: {
+                        address: selectedToken.address, // The address that the token is at.
+                        symbol: selectedToken.name, // A ticker symbol or shorthand, up to 5 chars.
+                        decimals: 18,
+                    },
                 },
-              },
             });
 
             if (wasAdded) {
-              toast.success('Added successfully');
+                toast.success('Added successfully');
             } else {
-              toast.error('Your loss!');
+                toast.error('Your loss!');
             }
-          } catch (error) {
+        } catch (error) {
             console.log(error);
-          }
-    }
-    const valueHandler = (value) =>{
-        if(value>showBalance){
-          setEtherAmount(showBalance)
-        }else{
-          setEtherAmount(value)
         }
     }
+    const valueHandler = (value) => {
+        if (parseFloat(value) >= parseFloat(showBalance)) {
+          setEtherAmount(showBalance)
+        } else {
+          setEtherAmount(value)
+        }
+      }
     return (
         <>
-        {
-            !hideIcon ?    <div className='container pt-1 mb-5'>
-            <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
-            <PasswordModal show={show} handleClose={handleClose} />
-            <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
-            <div className='row justify-content-center'>
-                <div className='col-lg-12 text-center justify-content-center d-flex'>
-                    <div className='col-lg-6 col-12 box'>
-                    <div className="d-flex justify-content-between mx-4 mt-2">
-                        <h5></h5>
-                        <h5 className='text-dark'>Withdraw</h5>
-                        <Link to="/home">
-            <AiOutlineClose
-                  className="text-dark text-end fs-3"
-                  style={{ cursor: "pointer" }}
-                  // onClick={()=>setHideIcon(true)}
-                />
-            </Link>
-              </div>
-                        
-                        <p className='text-end mb-0 text-wid text-dark'>
-                            {
-                                showBalance && `Balance: ${showBalance} Max`
-                            }
-                        </p>
-                        <div className='modalselect w-100 d-flex justify-content-center'>
-                            <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                                <p className="form-label text-dark text-start"><strong>Receive</strong></p>
-                                <input type="number"
-                                    style={{ border: "none", outline: "none", boxShadow: "none" }}
-                                    placeholder='amount'
-                                    value={etherAmount}
-                                    onChange={(e) => {
-                                        if(window.ethereum){
-                                            valueHandler(e.target.value);
-                                          }else{
-                                            setEtherAmount(e.target.value);
-                                          }
-                                        setPercentValue(parseInt((e.target.value / showBalance) * 100))
-                                    }}
-                                    className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                            </div>
-
-                            <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
-                        </div>
-                        <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
-              
-               {/* <button className="btn btn-primary add ms-lg-5 ms-0 p-0">Add to Wallet</button> */}
-                                <div class="w-75 ms-3 rounded ">
-                                <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance}  />
-                                <div className=' mt-2 text-dark'>
-                  {selectedToken.showBalance && `${percentValue}%`}
-                </div>
+            {
+                !hideIcon ? <div className='container pt-1 mb-5'>
+                    <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
+                    <PasswordModal show={show} handleClose={handleClose} />
+                    <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
+                    <div className='row justify-content-center'>
+                        <div className='col-lg-12 text-center justify-content-center d-flex'>
+                            <div className='col-lg-6 col-12 box'>
+                                <div className="d-flex justify-content-between mx-4 mt-2">
+                                    <h5></h5>
+                                    <h5 className='text-dark'>Withdraw</h5>
+                                    <Link to="/home">
+                                        <AiOutlineClose
+                                            className="text-dark text-end fs-3"
+                                            style={{ cursor: "pointer" }}
+                                        // onClick={()=>setHideIcon(true)}
+                                        />
+                                    </Link>
                                 </div>
 
-                         
-                        </div>
-                        <div className='w-100 d-flex justify-content-center mb-3'>
-                            <div className=" w-75  p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                                <p className="form-label text-start text-dark"><strong>Password</strong></p>
+                                <p className='text-end mb-0 text-wid text-dark'>
+                                    {
+                                        showBalance && `Balance: ${showBalance} Max`
+                                    }
+                                </p>
+                                <div className='modalselect w-100 d-flex justify-content-center'>
+                                    <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                                        <p className="form-label text-dark text-start"><strong>Receive</strong></p>
+                                        <input type="number"
+                                            style={{ border: "none", outline: "none", boxShadow: "none" }}
+                                            placeholder='amount'
+                                            value={etherAmount}
+                                            onChange={(e) => {
+                                                if (showBalance) {
+                                                    valueHandler(e.target.value);
+                                                } else {
+                                                    setEtherAmount(e.target.value);
+                                                }
+                                                setPercentValue(parseInt((e.target.value / showBalance) * 100))
+                                            }}
+                                            className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                    </div>
 
-                                <input type={isSeePass ? "text" : "password"} name="" id=""
-                                    style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                                    className='token_inp p-1 w-100 text-dark' placeholder='0'
-                                    onChange={(e) => setPass(e.target.value)}
-                                />
-                                <div
-                                    style={{ background: "rgba(225, 55, 190, 0.45)" }}
-                                    className='bg-primary text-light'
-                                    onClick={() => setIsSeePass(!isSeePass)}
+                                    <ModalB className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
+                                </div>
+                                <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+
+                                    {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
+                                    <div className=" w-75 rad d-flex justify-content-center" >
+                                        <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
+                                        <span className='ms-5 mt-1 text-dark'>
+                                            {showBalance && `${percentValue}%`}
+                                        </span>
+                                    </div>
+                                </div>
+                             
+                                <div className='w-100 d-flex justify-content-center mb-3'>
+                                    <div className=" w-75  p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                                        <p className="form-label text-start text-dark"><strong>Password</strong></p>
+
+                                        <input type={isSeePass ? "text" : "password"} name="" id=""
+                                            style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
+                                            className='token_inp p-1 w-100 text-dark' placeholder='0'
+                                            onChange={(e) => setPass(e.target.value)}
+                                        />
+                                        <div
+                                            style={{ background: "rgba(225, 55, 190, 0.45)" }}
+                                            className='bg-primary text-light'
+                                            onClick={() => setIsSeePass(!isSeePass)}
+                                        >
+                                            {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <Button className='w-75 protect rad mb-4 p-2' variant="primary"
+                                    disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
+                                    onClick={claimUTokens}
                                 >
-                                    {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                                    {isLoading ? <BeatLoader color="#fff" /> : "Claim"}
+                                </Button>
+                                <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
+                                    onClick={handleShowRModal}
+                                >
+                                    <div className="w-75 box_forget p-2 rad">
+                                        <strong>Forgot Password</strong>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-
-                        <Button className='w-75 protect rad mb-4 p-2' variant="primary"
-                            disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
-                            onClick={claimUTokens}
-                        >
-                            {isLoading ? <BeatLoader color="#fff" /> : "Claim"}
-                        </Button>
-                        <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
-                            onClick={handleShowRModal}
-                        >
-                            <div className="w-75 box_forget p-2 rad">
-                                <strong>Forgot Password</strong>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>  : <div className='' style={{height:'100vh'}}></div>
-        }
+                </div> : <div className='' style={{ height: '100vh' }}></div>
+            }
         </>
-     
+
     )
 }
 

@@ -6,7 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai"
 import All from '../../assets/All.svg'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { getChainDetails, remortFactoryInstnce, walletBalance } from '../../config';
+import { factoryInstance, getChainDetails, remortFactoryInstnce, walletBalance } from '../../config';
 import ShowToken from '../Tokens/childComponents/ShowToken';
 import { Form, InputGroup } from 'react-bootstrap';
 function ModalA({ setSelectedToken, selectedToken }) {
@@ -30,7 +30,6 @@ function ModalA({ setSelectedToken, selectedToken }) {
     };
     const searchToken = async (searchElement) => {
         try {
-            console.log("filterToken", searchElement.length);
             const contract = await remortFactoryInstnce(chain?.id);
             if (searchElement.length > 0) {
                 const fetchingTokens = tokensList.map(async (token) => {
@@ -54,9 +53,12 @@ function ModalA({ setSelectedToken, selectedToken }) {
         getUTokens()
     }, [chain?.id])
     let [walletBal, setWalletBal] = useState("...")
-
+    const [ethAddress, setEthAddress] = useState("...");
     const getBal = async () => {
         try {
+            let contract = await factoryInstance(chain.id)
+            let u_eth_address = await contract.deployedAddressOfEth();
+            setEthAddress(u_eth_address);
             let ethBal = await walletBalance(address);
             setWalletBal(ethBal)
         } catch (error) {
@@ -95,7 +97,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
                             onClick={() => {
                                 setSelectedToken({
                                     name: chain?.nativeCurrency.symbol,
-                                    address: "native",
+                                    address: ethAddress,
                                     type: "native",
                                     showBalance: walletBal
                                 })

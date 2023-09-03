@@ -81,7 +81,7 @@ const TransferToken = () => {
       getBal();
   }, [chain?.id, selectedToken.address, selectedToken.type]);
   let [percentValue, setPercentValue] = useState(0);
-  console.log("percentValue",percentValue);
+  console.log("percentValue", percentValue);
   const barAmount = (percent) => {
     setPercentValue(percent);
     setEtherAmount(((showBalance * percent) / 100).toString());
@@ -211,7 +211,7 @@ const TransferToken = () => {
     }
   };
   const valueHandler = (value) => {
-    if (value > showBalance) {
+    if (parseFloat(value) >= parseFloat(showBalance)) {
       setEtherAmount(showBalance)
     } else {
       setEtherAmount(value)
@@ -238,12 +238,12 @@ const TransferToken = () => {
                   <h5></h5>
                   <h5 className="text-dark">Transfer</h5>
                   <Link to="/home">
-            <AiOutlineClose
-                  className="text-dark text-end fs-3"
-                  style={{ cursor: "pointer" }}
-                  // onClick={()=>setHideIcon(true)}
-                />
-            </Link>
+                    <AiOutlineClose
+                      className="text-dark text-end fs-3"
+                      style={{ cursor: "pointer" }}
+                    // onClick={()=>setHideIcon(true)}
+                    />
+                  </Link>
                 </div>
 
                 <p className="text-end mb-0 text-wid text-dark">
@@ -268,13 +268,11 @@ const TransferToken = () => {
                       value={etherAmount}
 
                       onChange={(e) => {
-
-                        if (window.ethereum) {
+                        if (showBalance) {
                           valueHandler(e.target.value);
                         } else {
                           setEtherAmount(e.target.value);
                         }
-
                         setPercentValue(
                           parseInt((e.target.value / showBalance) * 100)
                         );
@@ -293,19 +291,15 @@ const TransferToken = () => {
                 </div>
                 <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
 
-                  {/*  */}
-
-                  <div class="d-flex w-75 rad ms-3 ">
-                    <Range
-                      percentValue={percentValue}
-                      barAmount={barAmount}
-                      isDisable={showBalance}
-                    />
-                    <div className=' mt-2 text-dark'>
-                      {selectedToken.showBalance && `${percentValue}%`}
-                    </div>
+                  {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
+                  <div className=" w-75 rad d-flex justify-content-center" >
+                    <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
+                    <span className='ms-5 mt-1 text-dark'>
+                      {showBalance && `${percentValue}%`}
+                    </span>
                   </div>
                 </div>
+               
                 <div className=" w-100 d-flex justify-content-center mb-3">
                   <div
                     class=" w-75 rad p-2 border"

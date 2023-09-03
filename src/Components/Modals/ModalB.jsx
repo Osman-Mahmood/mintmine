@@ -67,7 +67,7 @@ function ModalB({ setSelectedToken, selectedToken }) {
                         <div className={
                             uNativeBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
                          onClick={()=>{setSelectedToken({
-                                name:chain?.nativeCurrency.symbol,
+                                name:`u${chain?.nativeCurrency.symbol}`,
                                 address:ethAddress,
                                 type:"native"
                             })

@@ -15,11 +15,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom'
 
 const TokenSelect = () => {
-  const [hideIcon,setHideIcon] = useState(false);
+  const [hideIcon, setHideIcon] = useState(false);
   let [selectedToken, setSelectedToken] = useState({
     name: "Select Token",
     address: null,
-    type: "",
+    type: "native",
     showBalance: null
   })
   const [isSeePass, setIsSeePass] = useState(false);
@@ -49,9 +49,15 @@ const TokenSelect = () => {
   const getBal = async () => {
     try {
       if (selectedToken.type === "native") {
+        let contract = await factoryInstance(chain.id)
+        let u_eth_address = await contract.deployedAddressOfEth();
         let ethBal = await walletBalance(address);
-        console.log("bal", ethBal);
         setShowBalance(ethBal);
+        setSelectedToken({
+          name: chain?.nativeCurrency.symbol,
+          address: u_eth_address,
+          type: "native",
+      })
       } else if (selectedToken.type === "token") {
         const contract = await factoryInstance(chain?.id);
         const alternateAddress = await contract.get_TokenAddressOfuToken(selectedToken.address);
@@ -117,7 +123,7 @@ const TokenSelect = () => {
             gasLimit: 1000000,
           });
           let receipt = await tx.wait();
-          let {explorer} = getChainDetails(chain.id)
+          let { explorer } = getChainDetails(chain.id)
           setTrxHash(`${explorer}/${receipt.transactionHash}`);
           setShowTrx(true)
           getBal()
@@ -155,7 +161,7 @@ const TokenSelect = () => {
           });
           console.log("tx", tx);
           let receipt = await tx.wait();
-          let {explorer} = getChainDetails(chain.id)
+          let { explorer } = getChainDetails(chain.id)
           console.log("tx", explorer);
           setTrxHash(`${explorer}/${receipt.transactionHash}`);
           setShowTrx(true)
@@ -181,150 +187,176 @@ const TokenSelect = () => {
       }
     }
   };
-  const valueHandler = (value) =>{
-    if(value>showBalance){
+  const valueHandler = (value) => {
+    if (parseFloat(value) >= parseFloat(showBalance)) {
       setEtherAmount(showBalance)
-    }else{
+    } else {
       setEtherAmount(value)
     }
-}
+  }
+  const addToken = async () => {
+    try {
+      // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+      const wasAdded = await window.ethereum.request({
+        method: "wallet_watchAsset",
+        params: {
+          type: "ERC20", // Initially only supports ERC20, but eventually more!
+          options: {
+            address: selectedToken.address, // The address that the token is at.
+            symbol: `u${selectedToken.name}`, // A ticker symbol or shorthand, up to 5 chars.
+            decimals: 18,
+          },
+        },
+      });
+
+      if (wasAdded) {
+        toast.success("Added successfully");
+      } else {
+        toast.error("Your loss!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-    {
-      !hideIcon ?   <div className='container pt-1 mb-5'>
-      <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
-      <PasswordModal show={show} handleClose={handleClose} />
-      <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
-      <div className='row justify-content-center'>
-        <div className='col-lg-12 text-center justify-content-center d-flex'>
-          <div className='col-lg-6 col-12 box'>
-          <div className="d-flex justify-content-between mx-4 mt-2">
-            <h5></h5>
-          <h5 className='text-dark text-center'>Protect</h5>
-          <div className='justify-content-end d-flex'>
-            <Link to="/home">
-            <AiOutlineClose
-                  className="text-dark text-end fs-3"
-                  style={{ cursor: "pointer" }}
-                  // onClick={()=>setHideIcon(true)}
-                />
-            </Link>
-         
-          </div>
-              
-                
-              </div>
-            <p className='text-end mb-0 text-wid text-dark'>
-              {
-                showBalance && `Balance: ${showBalance} Max`
-              }
-            </p>
-            <div className='modalselect w-100 d-flex justify-content-center'>
-              <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <p className="form-label text-start text-dark"><strong>Send</strong></p>
-                <input type="number"
-                  style={{ border: "none", outline: "none", boxShadow: "none" }}
-                  placeholder='amount'
-                  value={etherAmount}
-                  onChange={(e) => {
-                    if(window.ethereum){
-                      valueHandler(e.target.value);
-                    }else{
-                      setEtherAmount(e.target.value);
-                    }
-                    setPercentValue(parseInt((e.target.value / showBalance) * 100))
+      {
+        !hideIcon ? <div className='container pt-1 mb-5'>
+          <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
+          <PasswordModal show={show} handleClose={handleClose} />
+          <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
+          <div className='row justify-content-center'>
+            <div className='col-lg-12 text-center justify-content-center d-flex'>
+              <div className='col-lg-6 col-12 box'>
+                <div className="d-flex justify-content-between mx-4 mt-2">
+                  <h5></h5>
+                  <h5 className='text-dark text-center'>Protect</h5>
+                  <div className='justify-content-end d-flex'>
+                    <Link to="/home">
+                      <AiOutlineClose
+                        className="text-dark text-end fs-3"
+                        style={{ cursor: "pointer" }}
+                      // onClick={()=>setHideIcon(true)}
+                      />
+                    </Link>
 
-                  }}
-                  className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
-              </div>
-              <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
-            </div >
-            
-            <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
-              
-               {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
-                <div class=" w-75 rad d-flex justify-content-center" >
-                  <Range percentValue={percentValue} barAmount={barAmount} isDisable={selectedToken.showBalance} />
-                </div>
-                <div className=' mt-2 text-dark'>
-                  {selectedToken.showBalance && `${percentValue}%`}
-                </div>
-              </div>
-         
+                  </div>
 
-            <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
-              <div class=" w-75 rad border p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <div className='d-flex justify-content-between pb-2'>
-                <p className="form-label text-dark text-start "><strong>You Receive</strong></p>
-                {
-                
-                selectedToken.address &&
-                
-                <>
-                  <button className="btn btn-primary ms-0 m-0 fw-bold text-end add_wallet" style={{fontSize:'11px'}}>Add to Wallet</button>
-                 <button disabled className='text-start  bg-primary add_wallet' > 
-                  u{selectedToken.name}
-                </button>
 
-              
-                </>
-              }
                 </div>
-               
-                <input type="number"
-                  style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                  placeholder='amount'
-                  value={selectedToken.name ? (etherAmount - (etherAmount * 0.369) / 100) : 0}
-                  disabled
-                  className="form-control   mb-1 text-dark" />
-                   
-              </div>
-           
-            </div>
-            <div className='w-100 d-flex justify-content-center mb-3'>
-              <div className=" w-75 rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
-                <p className="form-label text-start text-dark"><strong>Password</strong></p>
-                <input type={isSeePass ? "text" : "password"} name="" id=""
-                  style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                  className='token_inp w-100 p-1 text-dark' placeholder='0'
-                  onChange={(e) => setPass(e.target.value)}
-                />
-                <div
-                  style={{ background: "rgba(225, 55, 190, 0.45)" }}
-                  className='bg-primary text-light'
-                  onClick={() => setIsSeePass(!isSeePass)}
+                <p className='text-end mb-0 text-wid text-dark'>
+                  {
+                    showBalance && `Balance: ${showBalance} Max`
+                  }
+                </p>
+                <div className='modalselect w-100 d-flex justify-content-center'>
+                  <div className=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                    <p className="form-label text-start text-dark"><strong>Send</strong></p>
+                    <input type="number"
+                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      placeholder='amount'
+                      value={etherAmount}
+                      onChange={(e) => {
+                        if (showBalance) {
+                          valueHandler(e.target.value);
+                        } else {
+                          setEtherAmount(e.target.value);
+                        }
+                        setPercentValue(parseInt((e.target.value / showBalance) * 100))
+
+                      }}
+                      className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  </div>
+                  <ModalA className="modala" setSelectedToken={setSelectedToken} selectedToken={selectedToken} />
+                </div >
+
+                <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
+
+                  {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
+                  <div className=" w-75 rad d-flex justify-content-center" >
+                    <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
+                  <span className='ms-5 mt-1 text-dark'>
+                    {showBalance && `${percentValue}%`}
+                  </span>
+                  </div>
+                </div>
+
+
+                <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
+                  <div className=" w-75 rad border p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                    <div className='d-flex justify-content-between pb-2'>
+                      <p className="form-label text-dark text-start "><strong>You Receive</strong></p>
+                      {
+
+                        selectedToken.address &&
+
+                        <>
+                          <button className="btn btn-primary ms-0 m-0 fw-bold text-end add_wallet" style={{ fontSize: '11px' }}
+                          onClick={addToken}
+                          >Add to Wallet</button>
+                          <button disabled className='text-start  bg-primary add_wallet' >
+                            u{selectedToken.name}
+                          </button>
+
+
+                        </>
+                      }
+                    </div>
+
+                    <input type="number"
+                      style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
+                      placeholder='amount'
+                      value={selectedToken.name ? (etherAmount - (etherAmount * 0.369) / 100) : 0}
+                      disabled
+                      className="form-control   mb-1 text-dark" />
+
+                  </div>
+
+                </div>
+                <div className='w-100 d-flex justify-content-center mb-3'>
+                  <div className=" w-75 rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                    <p className="form-label text-start text-dark"><strong>Password</strong></p>
+                    <input type={isSeePass ? "text" : "password"} name="" id=""
+                      style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
+                      className='token_inp w-100 p-1 text-dark' placeholder='0'
+                      onChange={(e) => setPass(e.target.value)}
+                    />
+                    <div
+                      style={{ background: "rgba(225, 55, 190, 0.45)" }}
+                      className='bg-primary text-light'
+                      onClick={() => setIsSeePass(!isSeePass)}
+                    >
+                      {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </div>
+                  </div>
+                </div>
+
+
+                <Button className='w-75 protect rad mb-1 p-2 bg-primary'
+                  // !isConnected && !getChainDetails(chain?.id) && 
+                  disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
+                  onClick={mintU_tokens}
                 >
-                  {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                  {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
+                </Button>
+                <div className='w-100 d-flex rad justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
+                  onClick={handleShowRModal}
+                >
+                  <div className="w-75 rad box_forget p-2 ">
+                    <strong>Forgot Password</strong>
+                  </div>
+
                 </div>
               </div>
             </div>
-
-
-            <Button className='w-75 protect rad mb-1 p-2 bg-primary'
-              // !isConnected && !getChainDetails(chain?.id) && 
-              disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
-              onClick={mintU_tokens}
-            >
-              {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
-            </Button>
-            <div className='w-100 d-flex rad justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
-              onClick={handleShowRModal}
-            >
-              <div className="w-75 rad box_forget p-2 ">
-                <strong>Forgot Password</strong>
-              </div>
-
-            </div>
           </div>
-        </div>
-      </div>
-    </div> :
-    <div className='' style={{height:'100vh'}}>
+        </div> :
+          <div className='' style={{ height: '100vh' }}>
 
-    </div>
-    }
+          </div>
+      }
     </>
-  
+
   )
 }
 
