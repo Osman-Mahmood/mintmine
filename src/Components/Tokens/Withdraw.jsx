@@ -198,7 +198,7 @@ const WithdrawToken = () => {
                     <PasswordModal show={show} handleClose={handleClose} />
                     <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
                     <div className='row justify-content-center'>
-                        <div className='col-lg-12 text-center justify-content-center d-flex'>
+                        <div className='col-lg-12 text-center justify-content-center d-flex p-0'>
                             <div className='col-lg-6 col-12 box'>
                                 <div className="d-flex justify-content-between mx-4 mt-2">
                                     <h5></h5>
@@ -218,11 +218,11 @@ const WithdrawToken = () => {
                                     }
                                 </p>
                                 <div className='modalselect w-100 d-flex justify-content-center'>
-                                    <div class=" w-75 rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                                    <div class=" wid rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                                         <p className="form-label text-dark text-start"><strong>Receive</strong></p>
                                         <input type="number"
                                             style={{ border: "none", outline: "none", boxShadow: "none" }}
-                                            placeholder='amount'
+                                            placeholder='0'
                                             value={etherAmount}
                                             onChange={(e) => {
                                                 if (showBalance) {
@@ -240,21 +240,21 @@ const WithdrawToken = () => {
                                 <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
 
                                     {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
-                                    <div className=" w-75 rad d-flex justify-content-center" >
+                                    <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                                         <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                                        <span className='ms-5 mt-1 text-dark'>
+                                        {/* <span className='ms-5 mt-1 text-dark'>
                                             {showBalance && `${percentValue}%`}
-                                        </span>
+                                        </span> */}
                                     </div>
                                 </div>
                              
                                 <div className='w-100 d-flex justify-content-center mb-3'>
-                                    <div className=" w-75  p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                                    <div className="  wid p-2 rad" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                                         <p className="form-label text-start text-dark"><strong>Password</strong></p>
 
                                         <input type={isSeePass ? "text" : "password"} name="" id=""
                                             style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                                            className='token_inp p-1 w-100 text-dark' placeholder='0'
+                                            className='form-control token_inp w-100 text-dark' placeholder='0'
                                             onChange={(e) => setPass(e.target.value)}
                                         />
                                         <div
@@ -268,7 +268,7 @@ const WithdrawToken = () => {
                                 </div>
 
 
-                                <Button className='w-75 protect rad mb-4 p-2' variant="primary"
+                                <Button className='wid protect rad mb-2 p-2' variant="primary"
                                     disabled={!isConnected || selectedToken.address == null || !getChainDetails(chain?.id)}
                                     onClick={claimUTokens}
                                 >
@@ -277,7 +277,7 @@ const WithdrawToken = () => {
                                 <div className='w-100 d-flex justify-content-center text-center p-3  mb-2 text-primary' style={{ marginTop: "-10px", cursor: "pointer" }}
                                     onClick={handleShowRModal}
                                 >
-                                    <div className="w-75 box_forget p-2 rad">
+                                    <div className="wid box_forget p-2 rad">
                                         <strong>Forgot Password</strong>
                                     </div>
                                 </div>

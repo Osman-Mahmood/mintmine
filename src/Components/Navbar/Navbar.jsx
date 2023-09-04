@@ -48,15 +48,15 @@ function NavbarMenu() {
               onMouseEnter={() => setIsOpen(true)}
               onMouseLeave={() => setIsOpen(false)}>
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white " to="select">Protect</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="select">Protect</NavLink>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white " to="transfer">Transfer</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="transfer">Transfer</NavLink>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white " to="withdraw">Claim</NavLink>
+                <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="withdraw">Claim</NavLink>
               </NavDropdown.Item>
 
             </NavDropdown>
@@ -68,13 +68,13 @@ function NavbarMenu() {
 
             <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward">Rewards</NavLink>
             <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdown" >
-              <NavDropdown.Item><NavLink to="crypto" className="text-white">What is u369?</NavLink> </NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="crypto" className="text-white a_tag">What is u369?</NavLink> </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item ><NavLink to="adres" className="text-white">How u369 works?</NavLink></NavDropdown.Item>
+              <NavDropdown.Item ><NavLink to="adres" className="text-white a_tag">How u369 works?</NavLink></NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item ><NavLink to="/" className="text-white"> Open source code</NavLink></NavDropdown.Item>
+              <NavDropdown.Item ><NavLink to="/" className="text-white a_tag"> Open source code</NavLink></NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item><NavLink to="selfserve" className="text-white">Self-serve</NavLink> </NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="selfserve" className="text-white a_tag">Self-serve</NavLink> </NavDropdown.Item>
             </NavDropdown>
 
           </Nav>

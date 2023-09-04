@@ -18,7 +18,7 @@ function TransactionModal({ showTrx, setShowTrx, trxHash }) {
         </Modal.Header>
         <Modal.Body>
           <div className='d-block'>
-            Transaction Successfully, <a style={{ color: "blue", fontWeight: "bold", textDecoration: "underline", cursor: "pointer" }} href={trxHash} target='blank'>view on blockchain</a>
+          "✅ Success! <a style={{ color: "blue", fontWeight: "bold", textDecoration: "underline", cursor: "pointer" }} href={trxHash} target='blank'> View on block explorer"</a>
           </div>
 
         </Modal.Body>

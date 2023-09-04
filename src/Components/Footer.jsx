@@ -6,7 +6,7 @@ import twitter from '../../src/assets/Twitter-new-logo-removebg-preview.png'
 const Footer = () => {
   return (
     <div className='bg_footer'>
-   <div className='container p-0 mb-lg-0 mb-5 pb-lg-0 pb-5'>
+   <div className='container p-0 mb-lg-0 mb-2 pb-lg-0 pb-0'>
         <div className='row text-center'>
             <div className='col-lg-12 mt-1'>
               <p></p>

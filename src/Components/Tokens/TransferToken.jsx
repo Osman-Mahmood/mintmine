@@ -232,7 +232,7 @@ const TransferToken = () => {
             handleClose={handleCloseRModal}
           />
           <div className="row justify-content-center">
-            <div className="col-lg-12 text-center justify-content-center d-flex">
+            <div className="col-lg-12 text-center justify-content-center d-flex p-0">
               <div className="col-lg-6 col-12 box">
                 <div className="d-flex justify-content-between mx-4 mt-4">
                   <h5></h5>
@@ -251,7 +251,7 @@ const TransferToken = () => {
                 </p>
                 <div className="modalselect w-100 d-flex justify-content-center ">
                   <div
-                    class=" w-75 rad p-2 border"
+                    class="wid rad p-2 border"
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <p className="form-label text-start text-dark ">
@@ -264,7 +264,7 @@ const TransferToken = () => {
                         outline: "none",
                         boxShadow: "none",
                       }}
-                      placeholder="amount"
+                      placeholder="0"
                       value={etherAmount}
 
                       onChange={(e) => {
@@ -292,17 +292,17 @@ const TransferToken = () => {
                 <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
 
                   {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
-                  <div className=" w-75 rad d-flex justify-content-center" >
+                  <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                     <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                    <span className='ms-5 mt-1 text-dark'>
+                    {/* <span className='ms-5 mt-1 text-dark'>
                       {showBalance && `${percentValue}%`}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
                
                 <div className=" w-100 d-flex justify-content-center mb-3">
                   <div
-                    class=" w-75 rad p-2 border"
+                    class=" wid rad p-2 border"
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <div className="d-flex justify-content-between">
@@ -319,7 +319,7 @@ const TransferToken = () => {
                         outline: "none",
                         boxShadow: "none",
                       }}
-                      placeholder="recipient address "
+                      placeholder="0 "
                       onChange={(e) => setTransferAddress(e.target.value)}
                       className="form-control  mb-1 text-dark"
                     />
@@ -328,7 +328,7 @@ const TransferToken = () => {
 
                 <div className="w-100 d-flex justify-content-center mb-3 mt-3">
                   <div
-                    className=" w-75 rad p-2 "
+                    className="wid rad p-2 "
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <p className="form-label text-start text-dark ">
@@ -343,7 +343,7 @@ const TransferToken = () => {
                         outline: "none",
                         backgroundColor: "#E8F0FE",
                       }}
-                      className="token_inp w-100 p-1 text-dark "
+                      className="form-control token_inp w-100 text-dark "
                       placeholder="0"
                       onChange={(e) => setPass(e.target.value)}
                     />
@@ -358,7 +358,7 @@ const TransferToken = () => {
                 </div>
 
                 <Button
-                  className="w-75 protect mb-2 p-2 rad"
+                  className="wid protect mb-2 p-2 rad"
                   variant="primary"
                   // !isConnected && !getChainDetails(chain?.id) &&
                   disabled={
@@ -375,7 +375,7 @@ const TransferToken = () => {
                   style={{ marginTop: "-10px", cursor: "pointer" }}
                   onClick={handleShowRModal}
                 >
-                  <div className="w-75 box_forget p-2 rad">
+                  <div className="wid box_forget p-2 rad">
                     <strong>Forgot Password</strong>
                   </div>
                 </div>
