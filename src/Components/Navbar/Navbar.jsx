@@ -13,6 +13,29 @@ import { FiSettings } from 'react-icons/fi'
 function NavbarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState("");
+ // Initialize the state
+const [scrolled, setScrolled] = useState(true);  // changed from false to true
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 5) {
+        setScrolled(false);  // changed from true to false
+    } else {
+        setScrolled(true);  // changed from false to true
+    }
+};
+
+let navbarClasses = ['nav_bg'];
+if (scrolled) {
+  navbarClasses.push('transparent');
+} else {
+  navbarClasses.push('solid');
+}
 
   const toggleThem = () => {
     if (theme === "dark-theme") {
@@ -35,7 +58,7 @@ function NavbarMenu() {
   }, [theme]);
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" className=''>
+    <Navbar collapseOnSelect expand="lg" variant="dark" className={navbarClasses.join(' ')}>
       <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
         <Navbar.Brand className='text-dark fw-bold clr '>
           <NavLink to="/" className="d-flex align-items-center"><img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block ms-1 mt-3'>u369</p></NavLink>

@@ -234,7 +234,7 @@ const TransferToken = () => {
           <div className="row justify-content-center">
             <div className="col-lg-12 text-center justify-content-center d-flex p-0">
               <div className="col-lg-6 col-12 box">
-                <div className="d-flex justify-content-between mx-4 mt-4">
+                <div className="d-flex justify-content-between mx-4 mt-2">
                   <h5></h5>
                   <h5 className="text-dark">Transfer</h5>
                   <Link to="/home">
@@ -294,9 +294,9 @@ const TransferToken = () => {
                   {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
                   <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                     <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                    {/* <span className='ms-5 mt-1 text-dark'>
+                    <span className='ms-5 mt-1 text-dark'>
                       {showBalance && `${percentValue}%`}
-                    </span> */}
+                    </span>
                   </div>
                 </div>
                
@@ -343,7 +343,7 @@ const TransferToken = () => {
                         outline: "none",
                         backgroundColor: "#E8F0FE",
                       }}
-                      className="form-control token_inp w-100 text-dark "
+                      className=" token_inp w-100 text-dark "
                       placeholder="0"
                       onChange={(e) => setPass(e.target.value)}
                     />

@@ -221,7 +221,7 @@ const TokenSelect = () => {
   return (
     <>
       {
-        !hideIcon ? <div className='container pt-1 mb-5'>
+        !hideIcon ? <div className='container pt-0 mb-5 mt-0'>
           <TransactionModal showTrx={showTrx} setShowTrx={setShowTrx} trxHash={trxHash} />
           <PasswordModal show={show} handleClose={handleClose} />
           <RecoverPasswordModal show={showRModal} handleClose={handleCloseRModal} />
@@ -275,9 +275,9 @@ const TokenSelect = () => {
                   {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
                   <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                     <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                  {/* <span className='ms-5 mt-1 text-dark'>
+                  <span className='ms-5 mt-1 text-dark'>
                     {showBalance && `${percentValue}%`}
-                  </span> */}
+                  </span>
                   </div>
                 </div>
 
@@ -318,7 +318,7 @@ const TokenSelect = () => {
                     <p className="form-label text-start text-dark"><strong>Password</strong></p>
                     <input type={isSeePass ? "text" : "password"} name="" id=""
                       style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                      className='form-control token_inp w-100 text-dark' placeholder='0'
+                      className='token_inp w-100 text-dark' placeholder='0'
                       onChange={(e) => setPass(e.target.value)}
                     />
                     <div

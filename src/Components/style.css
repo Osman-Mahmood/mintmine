@@ -18,19 +18,28 @@
 .navbar-dark .navbar-nav .nav-link {
   color: var(--clr-) !important;
 }
-.nav_bg{
+.nav_bg {
   position: fixed;
   margin-bottom: 200px;
   width: 100%;
   z-index: 999999;
 }
+
+.transparent {
+  background-color: transparent;
+}
+
+.solid {
+  backdrop-filter: blur(4px);
+  background: rgba(25, 27, 31, 0.9);
+  border-bottom: 1px solid rgb(25, 27, 31);
+  transition: background-color 0.25s ease 0s;
+}
 .clr {
   color: var(--clr-) !important;
 }
 
-.nav_bg {
-  background-color: var(--nav-bg);
-}
+
 
 @media screen and (max-width:600px) {
   .nav_bg{
@@ -543,4 +552,20 @@ tbody, td, tfoot, th, thead, tr {
 }
 .form-control{
   padding: 9px;
+}
+.modal-header{
+  border: none !important;
+}
+.modal-content {
+  border-radius: 20px !important;
+}
+.margin_top{
+  margin-top: 80px;
+  /* height: 65vh; */
+}
+@media screen and (max-width:600px) {
+  .margin_top{
+    margin-top: 50px;
+    height: 70vh;
+  }
 }
