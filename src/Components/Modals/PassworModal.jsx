@@ -100,8 +100,9 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal show={show} onHide={handleClose} >
+        <div style={{zIndex:'999999'}}>
+        <Modal.Header closeButton style={{backgroundColor:'#0D6EFD',color:'white'}}>
           <Modal.Title>Master Key</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -129,8 +130,8 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                 </button>
               </div>
 
-              <Form.Text className=" text-dark fw-bold list">
-                <ul>
+              <Form.Text className=" text-dark fw-bold list mb-0">
+                <ul className=" mt-2 mb-0">
                   <li>
                     The above is your encrypted and randomly-generated Master
                     key. It's only presented once.
@@ -141,22 +142,22 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                     change your password.{" "}
                   </li>
                   <li>
-                    Your uTokens can only be moved after inputting your
+                  Your unhackable tokens (uTokens) can only be moved after inputting your
                     password. If you forget your password and do not have the
                     Master Key, you won’t be able to interact with this smart
                     contract.
                   </li>
                 </ul>
               </Form.Text>
-              <div className="d-flex">
+              <div className="d-flex mt-0">
                 <input type="checkbox" onChange={(e) => { setIsEnable(e.target.checked); }} />
-                <label htmlFor="" className="ms-3 mt-3">
+                <label htmlFor="" className="ms-3">
                   I understand that u369 cannot recover this password for me.
                 </label>
               </div>
             </Form.Group>
             {isEnable && <>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-1" controlId="formBasicPassword">
                 <Form.Label>Set Password</Form.Label>
                 <div className="d-flex gap-3">
                   <Form.Control
@@ -177,13 +178,13 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                 </div>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-1" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
                 <div className="d-flex gap-3">
                   <Form.Control
                     type={isSeeCPass ? "text" : "password"}
                     placeholder=""
-                    className="w-75"
+                    className="w-75 p-0"
                     onChange={(e) => {
                       setPass({ ...pass, confirmPassword: e.target.value });
                     }}
@@ -213,6 +214,8 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
             Close
           </button> */}
         </Modal.Footer>}
+        </div>
+       
       </Modal>
     </>
   );

@@ -79,7 +79,6 @@ function ModalA({ setSelectedToken, selectedToken }) {
             <Modal show={show} onHide={handleClose} animation={false} className="rounded_icon pt-5">
                 <Modal.Header closeButton>
                     <Modal.Title>Select a token</Modal.Title>
-
                 </Modal.Header>
 
                 <Modal.Body>

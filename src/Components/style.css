@@ -22,7 +22,7 @@
   position: fixed;
   margin-bottom: 200px;
   width: 100%;
-  z-index: 999999;
+  z-index: 1;
 }
 
 .transparent {
@@ -89,6 +89,7 @@
 }
 .accordion-button:not(.collapsed) {
   color: white !important;
+  background-color: transparent;
 }
 
 /* For collapsed state */
@@ -111,9 +112,9 @@
   box-shadow: none !important;
 }
 
-.accordion-button:not(.collapsed) {
+/* .accordion-button:not(.collapsed) {
   color: black !important;
-}
+} */
 
 .accordion-body {
   border-left: 2px solid burlywood !important;
@@ -128,7 +129,9 @@
 .custom-accordion .col-sm-12:not(:last-child) {
   margin-bottom: 0;
 }
-
+.border-none {
+  border-left: none !important;
+}
 .custom-accordion .nav-item:not(:last-child) {
   margin-bottom: 0;
 }
@@ -568,4 +571,14 @@ tbody, td, tfoot, th, thead, tr {
     margin-top: 50px;
     height: 70vh;
   }
+}
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
 }
