@@ -571,6 +571,9 @@ tbody, td, tfoot, th, thead, tr {
     margin-top: 50px;
     height: 70vh;
   }
+  .hright{
+    height: 30vh !important;
+  }
 }
 .modal-header {
   display: flex;

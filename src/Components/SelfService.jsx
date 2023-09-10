@@ -16,7 +16,7 @@ const SelfService = () => {
     <>
       <div className='hright p-5'>
         <h1 className='text-white '>u369 self-serve</h1>
-        <h1 className='text-white mt-5 pt-4'>Happy Crypto Days & Power to the people!</h1>
+        <h1 className='text-white mt-5 pt-4'>happy Crypto days & power to the people!</h1>
       </div>
 
       <div className='d-lg-flex d-block'>

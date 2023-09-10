@@ -113,3 +113,6 @@ code {
   display: inline-block;
   width: 1.7em;
 }
+.navbar-toggler:focus{
+  box-shadow: none !important;
+}

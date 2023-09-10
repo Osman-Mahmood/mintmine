@@ -255,7 +255,7 @@ const TransferToken = () => {
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <p className="form-label text-start text-dark ">
-                      <strong>Transfer</strong>
+                      <strong>Send</strong>
                     </p>
                     <input
                       type="number"
