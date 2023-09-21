@@ -93,9 +93,9 @@ const Tokens = () => {
   return (
     <div className='container pt-5'>
       <div className='row time_box mt-3'>
-        <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3'>
-          <div className='col-lg-6 col-12'>
-            <h5 className='text-white text-start' style={{fontSize:'18px'}}>30% of all the smart-contract's service-fee is used to randomly reward one end-user. </h5>
+        <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 mb-0 mb-5'>
+          <div className='col-lg-6 col-12 mb-lg-0 mb-5'>
+            <h5 className='text-white text-start mt-3' style={{fontSize:'18px'}}>30% of all the smart-contract's service-fee is used to randomly reward one end-user. </h5>
           <h5 className='text-white text-start'>Every 369 hours the system post a result.</h5>
             {/* <h5 className='text-dark text-start'>The winner is announced in this page and in our social media.</h5> */}
 
@@ -138,7 +138,7 @@ const Tokens = () => {
           </div>
         </div>
       </div>
-      <div className='row p-3 mt-5 rounded-lg time_box'>
+      <div className='row p-3 mt-5 mb-5 pb-4 rounded-lg time_box'>
         <div className='col-lg-12'>
           <h3 className='text-center text-white text-truncate'>Winner: {winnerAddress}</h3>
           <Table striped bordered hover >

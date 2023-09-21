@@ -14,9 +14,9 @@ import { NavLink, Outlet } from 'react-router-dom';
 const SelfService = () => {
   return (
     <>
-      <div className='hright p-5'>
-        <h1 className='text-white '>u369 self-serve</h1>
-        <h1 className='text-white mt-5 pt-4'>happy Crypto days & power to the people!</h1>
+      <div className=' p-5'>
+        {/* <h1 className='text-white '>u369 self-serve</h1> */}
+        <h1 className='text-white mt-0 pt-3'>happy Crypto days & power to the people!</h1>
       </div>
 
       <div className='d-lg-flex d-block'>
@@ -32,24 +32,25 @@ const SelfService = () => {
                 <Row>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
-                      <Nav.Item>  <NavLink to="crypto" eventKey="first" className="text-white">What is a crypto wallet</NavLink>
+                      <Nav.Item>  <NavLink to="ueth" className="text-white">How to connect to u369</NavLink>  
                       </Nav.Item>
                     </Nav>
                   </Col>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="adres" className="text-white">What is a Public Address</NavLink>
+                      <NavLink to="whatis" eventKey="first" className="text-white">What is a crypto wallet</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="ueth" className="text-white">How to connect to u369</NavLink>
+                        <NavLink to="public" className="text-white">What is a Public Address</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>
+                 
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
@@ -71,8 +72,14 @@ const SelfService = () => {
                   <Col sm={12}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <NavLink to="deploy" className="text-white">On which networks is the u369 smart
-                          contract deployed?</NavLink>
+                        <NavLink to="deploy" className="text-white">Networks available</NavLink>
+                      </Nav.Item>
+                    </Nav>
+                  </Col>
+                  <Col sm={12}>
+                    <Nav variant="pills" className="flex-column">
+                      <Nav.Item>
+                        <NavLink to="switch" className="text-white">How to switch network</NavLink>
                       </Nav.Item>
                     </Nav>
                   </Col>

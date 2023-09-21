@@ -130,7 +130,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                 </button>
               </div>
 
-              <Form.Text className=" text-dark fw-bold list mb-0">
+              <Form.Text className="lighttext fw-bold list mb-0">
                 <ul className=" mt-2 mb-0">
                   <li>
                     The above is your encrypted and randomly-generated Master

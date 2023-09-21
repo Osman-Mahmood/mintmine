@@ -202,17 +202,17 @@ const WithdrawToken = () => {
                             <div className='col-lg-6 col-12 box'>
                                 <div className="d-flex justify-content-between mx-4 mt-2">
                                     <h5></h5>
-                                    <h5 className='text-dark'>Withdraw</h5>
+                                    <h5 className='color_close'>Withdraw</h5>
                                     <Link to="/home">
                                         <AiOutlineClose
-                                            className="text-dark text-end fs-3"
+                                            className="color_close text-end fs-3"
                                             style={{ cursor: "pointer" }}
                                         // onClick={()=>setHideIcon(true)}
                                         />
                                     </Link>
                                 </div>
 
-                                <p className='text-end mb-0 text-wid text-dark'>
+                                <p className='text-end mb-0 text-wid lighttext'>
                                     {
                                         showBalance && `Balance: ${showBalance} Max`
                                     }
@@ -242,7 +242,7 @@ const WithdrawToken = () => {
                                     {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
                                     <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                                         <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                                        <span className='ms-5 mt-1 text-dark'>
+                                        <span className='ms-5 mt-1 lighttext'>
                                             {showBalance && `${percentValue}%`}
                                         </span>
                                     </div>

@@ -27,6 +27,9 @@ import TransferToken from './Components/Tokens/TransferToken';
 import More from "./Components/More"
 import Reward from "./Components/Reward"
 import Tokens from './Components/Tokens';
+import SwitchNetwork from './Components/SwitchNetwork';
+import WhatisCrypto from './Components/WhatisCrypto';
+import PublicAdress from './Components/PublicAdress';
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
@@ -61,6 +64,14 @@ function App() {
             element: <Crypto />,
           },
           {
+            path: "whatis",
+            element: <WhatisCrypto />,
+          },
+          {
+            path: "public",
+            element: <PublicAdress />,
+          },
+          {
             path: "content",
             element: <SidebarContent />,
           },
@@ -79,6 +90,10 @@ function App() {
           {
             path: "deploy",
             element: <ContractDeployed />,
+          },
+          {
+            path: "switch",
+            element: <SwitchNetwork />,
           },
           {
             path: "uethside",

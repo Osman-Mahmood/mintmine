@@ -136,15 +136,15 @@ import { FiSettings } from 'react-icons/fi';
 function NavbarMenu() {
     // ... [rest of your useState, useEffect, and other functions]
     const [isOpen, setIsOpen] = useState(false);
-    const [navExpanded, setNavExpanded] = useState(false); 
-      const [theme, setTheme] = useState("");
-     // Initialize the state
+    const [navExpanded, setNavExpanded] = useState(false);
+    const [theme, setTheme] = useState("");
+    // Initialize the state
     const [scrolled, setScrolled] = useState(true);  // changed from false to true
     useEffect(() => {
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -154,55 +154,65 @@ function NavbarMenu() {
             setScrolled(true);  // changed from false to true
         }
     };
-    
+
     let navbarClasses = ['nav_bg'];
     if (scrolled) {
-      navbarClasses.push('transparent');
+        navbarClasses.push('transparent');
     } else {
-      navbarClasses.push('solid');
+        navbarClasses.push('solid');
     }
-    
-      const toggleThem = () => {
+
+    const toggleThem = () => {
         if (theme === "dark-theme") {
-          localStorage.setItem("theme", "light-theme");
-          setTheme("light-theme");
+            localStorage.setItem("theme", "light-theme");
+            setTheme("light-theme");
         } else {
-          setTheme("dark-theme");
-          localStorage.setItem("theme", "dark-theme");
+            setTheme("dark-theme");
+            localStorage.setItem("theme", "dark-theme");
         }
-      };
-      useEffect(() => {
+    };
+    useEffect(() => {
         if (localStorage.getItem("theme") == null) {
-          document.body.className = "dark-theme";
-          localStorage.setItem("theme", "dark-theme");
-          setTheme("dark-theme");
+            document.body.className = "dark-theme";
+            localStorage.setItem("theme", "dark-theme");
+            setTheme("dark-theme");
         } else {
-          document.body.className = localStorage.getItem("theme");
-          setTheme(localStorage.getItem("theme"));
+            document.body.className = localStorage.getItem("theme");
+            setTheme(localStorage.getItem("theme"));
         }
-      }, [theme]);
-      const closeNavbar = () => {
+    }, [theme]);
+    const closeNavbar = () => {
         setIsOpen(false);
         setNavExpanded(false);  // Close the navbar when a NavLink is clicked
     };
 
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark" className={navbarClasses.join(' ')}  expanded={navExpanded}  // Control navbar's expanded state
-        onToggle={setNavExpanded} >
+        <Navbar collapseOnSelect expand="lg" variant="dark" className={navbarClasses.join(' ')} expanded={navExpanded}  // Control navbar's expanded state
+            onToggle={setNavExpanded} >
             <div className='container p-lg-0 p-2' style={{ flexDirection: "inherit" }}>
-               
-                <Nav className='gap-lg-4 gap-3 d-lg-none d-block'>
-                        <ConnectButton  label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
-                    </Nav>
-                    <Navbar.Brand className='text-dark fw-bold clr '>
+
+              
+                <Navbar.Brand className='text-dark fw-bold clr '>
                     <NavLink to="/" className="d-flex align-items-center" onClick={closeNavbar}>
                         <img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block text-white ms-1 mt-3'>u369</p>
                     </NavLink>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setNavExpanded(prev => !prev)}/>
+                <div className="form-check form-switch switch ms-auto p-0 d-lg-none d-block">
+                  <input
+                    className="form-check-input change ms-auto text-end light_mode"
+                    onClick={toggleThem}
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                  />
+                </div>
+                <Nav className='gap-lg-4  gap-3 d-lg-none d-block'>
+                    <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
+                </Nav>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setNavExpanded(prev => !prev)} />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto px-0 text-start">
-                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="/" onClick={closeNavbar}>u369</NavLink>
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks d-lg-flex d-none" to="/" onClick={closeNavbar}>u369</NavLink>
                         <NavDropdown className='text-white ms-lg-3 ms-0 new_clr' title="Operations" id="navbarScrollingDropdown" show={isOpen}
                             onMouseEnter={() => setIsOpen(true)}
                             onMouseLeave={() => setIsOpen(false)}>
@@ -238,14 +248,23 @@ function NavbarMenu() {
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Nav className='gap-lg-4 gap-3 d-lg-block d-none'>
-                        <div className="form-check form-switch switch ms-lg-auto ms-0 p-0 d-none"
+                    <Nav className='gap-lg-4 gap-3 d-lg-flex d-none align-items-center'>
+                        {/* <div className="form-check form-switch switch bg-light ms-lg-auto ms-0 p-0"
                             onClick={toggleThem}>
                             {
                                 theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span> : <span className='text-light fs-4'><MdOutlineLightMode /></span>
                             }
-                        </div>
-                        <ConnectButton  label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
+                        </div> */}
+                         <div className="form-check form-switch switch ms-auto p-0">
+                  <input
+                    className="form-check-input change ms-auto text-end light_mode"
+                    onClick={toggleThem}
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                  />
+                </div>
+                        <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
                     </Nav>
                 </Navbar.Collapse>
             </div>

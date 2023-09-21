@@ -31,7 +31,7 @@
 
 .solid {
   backdrop-filter: blur(4px);
-  background: rgba(25, 27, 31, 0.9);
+  /* background: rgba(25, 27, 31, 0.9); */
   border-bottom: 1px solid rgb(25, 27, 31);
   transition: background-color 0.25s ease 0s;
 }
@@ -193,12 +193,16 @@
 
 .light_mode {
   /* height: 32px !important;
-    width: 42px !important; */
+  width: 42px !important; */
+  height: 22px !important;
+  width: 57px !important;
   padding-left: 0rem !important;
 }
 
 .change {
 
+  width: 1em;
+  height: 1em;
   margin-top: 0.25em;
   vertical-align: top;
   background-color: white;
@@ -218,7 +222,7 @@
 }
 
 .switch .change {
-  /* width: 2em; */
+  width: 2em;
   margin-left: -2.5em;
   background-image: var(--bg-img) !important;
   background-position: left center;
@@ -226,9 +230,6 @@
   transition: background-position 0.15s ease-in-out;
   border: none !important;
   background-color: var(--bg-offhead) !important;
-  width: 150px;
-  height: 37px;
-  position: relative;
 }
 
 .form-check-input:focus {
@@ -259,9 +260,10 @@
 .box {
   border-radius: 10px;
   /* background: rgba(44, 66, 201, 0.54); */
-  background-color: white;
+  /* background-color: white; */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   justify-content: center;
+  background-color: var(--bg-protect);
 }
 .token_inp::placeholder {
   color: black; /* Change this to the desired color */
@@ -459,6 +461,7 @@ height: 71px; */
 }
 .box{
   padding: 10px;
+  background-color: var(--bg-protect);
 }
 .select_token {
   position: absolute;

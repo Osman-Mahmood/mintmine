@@ -4,17 +4,44 @@
   --bg-offhead: #CECECE6B;
   --nav-bg: black;
   --clr-: white;
+  --bg-protect:white;
+  --modal-content:white;
+  --text-white:black;
 }
 
 .dark-theme {
-
+  --text-white:white;
+  --modal-content:black;
+  --bg-protect:transparent;
 
   --bg-img: url('./assets/dark.png');
   --bg-offhead: #000000B8;
   --nav-bg: white;
   --clr-: black;
 }
-
+.lighttext{
+  color: var(--text-white);
+}
+.modal-content{
+  background-color: var(--modal-content) !important;
+  color: var( --nav-bg);
+}
+.modal-content p{
+  color: var( --nav-bg);
+}
+.modal-body .input-group-text{
+  background-color: var(--clr-);
+}
+.modal-body .form-control{
+  background-color: var(--clr-);
+  color: var(--nav-bg);
+}
+.input-group-text svg{
+  color: var(--nav-bg);
+}
+.btn-close{
+  background-color: white;
+}
 .disabledDiv {
   cursor: not-allowed;
   opacity: 0.4;
@@ -140,4 +167,13 @@ input[type=number] {
 }
 .new_clr a:hover{
   font-weight: bolder;
+}
+.color_text{
+  color: var(--nav-bg);
+}
+.color_close{
+  color: var(--nav-bg);
+}
+.dropdown-item:focus, .dropdown-item:hover{
+  background-color: transparent !important;
 }

@@ -56,7 +56,7 @@ function ModalB({ setSelectedToken, selectedToken }) {
                 {selectedToken.name} <IoIosArrowDown />
             </button>
 
-            <Modal show={show} onHide={handleClose} animation={false} className='mt-5'>
+            <Modal show={show} onHide={handleClose} animation={false} className='mt-5' centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Select a token</Modal.Title>
 
