@@ -250,10 +250,10 @@ const TokenSelect = () => {
                   }
                 </p>
                 <div className='modalselect w-100 d-flex justify-content-center'>
-                  <div className=" rad border wid p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                  <div className=" wid p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                     <p className="form-label text-start text-dark"><strong>Send</strong></p>
                     <input type="number"
-                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      style={{ border: "none", outline: "none", boxShadow: "none",backgroundColor: "#E8F0FE" }}
                       placeholder='0'
                       value={etherAmount}
                       onChange={(e) => {
@@ -281,9 +281,9 @@ const TokenSelect = () => {
                   </div>
                 </div>
 
-
-                <div className=' modalselect w-100 d-flex justify-content-center mb-3'>
-                  <div className=" wid rad border p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                <div className='bg_clr w-lg-75 w-100 mx-auto rounded'>
+                <div className=' modalselect w-100 d-flex justify-content-center mb-0'>
+                  <div className=" w-100  p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                     <div className='d-flex justify-content-between align-items-center  pb-1'>
                       <p className="form-label text-dark text-start mb-0"><strong className=''>You Receive</strong></p>
                       {
@@ -313,12 +313,12 @@ const TokenSelect = () => {
                   </div>
 
                 </div>
-                <div className='w-100 d-flex justify-content-center mb-3'>
-                  <div className=" wid rad p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                <div className='w-100 d-flex justify-content-center mb-3 mt-n2'>
+                  <div className=" w-100 p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                     <p className="form-label text-start text-dark"><strong>Password</strong></p>
                     <input type={isSeePass ? "text" : "password"} name="" id=""
                       style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                      className='token_inp w-100 text-dark' placeholder=''
+                      className='token_inp w-100 p-2 text-dark' placeholder=''
                       onChange={(e) => setPass(e.target.value)}
                     />
                     <div
@@ -330,6 +330,8 @@ const TokenSelect = () => {
                     </div>
                   </div>
                 </div>
+                </div>
+               
 
 
                 <Button className='wid protect rad mb-1 p-2 bg-primary'

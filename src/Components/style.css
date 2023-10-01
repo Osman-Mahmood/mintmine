@@ -569,7 +569,21 @@ tbody, td, tfoot, th, thead, tr {
   margin-top: 80px;
   /* height: 65vh; */
 }
+.bg_clr{
+  background-color: rgb(118, 168, 255);
+  border-radius: 12px !important;
+}
+.navbar-dark .navbar-toggler{
+  border: none !important;
+}
+[data-rk] .ju367v9c {
+  background: transparent !important;
+  border: 1px solid white !important;
+}
 @media screen and (max-width:600px) {
+  .font{
+    font-size: 17px;
+  }
   .margin_top{
     margin-top: 50px;
     height: 70vh;

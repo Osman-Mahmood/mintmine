@@ -221,7 +221,7 @@ const WithdrawToken = () => {
                                     <div class=" wid rad border p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                                         <p className="form-label text-dark text-start"><strong>Receive</strong></p>
                                         <input type="number"
-                                            style={{ border: "none", outline: "none", boxShadow: "none" }}
+                                            style={{ border: "none", outline: "none", boxShadow: "none",backgroundColor: "#E8F0FE" }}
                                             placeholder='0'
                                             value={etherAmount}
                                             onChange={(e) => {

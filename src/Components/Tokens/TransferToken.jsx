@@ -263,6 +263,7 @@ const TransferToken = () => {
                         border: "none",
                         outline: "none",
                         boxShadow: "none",
+                        backgroundColor: "#E8F0FE"
                       }}
                       placeholder="0"
                       value={etherAmount}
@@ -318,6 +319,7 @@ const TransferToken = () => {
                         border: "none",
                         outline: "none",
                         boxShadow: "none",
+                        backgroundColor: "#E8F0FE"
                       }}
                       placeholder=""
                       onChange={(e) => setTransferAddress(e.target.value)}

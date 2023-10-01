@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className='bg_footer'>
    <div className='container p-0 mb-lg-0 mb-2 pb-lg-0 pb-0'>
-        <div className='row text-center'>
+        <div className='row gx-0 text-center'>
             <div className='col-lg-12 mt-1'>
               <p></p>
               <p className=''></p>
@@ -23,7 +23,6 @@ const Footer = () => {
                <a href="https://github.com/u369eth" target='blank'><AiOutlineGithub className='icon'/></a> 
                 
             </div>
-            <p className='footer_font'>Image by kjpargeter on Freepik</p>
             </div>
         </div>
       

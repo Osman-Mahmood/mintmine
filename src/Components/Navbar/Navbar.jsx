@@ -197,7 +197,7 @@ function NavbarMenu() {
                         <img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block text-white ms-1 mt-3'>u369</p>
                     </NavLink>
                 </Navbar.Brand>
-                <div className="form-check form-switch switch ms-auto p-0 d-lg-none d-block">
+                {/* <div className="form-check form-switch switch ms-auto p-0 d-lg-none d-block">
                   <input
                     className="form-check-input change ms-auto text-end light_mode"
                     onClick={toggleThem}
@@ -205,8 +205,8 @@ function NavbarMenu() {
                     role="switch"
                     id="flexSwitchCheckChecked"
                   />
-                </div>
-                <Nav className='gap-lg-4  gap-3 d-lg-none d-block'>
+                </div> */}
+                <Nav className='gap-lg-4  gap-3 d-lg-none d-block ms-4'>
                     <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
                 </Nav>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setNavExpanded(prev => !prev)} />
@@ -246,6 +246,10 @@ function NavbarMenu() {
                             <NavDropdown.Item>
                                 <NavLink to="selfserve" className="text-white a_tag" onClick={closeNavbar}>Self-serve</NavLink>
                             </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item>
+                                <NavLink to="credit" className="text-white a_tag" onClick={closeNavbar}>Credits</NavLink>
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav className='gap-lg-4 gap-3 d-lg-flex d-none align-items-center'>
@@ -255,7 +259,7 @@ function NavbarMenu() {
                                 theme === "dark-theme" ? <span className='fs-4'><MdOutlineNightlight /></span> : <span className='text-light fs-4'><MdOutlineLightMode /></span>
                             }
                         </div> */}
-                         <div className="form-check form-switch switch ms-auto p-0">
+                         {/* <div className="form-check form-switch switch ms-auto p-0">
                   <input
                     className="form-check-input change ms-auto text-end light_mode"
                     onClick={toggleThem}
@@ -263,7 +267,7 @@ function NavbarMenu() {
                     role="switch"
                     id="flexSwitchCheckChecked"
                   />
-                </div>
+                </div> */}
                         <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
                     </Nav>
                 </Navbar.Collapse>
