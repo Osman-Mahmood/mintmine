@@ -281,7 +281,7 @@ const TokenSelect = () => {
                   </div>
                 </div>
 
-                <div className='bg_clr w-lg-75 w-100 mx-auto rounded'>
+                <div className='bg_clr w-75 mx-auto rounded'>
                 <div className=' modalselect w-100 d-flex justify-content-center mb-0'>
                   <div className=" w-100  p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                     <div className='d-flex justify-content-between align-items-center  pb-1'>

@@ -12,6 +12,7 @@ const Home = () => {
             <h1 className='text-white mt-0 font'>Non-custodial & open-source<span className='d-none'>✨</span></h1>
             <h1 className='text-white font'>Protecting your tokens <span className='d-none'>✨</span></h1>
             <h1 className='text-white font'>Funding public goods & rewarding you <span className=' d-none'>✨</span></h1>
+          <h1 className='text-white font'>$ USDT or USDC protected from theft in u369.</h1>
             {/* <button className='reward mt-4' onClick={()=>{ConnectButton()}}>Get Started</button> */}
            {/* <div className='text-center justify-content-center mb-4'>
             <ConnectButton label='Get Started' className="text-center" chainStatus="icon" accountStatus="address" showBalance={false} />

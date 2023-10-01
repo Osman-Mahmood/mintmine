@@ -23,14 +23,20 @@ function TransactionModal({ showTrx, setShowTrx, trxHash }) {
             <AiFillCheckCircle className='text-success fs-1 mb-3'/>
       <h4>Success</h4>    
       <div className='d-flex justify-content-center text-center align-items-center gap-2 mt-4 mb-3'>
-      <p className='fw-bold mb-0'>10.0 DAI</p>
+      <p className='fw-bold mb-0'>0.02846 MATIC protected</p>
   <AiOutlineArrowRight />
-      <p className='fw-bold mb-0'>0.00053 ETH</p>
+      <p className='fw-bold mb-0'>0.02846 uMATIC minted</p>
+     
+      <p></p>
+      <p></p>
       </div>
           </div>
          
           <div className='mt-5'>
-          <a style={{ color: "blue", fontWeight: "bold", textDecoration: "none", cursor: "pointer" }} href={trxHash} target='blank'> View on block explorer</a>
+          <img src="" alt="udai logo" />
+      <p>You received 481 uDAI</p>
+      <p>Add to wallet to track your balance</p>
+      <a style={{ color: "blue", fontWeight: "bold", textDecoration: "none", cursor: "pointer" }} href={trxHash} target='blank'>Review tx details</a>
           </div>
 
         </Modal.Body>

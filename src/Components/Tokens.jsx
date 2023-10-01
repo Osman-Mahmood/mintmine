@@ -4,8 +4,9 @@ import { etherTokens } from '../tokenConfig';
 import PairPrice from './PairPrice';
 import All from '../assets/All.svg'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
 function Tokens() {
-  
+    const { isConnected } = useAccount();
     return (
         <div className='container p-2 mb-5 p-5'>
             <div className='row gx-0 align-items-center'>
@@ -15,7 +16,9 @@ function Tokens() {
                         <h4 className='text-lg-start text-center '>
                     Tokens to protect
                     </h4>
-                    <ConnectButton  className="text-start" label="Connect"  showBalance={false} />
+                   {
+                    isConnected && <ConnectButton  className="text-start" label="Connect"  showBalance={false} />
+                   } 
                         </div>
                  <div className='col-lg-6 col-12 mb-lg-0 mb-5'>
                  <h4 className=''>

@@ -251,7 +251,7 @@ const TransferToken = () => {
                 </p>
                 <div className="modalselect w-100 d-flex justify-content-center ">
                   <div
-                    class="wid rad p-2 border"
+                    class="wid p-2 "
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <p className="form-label text-start text-dark ">
@@ -300,10 +300,10 @@ const TransferToken = () => {
                     </span>
                   </div>
                 </div>
-               
-                <div className=" w-100 d-flex justify-content-center mb-3">
+                <div className='bg_clr w-75 mx-auto rounded'>
+                <div className=" w-100 d-flex justify-content-center mb-0">
                   <div
-                    class=" wid rad p-2 border"
+                    class="w-100  p-2"
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <div className="d-flex justify-content-between">
@@ -328,9 +328,9 @@ const TransferToken = () => {
                   </div>
                 </div>
 
-                <div className="w-100 d-flex justify-content-center mb-3 mt-3">
+                <div className="w-100 d-flex justify-content-center mb-3 mt-0">
                   <div
-                    className="wid rad p-2 "
+                    className="p-2 w-100"
                     style={{ backgroundColor: "rgb(118 168 255)" }}
                   >
                     <p className="form-label text-start text-dark ">
@@ -345,7 +345,7 @@ const TransferToken = () => {
                         outline: "none",
                         backgroundColor: "#E8F0FE",
                       }}
-                      className=" token_inp w-100 text-dark "
+                      className="p-2 token_inp w-100 text-dark "
                       placeholder=""
                       onChange={(e) => setPass(e.target.value)}
                     />
@@ -358,7 +358,7 @@ const TransferToken = () => {
                     </div>
                   </div>
                 </div>
-
+</div>
                 <Button
                   className="wid protect mb-2 p-2 rad"
                   variant="primary"

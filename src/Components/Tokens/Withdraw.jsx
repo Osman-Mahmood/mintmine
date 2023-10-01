@@ -254,7 +254,7 @@ const WithdrawToken = () => {
 
                                         <input type={isSeePass ? "text" : "password"} name="" id=""
                                             style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}
-                                            className=' token_inp w-100 text-dark' placeholder='0'
+                                            className='p-2 token_inp w-100 text-dark' placeholder='0'
                                             onChange={(e) => setPass(e.target.value)}
                                         />
                                         <div
