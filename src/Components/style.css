@@ -580,12 +580,45 @@ tbody, td, tfoot, th, thead, tr {
   background: transparent !important;
   border: 1px solid white !important;
 } */
+.boxes{
+  background-color: #292E41;
+  border-radius: 15px;
+}
+.custom-table {
+  border: none; /* Remove borders */
+  background-color: transparent; 
+  /* Remove background color */
+}
+
+.custom-table thead th {
+  color: #7e7f8a;
+  background-color: transparent; /* Remove background color for table headers */
+}
+
+.custom-table tbody td {
+  color: #7e7f8a;
+  background-color: transparent; /* Remove background color for table cells */
+  border: none; /* Remove borders for table cells */
+}
+
+.alert{
+  background-color: #061F2F;
+  color: #89BED5;
+}
+.text-clr{
+  color: #7e7f8a;
+}
 @media screen and (max-width:600px) {
+  .mobilr_hrigth{
+    height: 90vh;
+  }
   .bg_clr{
     width: 100% !important;
   }
   .font{
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
   }
   .margin_top{
     margin-top: 50px;

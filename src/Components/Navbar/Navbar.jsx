@@ -212,8 +212,11 @@ function NavbarMenu() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setNavExpanded(prev => !prev)} />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto px-0 text-start">
-                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks d-lg-flex d-none" to="/" onClick={closeNavbar}>u369</NavLink>
-                        <NavDropdown className='text-white ms-lg-3 ms-0 new_clr' title="Operations" id="navbarScrollingDropdown" show={isOpen}
+                        {/* <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks d-lg-flex d-none" to="/" onClick={closeNavbar}>u369</NavLink> */}
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="dashboard" onClick={closeNavbar}>Dashboard</NavLink>
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="protocol" onClick={closeNavbar}>u369 Protocol</NavLink>
+                       
+                        {/* <NavDropdown className='text-white ms-lg-3 ms-0 new_clr' title="u369 Protocol " id="navbarScrollingDropdown" show={isOpen}
                             onMouseEnter={() => setIsOpen(true)}
                             onMouseLeave={() => setIsOpen(false)}>
                             <NavDropdown.Item>
@@ -227,10 +230,12 @@ function NavbarMenu() {
                             <NavDropdown.Item>
                                 <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="withdraw" onClick={closeNavbar}>Claim</NavLink>
                             </NavDropdown.Item>
-                        </NavDropdown>
-                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens" onClick={closeNavbar}>Tokens</NavLink>
+                        </NavDropdown> */}
                         <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward" onClick={closeNavbar}>Rewards</NavLink>
-                        <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdownMore">
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens" onClick={closeNavbar}>Security</NavLink>
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="faq" onClick={closeNavbar}>FAQ</NavLink>
+
+                        {/* <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdownMore">
                             <NavDropdown.Item>
                                 <NavLink to="crypto" className="text-white a_tag" onClick={closeNavbar}>What is u369?</NavLink>
                             </NavDropdown.Item>
@@ -250,7 +255,7 @@ function NavbarMenu() {
                             <NavDropdown.Item>
                                 <NavLink to="credit" className="text-white a_tag" onClick={closeNavbar}>Credits</NavLink>
                             </NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                     <Nav className='gap-lg-4 gap-3 d-lg-flex d-none align-items-center'>
                         {/* <div className="form-check form-switch switch bg-light ms-lg-auto ms-0 p-0"

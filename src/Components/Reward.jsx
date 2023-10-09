@@ -172,7 +172,7 @@ const Tokens = () => {
         </div>
         
       </div>
-      <h1 className='text-start'>Information</h1>
+      {/* <h1 className='text-start'>Information</h1> */}
       <p className='text-start'>Every time u369 is used to protect a token, 30% of the smart-contract's service-fee is sent to the prize pool address. <br />
 
 <span className='fw-bold'>Reward system parameters:</span>  <br />

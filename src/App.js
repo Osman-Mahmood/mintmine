@@ -31,6 +31,9 @@ import SwitchNetwork from './Components/SwitchNetwork';
 import WhatisCrypto from './Components/WhatisCrypto';
 import PublicAdress from './Components/PublicAdress';
 import Credit from './Components/Credit';
+import Protocol from './Components/Protocol';
+import Faqs from './Components/Faqs';
+import Dashboard from './Components/Dashboard';
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
@@ -115,7 +118,7 @@ function App() {
           ]
         },
         {
-          path: "select",
+          path: "/select",
           element: <TokenSelect />,
         },
         {
@@ -123,11 +126,11 @@ function App() {
           element: <Credit />,
         },
         {
-          path: "transfer",
+          path: "/transfer",
           element: <TransferToken />,
         },
         {
-          path: "withdraw",
+          path: "/withdraw",
           element: <WithdrawToken />,
         },
         {
@@ -149,6 +152,17 @@ function App() {
         {
           path: "crypto",
           element: <Crypto />,
+        },
+        {
+          path: "protocol",
+          element: <Protocol />,
+        },  {
+          path: "faq",
+          element: <Faqs />,
+        },
+        {
+          path: "dashboard",
+          element: <Dashboard />,
         },
         {
           path: "adres",
