@@ -23,7 +23,7 @@
   color: var(--text-white);
 }
 .modal-content{
-  background-color: var(--modal-content) !important;
+  background-color: #292E41 !important;
   color: var( --nav-bg);
 }
 .modal-content p{
