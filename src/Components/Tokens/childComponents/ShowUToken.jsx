@@ -54,14 +54,14 @@ function ShowUToken({ token, setSelectedToken, handleClose }) {
                 {tokenDetail ? <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>
-                        <p className='mb-0 eth'>{
+                        <p className='mb-0 eth text-white'>{
                             tokenDetail
                         }</p>
                     </div>
                 </div>
                     :
                     "Loading..."}
-                <div className=''>
+                <div className='text-white'>
                 {tokenBalance}
                 </div>
             </div>

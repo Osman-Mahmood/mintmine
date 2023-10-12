@@ -49,12 +49,12 @@ const [hideIcon, setHideIcon] = useState(false);
         if (!isPasswordSet)
             handleShow()
     }
-    useEffect(() => {
-        if (window.ethereum) {
-            if (getChainDetails(chain?.id))
-                getDeatil()
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (window.ethereum) {
+    //         if (getChainDetails(chain?.id))
+    //             getDeatil()
+    //     }
+    // }, [])
     const [showBalance, setShowBalance] = useState(null)
     const getBal = async () => {
         try {

@@ -58,14 +58,14 @@ function ModalB({ setSelectedToken, selectedToken }) {
 
             <Modal show={show} onHide={handleClose} animation={false} className='mt-5' centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Select a token</Modal.Title>
+                    <Modal.Title className='text-white'>Select a token</Modal.Title>
 
                 </Modal.Header>
 
                 <Modal.Body>
                     <div >
                         <div className={
-                            uNativeBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
+                            uNativeBal > 0 ? "d-flex mt-3 text-white justify-content-between align-items-center enabledDiv" : "d-flex text-white mt-3 justify-content-between align-items-center disabledDiv"}
                          onClick={()=>{setSelectedToken({
                                 name:`u${chain?.nativeCurrency.symbol}`,
                                 address:ethAddress,
@@ -79,7 +79,7 @@ function ModalB({ setSelectedToken, selectedToken }) {
                             <div className='d-flex align-items-center'>
                                 <img src={All} alt="" />
                                 <div className='d-block ms-3'>
-                                    <p className='mb-0 eth'>u{chain?.nativeCurrency.symbol}</p>
+                                    <p className='mb-0 eth text-white'>u{chain?.nativeCurrency.symbol}</p>
                                 </div>
                             </div>
                             <div className=''>

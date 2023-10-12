@@ -44,7 +44,7 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
     return (
         <>
             <div className={
-                tokenBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"
+                tokenBal > 0 ? "d-flex text-white mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center text-white disabledDiv"
             }
                 onClick={() => {
                     setSelectedToken({
@@ -60,7 +60,7 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
                 {tokenDetail ? <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>
-                        <p className='mb-0 eth'>{
+                        <p className='mb-0 eth text-white'>{
                             tokenDetail
                         }</p>
                     </div>

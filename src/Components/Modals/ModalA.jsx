@@ -78,7 +78,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
 
             <Modal show={show} onHide={handleClose} animation={false} className="rounded_icon pt-5" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Select a token</Modal.Title>
+                    <Modal.Title className="text-white">Select a token</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -92,7 +92,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
                             />
                         </InputGroup>
                        {tokensList.length > 0 && <div className={
-                            walletBal > 0 ? "d-flex mt-3 justify-content-between align-items-center enabledDiv" : "d-flex mt-3 justify-content-between align-items-center disabledDiv"}
+                            walletBal > 0 ? "d-flex mt-3 justify-content-between align-items-center text-white enabledDiv" : "d-flex mt-3 text-white justify-content-between align-items-center disabledDiv"}
                             onClick={() => {
                                 setSelectedToken({
                                     name: chain?.nativeCurrency.symbol,
@@ -108,16 +108,16 @@ function ModalA({ setSelectedToken, selectedToken }) {
                             <div className='d-flex align-items-center'>
                                 <img src={All} alt="" />
                                 <div className='d-block ms-3'>
-                                    <p className='mb-0 eth'>{chain?.nativeCurrency.symbol}</p>
+                                    <p className='mb-0 eth text-white'>{chain?.nativeCurrency.symbol}</p>
                                 </div>
                             </div>
-                            <div className=''>
+                            <div className='text-white'>
                                 {walletBal}
                             </div>
                         </div>}
                         {
                             tokensList.map((token, index) => {
-                                return <ShowToken setSelectedToken={setSelectedToken} key={index} token={token} handleClose={handleClose} />
+                                return <ShowToken className="text-white" setSelectedToken={setSelectedToken} key={index} token={token} handleClose={handleClose} />
                             })
                         }
                     </div>
