@@ -24,27 +24,27 @@ const Dashboard = () => {
     <div className="container p-0">
       <div className="row justify-content-center align-items-center p-3">
 
-        <Navbar.Collapse id="navbar-dark-example">
-          <Nav>
-            <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Ethereum Network v1"
-              menuVariant="dark"
-              className="text-white ethe"
-              style={{color:"white",fontSize:"25px"}}
-            >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar collapseOnSelect expand="lg">
+      {/* <Navbar.Brand href="#home">MyBrand</Navbar.Brand> */}
+      {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
+      <Navbar.Collapse id="navbar-dark-example">
+        <Nav>
+          <NavDropdown
+            id="nav-dropdown-dark-example"
+            title="Ethereum Network v1"
+            menuVariant="dark"
+            className="text-white ethe"
+            style={{color:"white",fontSize:"25px"}}
+          >
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
 
 
         <div className="row gx-0 mt-3 d-flex">

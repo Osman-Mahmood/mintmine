@@ -51,6 +51,9 @@ label{
 /* .collapse:not(.show){
   display: flex !important;
 } */
+#nav-dropdown-dark-example .collapse:not(.show) {
+  display: block !important;
+}
 .ethe .dropdown-menu{
   width: 300px !important;
 }
