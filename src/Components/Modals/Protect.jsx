@@ -231,7 +231,7 @@ function Protect() {
   };
   return (
     <>
-      <Button variant="primary" className='font_size bg-transparent px-3 p-1 text-clr' onClick={handleShow}>
+      <Button variant="primary" className='font_size border bg-transparent px-3 p-1 text-clr' onClick={handleShow}>
       Protect
       </Button>
 

@@ -103,7 +103,7 @@ const Dashboard = () => {
                             {" "}
                             <Button
                               variant="primary"
-                              className="bg-transparent px-3 ms-3 p-1 text-clr font_size"
+                              className="bg-transparent border px-3 ms-3 p-1 text-clr font_size"
                             >
                               Details
                             </Button>
@@ -153,7 +153,7 @@ const Dashboard = () => {
                             <td>
                               <Button
                                 variant="primary"
-                                className="font_size bg-transparent px-2 p-1 text-clr "
+                                className="font_size border bg-transparent px-2 p-1 text-clr "
                               >
                                 Add to Wallet
                               </Button>
@@ -171,7 +171,7 @@ const Dashboard = () => {
                               {" "}
                               <Button
                                 variant="primary"
-                                className="font_size bg-transparent px-2 p-1 text-clr"
+                                className="font_size border bg-transparent px-2 p-1 text-clr"
                               >
                                 Details
                               </Button>

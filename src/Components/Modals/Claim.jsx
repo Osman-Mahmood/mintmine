@@ -219,7 +219,7 @@ const [hideIcon, setHideIcon] = useState(false);
       }
   return (
     <>
-      <Button variant="primary" className='font_size bg-transparent px-2 p-1 text-clr' onClick={handleShow}>
+      <Button variant="primary" className='border font_size bg-transparent px-2 p-1 text-clr' onClick={handleShow}>
       Claim
       </Button>
       <AnimatePresence>
