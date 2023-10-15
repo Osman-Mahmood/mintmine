@@ -25,6 +25,13 @@ import TransactionModal from "../Modals/TransactionModal";
 import Range from "../Range";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from 'framer-motion';
+
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 0 }
+};
 function Transfer() {
 //   const [show, setShow] = useState(false);
 
@@ -227,11 +234,20 @@ function Transfer() {
 
   return (
     <>
-      <Button variant="primary" className='bg-transparent px-3 ms-3 p-1 text-clr' onClick={handleShow}>
+      <Button variant="primary" className='font_size bg-transparent px-2 p-1 text-clr' onClick={handleShow}>
       Transfer
       </Button>
+      <AnimatePresence>
+        {show && (
+      <Modal show={show} onHide={handleClose} style={{ zIndex: 999 }} keyboard={false}
+      animation={false} centered>
+ <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={modalVariants}
+            >
 
-      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
@@ -257,7 +273,7 @@ function Transfer() {
                   <h5 className="color_close">Transfer</h5>
                   <Link to="/home">
                     <AiOutlineClose
-                      className="color_close text-end fs-3"
+                      className="color_close text-end fs-3 d-none"
                       style={{ cursor: "pointer" }}
                     // onClick={()=>setHideIcon(true)}
                     />
@@ -411,7 +427,10 @@ function Transfer() {
     </>
         </Modal.Body>
 
-      </Modal>
+        </motion.div>
+          </Modal>
+        )}
+      </AnimatePresence>
     </>
   );
 }

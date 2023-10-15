@@ -20,11 +20,18 @@
   --clr-: black;
 }
 .lighttext{
-  color: var(--text-white);
+  /* color: var(--text-white); */
+  color: white ;
+}
+label{
+  color: white;
 }
 .modal-content{
-  background-color: #292E41 !important;
-  color: var( --nav-bg);
+  backdrop-filter: blur(37px);
+  /* background: rgba(25, 27, 31, 0.9); */
+  border-bottom: 1px solid rgb(25, 27, 31);
+  transition: background-color 0.25s ease 0s;
+  background-color: transparent;
 }
 .modal-content p{
   color: var( --nav-bg);
@@ -33,8 +40,19 @@
   background-color: var(--clr-);
 }
 .modal-body .form-control{
-  background-color: var(--clr-);
-  color: var(--nav-bg);
+  /* background-color: var(--clr-); */
+  background-color: white;
+  color: white;
+  /* color: var(--nav-bg); */
+}
+.nav-item a{
+  color: white !important;
+}
+/* .collapse:not(.show){
+  display: flex !important;
+} */
+.ethe .dropdown-menu{
+  width: 300px !important;
 }
 .input-group-text svg{
   color: var(--nav-bg);
@@ -176,4 +194,8 @@ input[type=number] {
 }
 .dropdown-item:focus, .dropdown-item:hover{
   background-color: transparent !important;
+}
+.modal-backdrop.show{
+  opacity: 0 !important;
+  display: none !important;
 }

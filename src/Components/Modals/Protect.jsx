@@ -16,9 +16,14 @@ import { BeatLoader } from 'react-spinners'
 import Range from '../Range'
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion';
 function Protect() {
   const [show, setShow] = useState(false);
-
+  const modalVariants = {
+    hidden: { opacity: 0, y: '-50%' },
+    visible: { opacity: 1, y: '0' },
+    exit: { opacity: 0, y: '50%' }
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [hideIcon, setHideIcon] = useState(false);
@@ -226,11 +231,17 @@ function Protect() {
   };
   return (
     <>
-      <Button variant="primary" className='bg-transparent px-3 p-1 text-clr' onClick={handleShow}>
+      <Button variant="primary" className='font_size bg-transparent px-3 p-1 text-clr' onClick={handleShow}>
       Protect
       </Button>
 
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide={handleClose} centered style={{ zIndex: 999 }}>
+      <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={modalVariants}
+        >
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
@@ -250,7 +261,7 @@ function Protect() {
                   <div className='justify-content-end d-flex'>
                     <Link to="/home">
                       <AiOutlineClose
-                        className="color_close text-end fs-3"
+                        className="color_close text-end fs-3 d-none"
                         style={{ cursor: "pointer" }}
                       // onClick={()=>setHideIcon(true)}
                       />
@@ -375,7 +386,7 @@ function Protect() {
       }
     </>
         </Modal.Body>
-
+ </motion.div>
       </Modal>
     </>
   );

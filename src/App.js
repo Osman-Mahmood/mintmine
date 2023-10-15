@@ -32,8 +32,8 @@ import WhatisCrypto from './Components/WhatisCrypto';
 import PublicAdress from './Components/PublicAdress';
 import Credit from './Components/Credit';
 import Protocol from './Components/Protocol';
-import Faqs from './Components/Faqs';
 import Dashboard from './Components/Dashboard';
+import FaqsFinal from './Components/FaqsFinal';
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
@@ -158,7 +158,7 @@ function App() {
           element: <Protocol />,
         },  {
           path: "faq",
-          element: <Faqs />,
+          element: <FaqsFinal />,
         },
         {
           path: "dashboard",

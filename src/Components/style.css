@@ -584,6 +584,13 @@ tbody, td, tfoot, th, thead, tr {
   background-color: #292E41;
   border-radius: 15px;
 }
+.font_size{
+  font-size: 10px;
+  
+}
+.font_size:focus{
+  box-shadow: none !important;
+}
 .custom-table {
   border: none; /* Remove borders */
   background-color: transparent; 
@@ -606,7 +613,8 @@ tbody, td, tfoot, th, thead, tr {
   color: #89BED5;
 }
 .text-clr{
-  color: #7e7f8a;
+  /* color: #7e7f8a; */
+  color: white;
 }
 @media screen and (max-width:600px) {
   .mobilr_hrigth{

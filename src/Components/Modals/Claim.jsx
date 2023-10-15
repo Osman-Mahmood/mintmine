@@ -18,8 +18,29 @@ import Range from '../Range'
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
+import { motion, AnimatePresence } from "framer-motion";
 
+
+const modalVariants = {
+    open: {
+      y: "0%",
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 }
+      }
+    },
+    closed: {
+      y: "50%",
+      opacity: 0,
+      transition: {
+        y: { stiffness: 1000 }
+      }
+    }
+  };
+
+  
 function Claim() {
+ 
 //   const [show, setShow] = useState(false);
 
 //   const handleClose = () => setShow(false);
@@ -198,11 +219,20 @@ const [hideIcon, setHideIcon] = useState(false);
       }
   return (
     <>
-      <Button variant="primary" className='bg-transparent px-3 p-1 text-clr' onClick={handleShow}>
+      <Button variant="primary" className='font_size bg-transparent px-2 p-1 text-clr' onClick={handleShow}>
       Claim
       </Button>
+      <AnimatePresence>
+        {show && (
+      <Modal show={show} onHide={handleClose}  animation={false} centered>
+      
+      <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={modalVariants}
+            >
 
-      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           {/* <Modal.Title>Modal heading</Modal.Title> */}
         </Modal.Header>
@@ -221,7 +251,7 @@ const [hideIcon, setHideIcon] = useState(false);
                                     <h5 className='color_close'>Withdraw</h5>
                                     <Link to="/home">
                                         <AiOutlineClose
-                                            className="color_close text-end fs-3"
+                                            className="color_close text-end fs-3 d-none"
                                             style={{ cursor: "pointer" }}
                                         // onClick={()=>setHideIcon(true)}
                                         />
@@ -304,8 +334,11 @@ const [hideIcon, setHideIcon] = useState(false);
             }
         </>
         </Modal.Body>
+        </motion.div>
+          </Modal>
+        )}
+      </AnimatePresence>
 
-      </Modal>
     </>
   );
 }

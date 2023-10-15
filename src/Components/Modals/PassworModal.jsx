@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import BeatLoader from "react-spinners/BeatLoader";
+import { motion } from 'framer-motion';
 import {
   useChainId,
   useNetwork,
@@ -97,11 +98,21 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
       console.error("error while save password", error);
     }
   };
-
+  const modalVariants = {
+    hidden: { opacity: 0, y: '-50%' },
+    visible: { opacity: 1, y: '0' },
+    exit: { opacity: 0, y: '50%' }
+  };
   return (
     <>
-      <Modal show={show} onHide={handleClose} >
-        <div style={{zIndex:'999999'}}>
+      <Modal show={show} onHide={handleClose} centered style={{ zIndex: 1000 }}>
+      <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={modalVariants}
+        >
+
         <Modal.Header closeButton style={{backgroundColor:'#0D6EFD',color:'white'}}>
           <Modal.Title>Master Key</Modal.Title>
         </Modal.Header>
@@ -214,8 +225,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
             Close
           </button> */}
         </Modal.Footer>}
-        </div>
-       
+       </motion.div>
       </Modal>
     </>
   );
