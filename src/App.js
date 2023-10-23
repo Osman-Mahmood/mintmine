@@ -32,8 +32,9 @@ import WhatisCrypto from './Components/WhatisCrypto';
 import PublicAdress from './Components/PublicAdress';
 import Credit from './Components/Credit';
 import Protocol from './Components/Protocol';
-import Dashboard from './Components/Dashboard';
+import Dashboard from './Components/Dashboard/Dashboard';
 import FaqsFinal from './Components/FaqsFinal';
+import 'react-loading-skeleton/dist/skeleton.css'
 function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
@@ -41,6 +42,7 @@ function App() {
   console.log("chain", chain);
   const firstRender = useRef(true)
   useMemo(() => {
+    window.localStorage.setItem("refresh", "false")
     if (window.ethereum)
       if (firstRender.current) {
         firstRender.current = false;
@@ -156,7 +158,7 @@ function App() {
         {
           path: "protocol",
           element: <Protocol />,
-        },  {
+        }, {
           path: "faq",
           element: <FaqsFinal />,
         },

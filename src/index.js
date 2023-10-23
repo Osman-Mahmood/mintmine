@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './store/index';
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
@@ -32,7 +34,7 @@ const wagmiConfig = createConfig({
 });
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
+<Provider store={store}>
   <WagmiConfig config={wagmiConfig}>
     <RainbowKitProvider chains={chains}>
     <SkeletonTheme baseColor="#000" highlightColor="#444">
@@ -40,5 +42,6 @@ root.render(
       </SkeletonTheme>
     </RainbowKitProvider>
   </WagmiConfig>
+</Provider>
 );
 

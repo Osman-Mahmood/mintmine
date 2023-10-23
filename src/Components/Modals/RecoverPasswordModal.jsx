@@ -3,8 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import BeatLoader from "react-spinners/BeatLoader";
-
-import toast from 'react-hot-toast';
 import { useAccount,  useNetwork } from 'wagmi';
 
 import { factoryInstance, getChainDetails } from '../../config';
@@ -84,7 +82,7 @@ export default function RecoverPasswordModal({ show, handleClose }) {
                 <Modal.Header closeButton
 
                 >
-                    <Modal.Title>Reset Password</Modal.Title>
+                    <Modal.Title className='text-light'>Reset Password</Modal.Title>
                 </Modal.Header>
                 <Modal.Body  >
                     {/* <h3>Recover Password</h3> */}
@@ -94,7 +92,7 @@ export default function RecoverPasswordModal({ show, handleClose }) {
 
 
                             <Form.Control type="password"
-                                className='w-100'
+                                className='w-100 text-dark'
 
                                 disabled={!isConnected}
                                 onChange={(e) => checkPhrase(e.target.value)}
@@ -108,9 +106,10 @@ export default function RecoverPasswordModal({ show, handleClose }) {
 
                         </Form.Group>}
 
-                        {isEnable && <><Form.Group className="mb-3" controlId="formBasicPassword">
+                        {isEnable && <><Form.Group className="mb-3 text-light" controlId="formBasicPassword">
                             <Form.Label>New Password</Form.Label>
                             <Form.Control type="password"
+                            className='text-dark'
                                 onChange={(e) => {
                                     setPass({ ...pass, password: e.target.value })
                                 }}
@@ -120,6 +119,7 @@ export default function RecoverPasswordModal({ show, handleClose }) {
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control type="password"
+                                className='text-dark'
                                     onChange={(e) => {
                                         setPass({ ...pass, confirmPassword: e.target.value })
                                     }}

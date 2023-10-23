@@ -51,6 +51,7 @@ function ModalA({ setSelectedToken, selectedToken }) {
 
     useEffect(() => {
         getUTokens()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [chain?.id])
     let [walletBal, setWalletBal] = useState("...")
     const [ethAddress, setEthAddress] = useState("...");
