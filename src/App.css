@@ -178,9 +178,15 @@ input[type=number] {
   box-shadow: 0px !important;
 } */
 .dropdown-menu{
-  background-color: #270515;
+  /* background-color: #270515;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px; */
+    /* background-color: #292E41; */
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    /* background: rgba(25, 27, 31, 0.9); */
+    border-bottom: 1px solid rgb(25, 27, 31);
+    transition: background-color 0.25s ease 0s;
 }
 .dropdown-item:hover{
   background-color: #270515 !important;

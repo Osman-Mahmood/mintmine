@@ -425,7 +425,10 @@
   font-weight: 600;
   line-height: normal;
 }
-
+[data-rk] .ju367v9c {
+  background: transparent !important;
+  border: 1px solid white !important;
+}
 .time_box2 {
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.22);
@@ -442,6 +445,9 @@ height: 71px; */
 }
 }
 @media screen and (max-width:600px) {
+  .modal-content{
+    margin-top: 65px;
+  }
   .nav-link {
     padding: 0;
   }
@@ -579,6 +585,9 @@ tbody, td, tfoot, th, thead, tr {
 /* [data-rk] .ju367v9c {
   background: transparent !important;
   border: 1px solid white !important;
+} */
+/* [data-rk] .ju367vex {
+  color: black !important;
 } */
 .boxes{
   /* background-color: #292E41; */

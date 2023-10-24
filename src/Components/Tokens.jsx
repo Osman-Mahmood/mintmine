@@ -8,10 +8,10 @@ import { useAccount } from 'wagmi';
 function Tokens() {
     const { isConnected } = useAccount();
     return (
-        <div className='container p-2 mb-5 p-5'>
+        <div className='container p-2 mb-5 pb-5 mt-5 p-5'>
             <div className='row gx-0 align-items-center'>
                 <div className='col-lg-12'>
-                    <div className='d-lg-flex d-block align-items-center'>
+                    {/* <div className='d-lg-flex d-block align-items-center'>
                         <div className='col-lg-6 col-12'>
                         <h4 className='text-lg-start text-center '>
                     Tokens to protect
@@ -29,19 +29,15 @@ function Tokens() {
                     </h4>
                  </div>
                    
-                    </div>
+                    </div> */}
                     
-                    <Table className='mt-2 border rad text-light p-3 rounded mb-lg-5 mb-0' >
+                    {/* <Table className='mt-2 border rad text-light p-3 rounded mb-lg-5 mb-0' >
                         <thead className='bor'>
                             <tr>
                                 <th className='d-lg-block d-none'>#</th>
                                 <th></th>
                                 <th className='text-start'>Name</th>
-                                {/* <th className='text-start'>Symbol</th> */}
                                 <th>Price</th>
-
-                                {/* <th>Change</th>
-                                <th>Graph</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +47,7 @@ function Tokens() {
                                         <td className='d-lg-block d-none'>{index + 1}</td>
                                         <td className='text-end'><img src={All} alt="" style={{width:'20px',height:'20px'}}/></td>
                                         <td className='text-start fw-bold mb-0'>{item.name} <span className='ms-3 fw-normal' style={{fontSize:'14px'}}> <br className='d-lg-none d-block'/> {item.symbol}</span> </td>
-                                        {/* <td className='text-start'>{item.symbol}</td> */}
+                                    
                                         <td><PairPrice address={item.address} /></td>
                                     </tr>
                                 })
@@ -59,7 +55,10 @@ function Tokens() {
 
 
                         </tbody>
-                    </Table>
+                    </Table> */}
+                    <h5>Security & Audits</h5>
+                    <p>The u369 smart contract is designed with safety in mind and the links below <br /> can attest due diligence to assure the highest security standards:</p>
+                    <h5 className='mb-5 pb-5'>V1 Audits (coming soon).</h5>
                 </div>
             </div>
         </div>

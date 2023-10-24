@@ -4,6 +4,8 @@ import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
@@ -22,6 +24,14 @@ const Dashboard = () => {
   const { address, isConnected } = useAccount();
   const [hideTable, setHideTable] = useState(true);
   const [hideTable2, setHideTable2] = useState(true);
+  const [checked, setChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState('1');
+
+  const radios = [
+    { name: 'Active', value: '1' },
+    { name: 'Radio', value: '2' },
+    // { name: 'Radio', value: '3' },
+  ];
 
   const handleHide = () => {
     setHideTable(!hideTable);
@@ -51,7 +61,22 @@ const Dashboard = () => {
   return (
     <div className="container p-0">
       <div className="row justify-content-center align-items-center p-3">
-
+      <ButtonGroup className="d-lg-none d-block">
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            id={`radio-${idx}`}
+            type="radio"
+            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+            name="radio"
+            value={radio.value}
+            checked={radioValue === radio.value}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
         <Navbar collapseOnSelect expand="lg">
           <Navbar.Collapse id="navbar-dark-example">
             <Nav>
@@ -104,6 +129,7 @@ const Dashboard = () => {
                                       key={chainDetail.id}
                                       disabled={chain.name === chainDetail.name}
                                       onClick={() => switchNetwork?.(chainDetail.id)}
+
                                     >
                                       {chainDetail.name}
                                       {isLoading && pendingChainId === chainDetail.id && ' (switching)'}

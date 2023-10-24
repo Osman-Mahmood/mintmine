@@ -95,8 +95,8 @@ const Tokens = () => {
       <div className='row time_box mt-3'>
         <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 mb-0 mb-1'>
           <div className='col-lg-6 col-12 mb-lg-0 mb-5'>
-            <h5 className='text-white text-start mt-1' style={{fontSize:'18px'}}>30% of all the smart-contract's service-fee is used to randomly reward one end-user. </h5>
-          <h5 className='text-white text-start'>Every 369 hours the system post a result.</h5>
+            <h5 className='text-white text-start mt-1' style={{fontSize:'18px'}}>30% of collected-fees is to randomly reward one end-user.</h5>
+          <h5 className='text-white text-start'>Every 369 hours the system posts a result.</h5>
             {/* <h5 className='text-dark text-start'>The winner is announced in this page and in our social media.</h5> */}
 
           </div>
@@ -173,27 +173,53 @@ const Tokens = () => {
         
       </div>
       {/* <h1 className='text-start'>Information</h1> */}
-      <p className='text-start'>Every time u369 is used to protect a token, 30% of the smart-contract's service-fee is sent to the prize pool address. <br />
+      <p className='text-start boxes'><br />
 
-<span className='fw-bold'>Reward system parameters:</span>  <br />
+<p className='fw-bold'>Reward system parameters:</p>  
+<p>
+(A) If the end-user protected an amount equal or superior to the amount in the prize-pool, and if the end-user is randomly selected as "the winner" by the system, then the end-user is rewarded with the full amount in the prize pool.
 
-If the funds that the randomly-selected winner protected using u369, is an amount equal or superior to the amount in the prize pool, then the winner is rewarded with the full amount in the prize pool.
-<br />
-<span className='fw-bold'>- Example 1: </span>Prize pool = 1 ETH -- winner protected 1 ETH or more >> winner is rewarded the 1 ETH held in the prize pool.
-<br />
-If the funds winner protected are less than the amount in the prize pool, then the winner only gets up to what they protected from the prize pool.
-<br />
-<span className='fw-bold'>- Example 2:</span> Prize Pool = 1 ETH -- winner protected 0.5 ETH >> then the winner gets only 0.5 ETH from the 1 ETH held in the prize pool. The rest 0.5 ETH in the prize pool + any other funds collected by u369 service-fee will remain in the prize pool for the next winner to be announced every 369 hours.
-<br />
-If nobody wins the full amount held in the prize pool after 3 consecutives rounds or more (1 round =369 hours) then the funds held in the prize pool can be gifted to the community by implementing a give-away, a contest, etc.
-<br />
+</p>
+
+<p>- Example A: Prize pool = 1 ETH -- if the winner protected 1 ETH or more, then the winner is rewarded the 1 ETH held in the prize pool.</p>
+<p>
+(B) If the funds that the winner protected are less than the amount in the prize pool, then the winner only gets up to what they protected from the prize pool.
+
+</p>
+<p>
+- Example B: Prize Pool = 1 ETH -- if the winner protected 0.5 ETH, then the winner gets only 0.5 ETH from the 1 ETH held in the prize pool. The rest 0.5 ETH in the prize pool + any other funds collected by u369 benefaction-fee will remain in the prize pool for the next winner to be announced every 369 hours.
+
+</p>
+<p>
+If nobody wins the full amount held in the prize pool after 3 consecutives rounds (1 round =369 hours) then the funds held in the prize pool can be gifted to the community by implementing a contest, a quiz, a give-away etc.
+
+</p>
+
+<p> 
 <span className='fw-bold'>Rewards for public goods funding: </span> 
-<br />
-Every 369 hours (~15 days) + ~36 hours grace period; other 30% of u369 collected-fees are distributed as follows:
-10% to Protocol Guild
-10% to Giveth
-10% to Valley Dao
+
+</p>
+<p>
+Every 369 hours (~15 days) + ~36 hours grace period; other 30% of u369 collected-fees are distributed as follows: 
+
+</p>
+<p className='mb-0'>
+10% to Protocol Guild 
+
+
+</p>
+<p className='mb-0'>
+10% to Giveth 
+
+</p>
+<p className='mb-0'>
+10% to Valley Dao 
+
+</p>
+<p>
 See all donations Tx details since u369 inception here.
+
+</p>
 
 
 </p>
