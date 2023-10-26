@@ -16,7 +16,6 @@ function TokenBalance({ tokenAddress }) {
             const alternateAddress = await contract.get_TokenAddressOfuToken(tokenAddress);
             const tokenInstance = await erc20Instance(alternateAddress);
             const bal = await tokenInstance.balanceOf(address);
-            console.log("bal", ethers.utils.formatEther(bal));
             setTokenBal(ethers.utils.formatEther(bal))
         } catch (error) {
             console.error("error while get token balance", error);

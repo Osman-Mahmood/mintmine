@@ -7,7 +7,6 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 import TokenSymbol from '../Dashboard/childComponents/TokenSymbol';
 import { useNetwork } from 'wagmi';
 function TransactionModal({ showTrx, setShowTrx, trxHash: { link, amount, address, trxType, mintType } }) {
-
   const handleClose = () => setShowTrx(false);
   const { chain } = useNetwork();
   return (
@@ -27,8 +26,8 @@ function TransactionModal({ showTrx, setShowTrx, trxHash: { link, amount, addres
             <div className='d-flex justify-content-center text-center align-items-center gap-2 mt-4 mb-3'>
               {
                 trxType === "claim" && <>
-                  
-                  <p className='fw-bold mb-0'>{amount} {mintType === "token" ? <TokenSymbol tokenAddress={address} /> : `${chain?.nativeCurrency.symbol}`}  Claimed</p>
+
+                  <p className='fw-bold mb-0'>{Number(amount).toFixed(4)} {mintType === "token" ? <TokenSymbol tokenAddress={address} /> : `${chain?.nativeCurrency.symbol}`}  Claimed</p>
                 </>
               }
               {
@@ -38,7 +37,7 @@ function TransactionModal({ showTrx, setShowTrx, trxHash: { link, amount, addres
               }
               {
                 trxType === "mint" && <>
-                  <p className='fw-bold mb-0'>{amount} {mintType === "token" ? <TokenSymbol tokenAddress={address} /> : `${chain?.nativeCurrency.symbol}`} protected</p>
+                  <p className='fw-bold mb-0'>{amount}{mintType === "token" ? <TokenSymbol tokenAddress={address} /> : `${chain?.nativeCurrency.symbol}`} (- 0.369% fee)</p>
                   <AiOutlineArrowRight />
                   <p className='fw-bold mb-0'>{(amount - (amount * 0.369) / 100)} u{mintType === "token" ? <TokenSymbol tokenAddress={address} /> : `${chain?.nativeCurrency.symbol}`}  minted</p>
                 </>

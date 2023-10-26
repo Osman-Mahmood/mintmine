@@ -187,6 +187,8 @@ input[type=number] {
     /* background: rgba(25, 27, 31, 0.9); */
     border-bottom: 1px solid rgb(25, 27, 31);
     transition: background-color 0.25s ease 0s;
+    background-color: transparent;
+    border: 1px solid white !important;
 }
 .dropdown-item:hover{
   background-color: #270515 !important;
@@ -207,4 +209,31 @@ input[type=number] {
 .modal-backdrop.show{
   opacity: 0 !important;
   display: none !important;
+}
+
+/* Initially hide the button group */
+.mobile-only-buttons {
+  display: none;
+}
+.pc-only-cards {
+  display: block;
+}
+
+.mobile-only-cards {
+  display: none;
+}
+.radius_box{
+  border-radius: 16px;
+}
+/* Show the button group for screens with max-width of 1024px (generally considered the breakpoint for tablets and below) */
+@media (max-width: 1024px) {
+  .mobile-only-buttons {
+      display: block;
+  }
+  .pc-only-cards {
+    display: none;
+  }
+  .mobile-only-cards {
+    display: block;
+  }
 }

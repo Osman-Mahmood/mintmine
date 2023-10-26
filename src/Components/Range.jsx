@@ -21,6 +21,9 @@ const StyledSlider = styled(Slider)(({ theme }) => ({
     '& .MuiSlider-thumb': {
         color: theme.palette.primary.main,
     },
+    '& .MuiSlider-mark[data-index="0"]': {
+        display: 'none',
+    },
     color: '#1976D2', // Change the color to blue
     '& .MuiSlider-valueLabel': {
       backgroundColor: '#1976D2', // Change the value label background color to blue

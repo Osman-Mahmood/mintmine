@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import {useLocalStorage} from "../../StorageHook"
+import { useLocalStorage } from "../../StorageHook"
 import { useAccount, useNetwork } from 'wagmi'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { MdOutlineAccountBalanceWallet } from "react-icons/md"
@@ -41,7 +41,7 @@ const modalVariants = {
 
 function Claim({ show, handleClose, mintType, tokenAddress }) {
     const dispatch = useDispatch();
-    const {isReferesh} = useSelector((state) => state.refreshFunctions)
+    const { isReferesh } = useSelector((state) => state.refreshFunctions)
     let [selectedToken, setSelectedToken] = useState({
         name: "Select Token",
         address: null,
@@ -55,7 +55,7 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
         amount: null,
         address: null,
         trxType: null,
-        mintType
+        mintType:null
     })
     const [showRModal, setShowRModal] = useState(false);
     const handleCloseRModal = () => setShowRModal(false);
@@ -80,7 +80,7 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
         }
     }
     useEffect(() => {
-        if (window.ethereum && isConnected && getChainDetails(chain?.id))
+        if (window.ethereum && isConnected && getChainDetails(chain?.id) && tokenAddress)
             getBal()
     }, [chain?.id, mintType, tokenAddress])
     let [percentValue, setPercentValue] = useState(0)
@@ -93,8 +93,15 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
     const [isLoading, setIsLoading] = useState(false);
     const [pass, setPass] = useState();
     const claimUTokens = async () => {
+        // setShowTrx(true);
+        // setTrxHash({
+        //     // link: `${explorer}/${receipt.transactionHash}`,
+        //     amount: etherAmount,
+        //     address: tokenAddress,
+        //     trxType: "claim"
+        // });
         try {
-          
+
             if (etherAmount <= 0 || etherAmount == null || etherAmount === undefined || etherAmount === "") {
                 toast.error("Enter amount please")
                 return;
@@ -127,7 +134,8 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
                     link: `${explorer}/${receipt.transactionHash}`,
                     amount: etherAmount,
                     address: tokenAddress,
-                    trxType: "claim"
+                    trxType: "claim",
+                    mintType:mintType
                 });
                 setShowTrx(true)
                 toast.success(`u-${selectedToken.name} Claimed`)
@@ -152,7 +160,8 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
                     link: `${explorer}/${receipt.transactionHash}`,
                     amount: etherAmount,
                     address: tokenAddress,
-                    trxType: "claim"
+                    trxType: "claim",
+                    mintType:mintType
                 });
                 setShowTrx(true)
                 toast.success(`u-${selectedToken.name} Claimed`)
@@ -164,43 +173,9 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
         } catch (error) {
             setIsLoading(false);
             console.error("error while calim u tokens", error);
-            // const errorData = JSON.parse(JSON.stringify(error));
-            // console.error("error while calim u tokens", errorData);
-            // if (errorData.reason) {
-            //     toast.error(errorData.reason);
-            //     return
-            // }
-            // if (errorData.error.message && chain.id === 5) {
-            //     toast.error(errorData.error.message);
-            // } else if (errorData.error.message && chain.id === 80001) {
-            //     toast.error(errorData.data.message);
-            // }
         }
     }
-    const addToken = async () => {
-        try {
-            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-            const wasAdded = await window.ethereum.request({
-                method: 'wallet_watchAsset',
-                params: {
-                    type: 'ERC20', // Initially only supports ERC20, but eventually more!
-                    options: {
-                        address: selectedToken.address, // The address that the token is at.
-                        symbol: selectedToken.name, // A ticker symbol or shorthand, up to 5 chars.
-                        decimals: 18,
-                    },
-                },
-            });
 
-            if (wasAdded) {
-                toast.success('Added successfully');
-            } else {
-                toast.error('Your loss!');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
     const valueHandler = (value) => {
         if (parseFloat(value) >= parseFloat(showBalance)) {
             setEtherAmount(showBalance)
@@ -274,7 +249,8 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
                                                         <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
                                                             <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                                                                 <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                                                                <span className='ms-5 mt-1 lighttext'>
+                                                                <span className='ms-3 mt-1 lighttext' style={{ cursor: "pointer" }} onClick={() => barAmount(100)}>Max</span>
+                                                                <span className='ms-2 mt-1 lighttext'>
                                                                     {showBalance && `${percentValue}%`}
                                                                 </span>
                                                             </div>

@@ -29,9 +29,6 @@ const Tokens = () => {
       const winnerAdd = await contract.get_currentWinner();
       const investmentDetails = await contract.getInvestmentDetails_OfUser_ForPeriod(winnerAdd, currentPeriod);
       setWinnerHistory(investmentDetails)
-      //amount
-      //uTokenAddress
-      console.log("currentPeriod", investmentDetails[0]);
     } catch (error) {
       console.error("error while get winner invest history", error);
     }

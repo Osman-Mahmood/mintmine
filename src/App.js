@@ -39,7 +39,6 @@ function App() {
   // const { chain: { id } } = usePublicClient()
   const { chain } = useNetwork()
   const { address } = useAccount()
-  console.log("chain", chain);
   const firstRender = useRef(true)
   useMemo(() => {
     window.localStorage.setItem("refresh", "false")

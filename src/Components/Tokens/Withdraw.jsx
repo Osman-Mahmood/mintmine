@@ -180,7 +180,7 @@ const WithdrawToken = () => {
                 toast.error('Your loss!');
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
     const valueHandler = (value) => {

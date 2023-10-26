@@ -81,7 +81,6 @@ const TransferToken = () => {
       getBal();
   }, [chain?.id, selectedToken.address, selectedToken.type]);
   let [percentValue, setPercentValue] = useState(0);
-  console.log("percentValue", percentValue);
   const barAmount = (percent) => {
     setPercentValue(percent);
     setEtherAmount(((showBalance * percent) / 100).toString());
@@ -207,7 +206,7 @@ const TransferToken = () => {
         toast.error("Your loss!");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const valueHandler = (value) => {

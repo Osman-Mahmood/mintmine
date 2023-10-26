@@ -86,7 +86,6 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           password,
           phrase
         );
-        console.log("tx", tx);
         let receipt = await tx.wait();
         handleClose();
         handleShow();
@@ -113,7 +112,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           variants={modalVariants}
         >
 
-        <Modal.Header closeButton style={{backgroundColor:'#0D6EFD',color:'white'}}>
+        <Modal.Header closeButton style={{backgroundColor:'transaprent',color:'white'}}>
           <Modal.Title>Master Key</Modal.Title>
         </Modal.Header>
         <Modal.Body>

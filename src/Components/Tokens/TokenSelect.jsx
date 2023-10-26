@@ -159,10 +159,8 @@ const TokenSelect = () => {
             value: "0",
             gasLimit: 1000000,
           });
-          console.log("tx", tx);
           let receipt = await tx.wait();
           let { explorer } = getChainDetails(chain.id)
-          console.log("tx", explorer);
           setTrxHash(`${explorer}/${receipt.transactionHash}`);
           setShowTrx(true)
           toast.success("U-token minted");
@@ -215,7 +213,7 @@ const TokenSelect = () => {
         toast.error("Your loss!");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (

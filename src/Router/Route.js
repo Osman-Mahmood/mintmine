@@ -5,7 +5,6 @@ import { useEffect } from "react";
 export default function Root() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location", location);
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/home");

@@ -22,7 +22,6 @@ function ModalA({ setSelectedToken, selectedToken }) {
         try {
             let contract = await remortFactoryInstnce(chain?.id)
             const u_tokens = await contract.all_uTokensOfAllowedTokens();
-            console.log("filterToken", u_tokens);
             setTokensList(u_tokens);
         } catch (error) {
             console.error("error while get u tokens", error);

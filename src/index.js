@@ -5,11 +5,11 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store/index';
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli, polygonMumbai, sepolia } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
-import  { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     // mainnet,
@@ -34,14 +34,14 @@ const wagmiConfig = createConfig({
 });
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<Provider store={store}>
-  <WagmiConfig config={wagmiConfig}>
-    <RainbowKitProvider chains={chains}>
-    <SkeletonTheme baseColor="#000" highlightColor="#444">
-      <App />
-      </SkeletonTheme>
-    </RainbowKitProvider>
-  </WagmiConfig>
-</Provider>
+  <Provider store={store}>
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains} theme={darkTheme()}>
+        <SkeletonTheme baseColor="#000" highlightColor="#444">
+          <App />
+        </SkeletonTheme>
+      </RainbowKitProvider>
+    </WagmiConfig>
+  </Provider>
 );
 

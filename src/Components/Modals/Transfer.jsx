@@ -47,7 +47,8 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
     link: null,
     amount: null,
     address: null,
-    trxType: null
+    trxType: null,
+    mintType:null,
   })
 
   const [showRModal, setShowRModal] = useState(false);
@@ -83,7 +84,6 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chain?.id, tokenAddress, mintType]);
   let [percentValue, setPercentValue] = useState(0);
-  console.log("percentValue", percentValue);
   const barAmount = (percent) => {
     setPercentValue(percent);
     setEtherAmount(((showBalance * percent) / 100).toString());
@@ -145,7 +145,8 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
           link: `${explorer}/${receipt.transactionHash}`,
           amount: etherAmount,
           address: tokenAddress,
-          trxType: "transfer"
+          trxType: "transfer",
+          mintType:mintType
         });
         setShowTrx(true);
         toast.success(`u-${selectedToken.name} transfered`);
@@ -155,7 +156,6 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
       } else if (mintType === "token") {
         const tokenInstance = await erc20Instance(tokenAddress);
         let bal = await tokenInstance.balanceOf(address);
-        console.log("bla", typeof ethers.utils.formatEther(bal));
         if (parseFloat(ethers.utils.formatEther(bal)) < parseFloat(etherAmount)) {
           toast.error(`Insufficent u-${selectedToken.name} amount`);
           return;
@@ -174,7 +174,8 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
           link: `${explorer}/${receipt.transactionHash}`,
           amount: etherAmount,
           address: tokenAddress,
-          trxType: "transfer"
+          trxType: "transfer",
+          mintType:mintType
         });
         setShowTrx(true);
         toast.success("U-Token transfered");
@@ -218,7 +219,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
         toast.error("Your loss!");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const valueHandler = (value) => {
@@ -313,7 +314,8 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                             {/* <button className="btn btn-primary add ms-lg-5 mt-2 ms-0 p-0">Add to Wallet</button> */}
                             <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                               <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                              <span className='ms-5 mt-1 lighttext'>
+                              <span className='ms-3 mt-1 lighttext' style={{ cursor: "pointer" }} onClick={() => barAmount(100)}>Max</span>
+                              <span className='ms-1 mt-1 lighttext'>
                                 {showBalance && `${percentValue}%`}
                               </span>
                             </div>
@@ -321,7 +323,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                           <div className='bg_clr w-75 mx-auto rounded'>
                             <div className=" w-100 d-flex justify-content-center mb-0">
                               <div
-                                class="w-100  p-2"
+                                class="w-100 radius_box  p-2"
                                 style={{ backgroundColor: "rgb(118 168 255)" }}
                               >
                                 <div className="d-flex justify-content-between">
@@ -348,7 +350,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
 
                             <div className="w-100 d-flex justify-content-center mb-3 mt-0">
                               <div
-                                className="p-2 w-100"
+                                className="p-2 w-100 radius_box"
                                 style={{ backgroundColor: "rgb(118 168 255)" }}
                               >
                                 <p className="form-label text-start text-dark ">

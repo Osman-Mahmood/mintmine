@@ -9,7 +9,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
-import { remortFactoryInstnce } from "../../config";
+import { erc20Instance, remortFactoryInstnce } from "../../config";
 import TokenSymbol from "./childComponents/TokenSymbol";
 import TokenBalance from "./childComponents/TokenBalance";
 import NativeCoinDetail from "./childComponents/NativeCoinDetail";
@@ -18,18 +18,22 @@ import UTokenBalance from "./uChildComponents/uTokenBalance";
 import MintModal from "./childComponents/Modals/MintModal";
 import TransferModal from "./uChildComponents/Modals/TransferModal";
 import ClaimModal from "./uChildComponents/Modals/ClaimModal";
+import { ethers } from "ethers";
+import ProtectNativeCoinDetail from "./childComponents/ProtectNativeCoinDetail";
+import AddtoWallet from "./uChildComponents/AddtoWallet";
+import { useSelector } from "react-redux";
 const Dashboard = () => {
+  const { isReferesh } = useSelector((state) => state.refreshFunctions)
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork();
   const { address, isConnected } = useAccount();
   const [hideTable, setHideTable] = useState(true);
   const [hideTable2, setHideTable2] = useState(true);
-  const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState('1');
 
   const radios = [
-    { name: 'Active', value: '1' },
-    { name: 'Radio', value: '2' },
+    { name: 'Supply', value: '1' },
+    { name: 'Borrow', value: '2' },
     // { name: 'Radio', value: '3' },
   ];
 
@@ -49,34 +53,112 @@ const Dashboard = () => {
       console.error("error while get u tokens", error);
     }
   };
+  const [protectedTokens, setProtectedTokens] = useState({
+    bal: [],
+    symbols: []
+  })
+  const getProtectedTokens = async () => {
+    try {
+      let contract = await remortFactoryInstnce(chain?.id)
+      const u_tokens = await contract.all_uTokensOfAllowedTokens();
+      let symbolePromisseArr = [];
+      let balPromiseArr = []
+      let altAddressPromiseArr = [];
+      let tokenInstancePromise = []
+      for (let index = 0; index < u_tokens.length; index++) {
+        altAddressPromiseArr.push(contract.get_TokenAddressOfuToken(u_tokens[index]));
+      }
+      altAddressPromiseArr = await Promise.all(altAddressPromiseArr);
+      let u_eth_address = await contract.deployedAddressOfEth();
+      altAddressPromiseArr.push(u_eth_address)
+
+      for (let index = 0; index < altAddressPromiseArr.length; index++) {
+        tokenInstancePromise.push(erc20Instance(altAddressPromiseArr[index]))
+      }
+      tokenInstancePromise = await Promise.all(tokenInstancePromise);
+
+      for (let index = 0; index < tokenInstancePromise.length; index++) {
+        balPromiseArr.push(tokenInstancePromise[index].balanceOf(address));
+        symbolePromisseArr.push(tokenInstancePromise[index].symbol())
+      }
+      symbolePromisseArr = await Promise.all(symbolePromisseArr);
+
+      balPromiseArr = await Promise.all(balPromiseArr);
+      
+      setProtectedTokens({ symbols: symbolePromisseArr, bal: balPromiseArr })
+    } catch (error) {
+      console.error("error while get protected tokens", error);
+    }
+  }
+
+  const [uProtectedTokens, setUProtectedTokens] = useState({
+    bal: [],
+    symbols: []
+  })
+  const getUProtectedTokens = async () => {
+    try {
+      let all_tokens = []
+      let contract = await remortFactoryInstnce(chain?.id)
+      const u_tokens = await contract.all_uTokensOfAllowedTokens();
+      let symbolePromisseArr = [];
+      let balPromiseArr = []
+      let tokenInstancePromise = []
+      all_tokens = [...u_tokens];
+
+      let u_eth_address = await contract.deployedAddressOfEth();
+      all_tokens.push(u_eth_address)
+
+      for (let index = 0; index < all_tokens.length; index++) {
+        tokenInstancePromise.push(erc20Instance(all_tokens[index]))
+      }
+      tokenInstancePromise = await Promise.all(tokenInstancePromise);
+
+      for (let index = 0; index < tokenInstancePromise.length; index++) {
+        balPromiseArr.push(tokenInstancePromise[index].balanceOf(address));
+        symbolePromisseArr.push(tokenInstancePromise[index].symbol())
+      }
+      symbolePromisseArr = await Promise.all(symbolePromisseArr);
+      
+      balPromiseArr = await Promise.all(balPromiseArr);
+      
+      setUProtectedTokens({ symbols: symbolePromisseArr, bal: balPromiseArr })
+    } catch (error) {
+      console.error("error while get protected tokens", error);
+    }
+  }
   useEffect(() => {
     getUTokens();
     if (isConnected) {
+      getProtectedTokens()
+      getUProtectedTokens()
       window.ethereum.on("accountsChanged", function (accounts) {
         window.location.reload(true);
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isConnected]);
+  }, [isConnected, isReferesh]);
   return (
     <div className="container p-0">
       <div className="row justify-content-center align-items-center p-3">
-      <ButtonGroup className="d-lg-none d-block">
-        {radios.map((radio, idx) => (
-          <ToggleButton
-            key={idx}
-            id={`radio-${idx}`}
-            type="radio"
-            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
-            name="radio"
-            value={radio.value}
-            checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
-          >
-            {radio.name}
-          </ToggleButton>
-        ))}
-      </ButtonGroup>
+        <ButtonGroup className="mobile-only-buttons">
+          {radios.map((radio, idx) => (
+            <ToggleButton
+              key={idx}
+              id={`radio-${idx}`}
+              type="radio"
+              variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+              name="radio"
+              value={radio.value}
+              checked={radioValue === radio.value}
+              onChange={(e) => {
+                setRadioValue(e.currentTarget.value)
+              }
+              }
+            >
+              {radio.name}
+            </ToggleButton>
+          ))}
+        </ButtonGroup>
         <Navbar collapseOnSelect expand="lg">
           <Navbar.Collapse id="navbar-dark-example">
             <Nav>
@@ -150,19 +232,67 @@ const Dashboard = () => {
         </Navbar>
 
 
-        <div className="row gx-0 mt-3 d-flex">
+        <div className="row gx-0 mt-3 d-lg-flex d-none">
           <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
             <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column  p-3 text-start">
-              <h5>Tokens Protected</h5>
-              <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+              <h5>Protected</h5>
+              {uProtectedTokens.symbols?.length > 0 && protectedTokens.symbols?.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                <thead>
+                  <tr>
+                    <th>Assets</th>
+                    <th>Wallet Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    protectedTokens.bal.map((tokenItem, index) => {
+                      if (ethers.utils.formatEther(uProtectedTokens.bal[index]) > 0 && (protectedTokens.bal.length !== index + 1)) {
+                        return <tr key={index}>
+                          <td className="text-light">{protectedTokens.symbols[index]}</td>
+                          <td className="text-light">{ethers.utils.formatEther(tokenItem)}</td>
+                        </tr>
+                      } else if ((protectedTokens.bal.length === index + 1) && ethers.utils.formatEther(tokenItem) > 0) {
+                        return <ProtectNativeCoinDetail />
+                      }
+                    })
+                  }
+
+                </tbody>
+              </Table>
+                :
+                <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+              }
             </div>
             <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column   p-3 text-start">
-              <h5>Tokens protected</h5>
-              <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+              <h5>uTokens</h5>
+              {uProtectedTokens.symbols?.length > 0 && protectedTokens.symbols?.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                <thead>
+                  <tr>
+                    <th>Assets</th>
+                    <th>Wallet Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    uProtectedTokens.bal.map((tokenItem, index) => {
+                      if (ethers.utils.formatEther(tokenItem) > 0) {
+                        return tokenItem > 0 && <tr key={index}>
+                          <td className="text-light">{uProtectedTokens.symbols[index]}</td>
+                          <td className="text-light">{ethers.utils.formatEther(tokenItem)}</td>
+                        </tr>
+                      }
+                    })
+                  }
+
+                </tbody>
+              </Table>
+                :
+                <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+              }
             </div>
           </div>
         </div>
-        <div className="row gx-0 mt-3">
+        <div className="row gx-0 mt-3 pc-only-cards">
           <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
             <div className="col-lg-6 mb-3 col-12 text-start">
               <div className="boxes p-3">
@@ -174,14 +304,15 @@ const Dashboard = () => {
                     style={{ cursor: "pointer" }}
                   >
                     {" "}
-                    {hideTable2 ? "hide" : "show"} -
+                    {hideTable2 ? "hide -" : "show +"}
                   </p>
                 </div>
 
-                <p className="mb-2 mt-1 p-2 alert">
+                <p className="mb-2 mt-1 p-2 ">
                   {" "}
-                  <HiOutlineInformationCircle className="fs-4" /> Your
-                  Etherium wallet is empty. Purchase or transfer assets.
+                  <HiOutlineInformationCircle className="fs-4" />
+                  {/* Transfer supported asset(s) to your wallet and click "Protect */}
+                  Your Etherium wallet is empty. Purchase or transfer assets.
                 </p>
 
                 {hideTable2 && (
@@ -195,15 +326,15 @@ const Dashboard = () => {
                       </thead>
                       <tbody>
                         {
-                          isConnected && <NativeCoinDetail  />
+                          isConnected && <NativeCoinDetail />
                         }
                         {
                           tokensLength.map((tokenItem, index) => {
                             return <tr key={index}>
                               <td className="text-light"><TokenSymbol tokenAddress={tokenItem} /></td>
-                              <td className="text-light"><TokenBalance tokenAddress={tokenItem}  /></td>
+                              <td className="text-light"><TokenBalance tokenAddress={tokenItem} /></td>
                               <td>
-                                <MintModal tokenAddress={tokenItem} mintType="token"   />
+                                <MintModal tokenAddress={tokenItem} mintType="token" />
                               </td>
                               <td>
                                 {" "}
@@ -233,13 +364,14 @@ const Dashboard = () => {
                     onClick={handleHide}
                     style={{ cursor: "pointer" }}
                   >
-                    {hideTable ? "hide" : "show"} -
+                    {hideTable ? "hide -" : "show +"}
                   </p>
                 </div>
 
-                <p className="mb-2 mt-1 p-2 alert">
+                <p className="mb-2 mt-1 p-2 ">
                   {" "}
-                  <HiOutlineInformationCircle className="fs-4" /> Lock
+                  {/* <HiOutlineInformationCircle className="fs-4" /> */}
+                  Lock
                   native tokens in the contract to mint 1:1 unhackableTokens
                   (uTokens)
                 </p>
@@ -253,38 +385,24 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
                       {
-                        isConnected && <UNativeCoinDetail  />
+                        isConnected && <UNativeCoinDetail />
                       }
                       {
                         tokensLength.map((tokenItem, index) => {
                           return <tr key={index}>
                             <td className="text-light">u<TokenSymbol tokenAddress={tokenItem} /></td>
-                            <td className="text-light"><UTokenBalance tokenAddress={tokenItem}  /></td>
+                            <td className="text-light"><UTokenBalance tokenAddress={tokenItem} /></td>
                             <td>
-                              <Button
-                                variant="primary"
-                                className="font_size border bg-transparent px-2 p-1 text-clr "
-                              >
-                                Add to Wallet
-                              </Button>
+                              <AddtoWallet tokenAddress={tokenItem} />
                             </td>
                             <td>
                               {" "}
-                              <TransferModal tokenAddress={tokenItem} mintType="token"   />
+                              <TransferModal tokenAddress={tokenItem} mintType="token" />
                             </td>
                             <td>
                               {" "}
-                              <ClaimModal tokenAddress={tokenItem} mintType="token"   />
+                              <ClaimModal tokenAddress={tokenItem} mintType="token" />
                             </td>
-                            {/* <td>
-                                {" "}
-                                <Button
-                                  variant="primary"
-                                  className="font_size border bg-transparent px-2 p-1 text-clr"
-                                >
-                                  Details
-                                </Button>
-                              </td> */}
                           </tr>
                         })
                       }
@@ -295,11 +413,197 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {/* mobile view */}
+        <div className="row gx-0 mt-3 mobile-only-cards">
+          <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
+            {radioValue === "1" &&
+              <>
+                <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column  p-3 text-start">
+                  <h5>Protected</h5>
+                  {uProtectedTokens.symbols?.length > 0 && protectedTokens.symbols?.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                    <thead>
+                      <tr>
+                        <th>Assets</th>
+                        <th>Wallet Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        protectedTokens.bal.map((tokenItem, index) => {
+                          if (ethers.utils.formatEther(uProtectedTokens.bal[index]) > 0 && (protectedTokens.bal.length !== index + 1)) {
+                            return <tr key={index}>
+                              <td className="text-light">{protectedTokens.symbols[index]}</td>
+                              <td className="text-light">{ethers.utils.formatEther(tokenItem)}</td>
+                            </tr>
+                          } else if ((protectedTokens.bal.length === index + 1) && ethers.utils.formatEther(tokenItem) > 0) {
+                            return <ProtectNativeCoinDetail />
+                          }
+                        })
+                      }
+
+                    </tbody>
+                  </Table>
+                    :
+                    <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+                  }
+                </div>
+                <div className="col-lg-6 mb-3 col-12 text-start">
+                  <div className="boxes p-3">
+                    <div className="d-flex boxes justify-content-between">
+                      <h5>Tokens to protect</h5>
+                      <p
+                        className="text-clr"
+                        onClick={handleHide2}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {" "}
+                        {hideTable2 ? "hide -" : "show +"}
+                      </p>
+                    </div>
+
+                    <p className="mb-2 mt-1 p-2 ">
+                      {" "}
+                      <HiOutlineInformationCircle className="fs-4" />
+
+                      Your
+                      Etherium wallet is empty. Purchase or transfer assets.
+                    </p>
+
+                    {hideTable2 && (
+                      <>
+                        <Table striped className="custom-table flex-wrap" responsive>
+                          <thead>
+                            <tr>
+                              <th>Assets</th>
+                              <th>Wallet Balance</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {
+                              isConnected && <NativeCoinDetail />
+                            }
+                            {
+                              tokensLength.map((tokenItem, index) => {
+                                return <tr key={index}>
+                                  <td className="text-light"><TokenSymbol tokenAddress={tokenItem} /></td>
+                                  <td className="text-light"><TokenBalance tokenAddress={tokenItem} /></td>
+                                  <td>
+                                    <MintModal tokenAddress={tokenItem} mintType="token" />
+                                  </td>
+                                  <td>
+                                    {" "}
+                                    <Button
+                                      variant="primary"
+                                      className="bg-transparent border px-3 ms-3 p-1 text-clr font_size"
+                                    >
+                                      Details
+                                    </Button>
+                                  </td>
+                                </tr>
+                              })
+                            }
+
+                          </tbody>
+                        </Table>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </>
+            }
+            {radioValue === "2" &&
+              <>
+                <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column   p-3 text-start">
+                  <h5>uTokens</h5>
+                  {uProtectedTokens.symbols?.length > 0 && protectedTokens.symbols?.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                    <thead>
+                      <tr>
+                        <th>Assets</th>
+                        <th>Wallet Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        uProtectedTokens.bal.map((tokenItem, index) => {
+                          if (ethers.utils.formatEther(tokenItem) > 0) {
+                            return tokenItem > 0 && <tr key={index}>
+                              <td className="text-light">{uProtectedTokens.symbols[index]}</td>
+                              <td className="text-light">{ethers.utils.formatEther(tokenItem)}</td>
+                            </tr>
+                          }
+                        })
+                      }
+
+                    </tbody>
+                  </Table>
+                    :
+                    <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
+                  }
+                </div>
+                <div className="col-lg-6 mb-3 col-12 text-start">
+                  <div className="boxes p-3">
+                    <div className="d-flex justify-content-between">
+                      <h5>Unhackable Tokens (uTokens)</h5>
+                      <p
+                        className="text-clr"
+                        onClick={handleHide}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {hideTable ? "hide -" : "show +"}
+                      </p>
+                    </div>
+                    <p className="mb-2 mt-1 p-2 ">
+                      {" "}Lock
+                      native tokens in the contract to mint 1:1 unhackableTokens
+                      (uTokens)
+                    </p>
+                    {hideTable && (
+                      <Table striped className="custom-table flex-wrap " responsive>
+                        <thead>
+                          <tr>
+                            <th>Assets</th>
+                            <th>Available</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {
+                            isConnected && <UNativeCoinDetail />
+                          }
+                          {
+                            tokensLength.map((tokenItem, index) => {
+                              return <tr key={index}>
+                                <td className="text-light">u<TokenSymbol tokenAddress={tokenItem} /></td>
+                                <td className="text-light"><UTokenBalance tokenAddress={tokenItem} /></td>
+                                <td>
+                                  <Button
+                                    variant="primary"
+                                    className="font_size border bg-transparent px-2 p-1 text-clr "
+                                  >
+                                    Add to Wallet
+                                  </Button>
+                                </td>
+                                <td>
+                                  {" "}
+                                  <TransferModal tokenAddress={tokenItem} mintType="token" />
+                                </td>
+                                <td>
+                                  {" "}
+                                  <ClaimModal tokenAddress={tokenItem} mintType="token" />
+                                </td>
+                              </tr>
+                            })
+                          }
+                        </tbody>
+                      </Table>
+                    )}
+                  </div>
+                </div>
+              </>
+            }
+          </div>
+        </div>
       </div>
-      {/* <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="/select" >Protect</NavLink>
-       <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="/transfer" >Transfer</NavLink>
-       <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-white a_tag" to="/withdraw" >Claim</NavLink> */}
-    </div>
+    </div >
   );
 };
 

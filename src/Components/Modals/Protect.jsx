@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshBalance } from '../../store/refresh';
 function Protect({ show, handleClose, mintType, tokenAddress }) {
   const dispatch = useDispatch();
-  const {isReferesh} = useSelector((state) => state.refreshFunctions)
+  const { isReferesh } = useSelector((state) => state.refreshFunctions)
   const modalVariants = {
     hidden: { opacity: 0, y: '-50%' },
     visible: { opacity: 1, y: '0' },
@@ -39,7 +39,8 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
     link: null,
     amount: null,
     address: null,
-    trxType: null
+    trxType: null,
+    mintType: null
   })
   const [showRModal, setShowRModal] = useState(false);
   const handleCloseRModal = () => setShowRModal(false);
@@ -112,13 +113,14 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
             gasLimit: 1000000,
           });
           let receipt = await tx.wait();
-         dispatch(refreshBalance(!isReferesh));
+          dispatch(refreshBalance(!isReferesh));
           let { explorer } = getChainDetails(chain.id)
           setTrxHash({
             link: `${explorer}/${receipt.transactionHash}`,
             amount: etherAmount,
             address: tokenAddress,
-            trxType: "mint"
+            trxType: "mint",
+            mintType: mintType
           });
           setShowTrx(true)
           getBal()
@@ -156,12 +158,13 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
           });
           let receipt = await tx.wait();
           let { explorer } = getChainDetails(chain.id)
-         dispatch(refreshBalance(!isReferesh));
+          dispatch(refreshBalance(!isReferesh));
           setTrxHash({
             link: `${explorer}/${receipt.transactionHash}`,
             amount: etherAmount,
             address: tokenAddress,
-            trxType: "mint"
+            trxType: "mint",
+            mintType: mintType
           });
           setShowTrx(true)
           toast.success("U-token minted");
@@ -214,7 +217,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
         toast.error("Your loss!");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (
@@ -258,7 +261,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                         </div>
                         <p className='text-end mb-0 text-wid lighttext'>
                           {
-                            showBalance && `Balance: ${showBalance} Max`
+                            showBalance && `Balance: ${showBalance} `
                           }
                         </p>
                         <div className='modalselect w-100 d-flex justify-content-center'>
@@ -279,7 +282,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                               }}
                               className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                           </div>
-                          <button className='select_token text-capitalize bg-transparent border rad' >
+                          <button className='select_token text-capitalize text-start  bg-primary add_wallet  rad' >
                             {mintType === "token" ? <TokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol}
                           </button>
                         </div >
@@ -287,7 +290,8 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                         <div className="w-100 d-lg-flex d-block justify-content-center align-items-center ">
                           <div className=" w-75 rad d-flex justify-content-center mx-auto" >
                             <Range percentValue={percentValue} barAmount={barAmount} isDisable={showBalance} />
-                            <span className='ms-5 mt-1 lighttext'>
+                            <span className='ms-3 mt-1 lighttext' style={{ cursor: "pointer" }} onClick={() => barAmount(100)}>Max</span>
+                            <span className='ms-2 mt-1 lighttext'>
                               {showBalance && `${percentValue}%`}
                             </span>
                           </div>
@@ -295,7 +299,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
 
                         <div className='bg_clr w-75 mx-auto rounded'>
                           <div className=' modalselect w-100 d-flex justify-content-center mb-0'>
-                            <div className=" w-100  p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                            <div className="radius_box w-100  p-2 pt-1" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                               <div className='d-flex justify-content-between align-items-center  pb-1'>
                                 <p className="form-label text-dark text-start mb-0"><strong className=''>You Receive</strong></p>
 
@@ -315,7 +319,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
 
                           </div>
                           <div className='w-100 d-flex justify-content-center mb-3 mt-n2'>
-                            <div className=" w-100 p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
+                            <div className="radius_box w-100 p-2" style={{ backgroundColor: "rgb(118, 168, 255)" }}>
                               <p className="form-label text-start text-dark"><strong>Password</strong></p>
                               <input type={isSeePass ? "text" : "password"} name="" id=""
                                 style={{ border: "none", outline: "none", backgroundColor: "#E8F0FE" }}

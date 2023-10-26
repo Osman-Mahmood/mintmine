@@ -14,11 +14,9 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
         try {
             const contract = await remortFactoryInstnce(chain?.id);
             const symbol = await contract.get_CurrencyOfuToken(token);
-            console.log("symbol", symbol);
             const alternateAddress = await contract.get_TokenAddressOfuToken(token);
             setTokenDetail(symbol)
             setTokenAddress(alternateAddress)
-            console.log("alternateAddress", alternateAddress);
         } catch (error) {
             console.error("error while get token name", error);
         }
@@ -31,7 +29,6 @@ function ShowToken({ token, setSelectedToken, handleClose }) {
         try {
             const token = await erc20Instance(tokenAddress);
             let bal = await token.balanceOf(address);
-            console.log("bal", ethers.utils.formatEther(bal));
             setTokenBal(ethers.utils.formatEther(bal))
         } catch (error) {
             console.error("error while get bal", error);
