@@ -112,7 +112,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           variants={modalVariants}
         >
 
-        <Modal.Header closeButton style={{backgroundColor:'transaprent',color:'white'}}>
+        <Modal.Header className="p-0 px-3 pe-3" closeButton style={{backgroundColor:'transaprent',color:'white'}}>
           <Modal.Title>Master Key</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -127,16 +127,17 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                   readOnly
                   disabled
                   type="password"
+                  style={{height:'40px'}}
                 />
                 <button
-                style={{borderRadius:"15px"}}
-                  className="w-25  ms-1 btn btn-primary bg-primary"
+                style={{borderRadius:"15px",height:'40px'}}
+                  className="w-25  ms-1 btn btn-primary bg-transparent border border-primary"
                   
                   onClick={(e) => {
                     copyPhrase(e);
                   }}
                 >
-                  <FiCopy />
+                  <FiCopy className="" style={{marginTop:'-10px'}}/>
                 </button>
               </div>
 
@@ -174,16 +175,17 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                     className="w-75 text-dark"
                     type={isSeePass ? "text" : "password"}
                     placeholder=""
+                    style={{height:'40px'}}
                     onChange={(e) => {
                       setPass({ ...pass, password: e.target.value });
                     }}
                   />
                   <button
-                  style={{borderRadius:"15px"}}
-                    className="w-25 btn btn-primary bg-primary  ms-1"
+                  style={{borderRadius:"15px",height:'40px'}}
+                    className="w-25 btn btn-primary bg-transparent border border-primary  ms-1"
                     onClick={(e) => seePass(e)}
                   >
-                    {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    {isSeePass ? <AiFillEyeInvisible style={{marginTop:'-10px'}}/> : <AiFillEye style={{marginTop:'-10px'}}/>}
                   </button>
                 </div>
               </Form.Group>
@@ -194,6 +196,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                   <Form.Control
                     type={isSeeCPass ? "text" : "password"}
                     placeholder=""
+                    style={{height:'40px'}}
                     className="w-75 p-0 text-dark"
                     onChange={(e) => {
                       setPass({ ...pass, confirmPassword: e.target.value });
@@ -201,11 +204,11 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                   />
 
                   <button
-                  style={{borderRadius:"15px"}}
-                    className="w-25 btn btn-primary bg-primary  ms-1"
+                  style={{borderRadius:"15px",height:'40px'}}
+                    className="w-25 btn btn-primary bg-transparent border border-primary  ms-1"
                     onClick={(e) => seeCPass(e)}
                   >
-                    {isSeeCPass ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    {isSeeCPass ? <AiFillEyeInvisible style={{marginTop:'-10px'}}/> : <AiFillEye style={{marginTop:'-10px'}}/>}
                   </button>
                 </div>
                 {isShowMessage && (
@@ -217,7 +220,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
           </Form>
         </Modal.Body>
         {isEnable && <Modal.Footer>
-          <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={savePssword}>
+          <button className="btn btn-primary bg-transparent border border-primary" style={{borderRadius:"15px"}} onClick={savePssword}>
             {isLoading ? <BeatLoader color="#fff" /> : "Protect"}
           </button>
           {/* <button className="btn btn-primary bg-primary" style={{borderRadius:"15px"}} onClick={handleClose}>

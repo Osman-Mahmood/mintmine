@@ -259,7 +259,7 @@ const Dashboard = () => {
               {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
-                    <th>Assets</th>
+                    <th></th>
                     <th></th>
                   </tr>
                 </thead>
@@ -288,7 +288,7 @@ const Dashboard = () => {
               {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
-                    <th>Assets</th>
+                    <th></th>
                     <th></th>
                   </tr>
                 </thead>

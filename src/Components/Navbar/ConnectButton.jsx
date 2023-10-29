@@ -35,7 +35,7 @@ export const ConnectBtn = () => {
                         {(() => {
                             if (!connected) {
                                 return (
-                                    <button onClick={openConnectModal} type="button" className='bg-transparent border border-primary text-white px-4 py-2 rounded'>
+                                    <button onClick={openConnectModal} type="button" className='bg-transparent border border-primary text-white px-4 py-2 rounded-pill'>
                                         Connect
                                     </button>
                                 );
@@ -84,7 +84,7 @@ export const ConnectBtn = () => {
 
 
 
-                                    <button onClick={openAccountModal} type="button" className='bg-transparent border border-primary rounded text-white fw-bold '>
+                                    <button onClick={openAccountModal} type="button" className='bg-transparent border border-primary rounded-pill text-white fw-bold '>
                                     
                                         {account.displayName}
                                         {account.displayBalance

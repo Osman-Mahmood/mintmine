@@ -28,10 +28,12 @@ const FaqsFinal = () => {
                 </Accordion.Header>
                 <Accordion.Body> <p> Connect your crypto wallet to u369 via Mobile or Web browsers.
 
-                  Via Mobile: Under construction.
+                  
 
-                  Via Web browser:
+                  
                   <ul>
+                    <li>Via Mobile: Under construction.</li>
+                    <li>Via Web browser:</li>
                     <li>
                       Once in u369.eth.limo.
 
@@ -80,7 +82,7 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                 className=" accordion-bg"
               >
                 <Accordion.Header className=" accordion-bg">
-                  (2) How do I protect my crypt-assets with u369?
+                  (2) How do I protect my crypto-assets with u369?
                 </Accordion.Header>
                 <Accordion.Body>
                   <p>With a Concealed Master Key (CMK) randomly generated for you + a password set also by yourself. </p>
@@ -130,11 +132,11 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   </p>
                   <p>(F) Once the Tx to set password is confirmed on-chain: Select the token and the amount you want to protect.
                   </p>
-                  <p>(G) Once the Tx to set password is confirmed on-chain: Select the token and the amount you want to protect.
-                  </p>
+                  {/* <p>(G) Once the Tx to set password is confirmed on-chain: Select the token and the amount you want to protect.
+                  </p> */}
                   <p>(H) Input your password and click "Protect".
                   </p>
-                  <p>(I) Sign the Tx in your wallet to safeguard the native token within u369 smart contract and receive in your wallet the respective unhackable tokens (uTokens) at a 1:1 ratio.
+                  <p>(I) Sign the Tx in your wallet to safeguard the native token(s) within u369 smart contract and receive in your wallet the respective unhackable tokens (uTokens) at a 1:1 ratio.
                   </p>
                   <p>(K) Click "Add to wallet" button to track your uToken balance in your wallet.
                   </p>
@@ -430,13 +432,14 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                 </Accordion.Header>
                 <Accordion.Body>
                   <p>
-                    A benefaction-fee of 0.369% of the deposited (protected) amount is automatically collected by u369 smart contract.</p>
+                  A benefaction-fee of 0.369% of the protected amount is automatically collected by u369 smart contract.</p>
                   <p>
-                    Simple exegesis: If you protect 1.369 ETH: u369 smart contract automatically collects as a benefaction-fee 0.369% of the safeguarded amount and mints to your wallet 1 uETH (it can be read as is "1 uETH" or as "1 unhackable ETH or "1 unstealable ETH").
+                  Exegesis: If you protect 1 ETH: u369 smart contract automatically collects as a benefaction-fee 0.369% of the safeguarded amount and mints the remaining to your wallet (1 ETH - 0.369% = 0.99631 uETH are minted to your wallet. The name uETH can be read as is "uETH" or as "unhackable ETH or "unstealable ETH").
+
                   </p>
                   <p>
 
-                    The protected native token (in our example 1 ETH) stays sfaeguarded within u369 protocol. Only controlled by you. And can only be claimed with the uTokens.
+                  The protected native token (in our example 1 ETH) stays sfaeguarded within u369 protocol. Only controlled by you. And can only be claimed/released from the u369 smart contarct with the uTokens (i.e., by burning the uTokens).
 
                   </p>
                   {/* <p>(D) Sign the Tx in your wallet to send the uTokens. Done!
@@ -466,18 +469,15 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   <p>In total, 70% of all the service fee that charges u369 to make the safeguarded tokens unhackable, is used for the benefaction of the people:
 
                   </p>
-                  <p>
+                  <li className='m-0'>For the u369 end-users.
 
-
-                    For the u369 end-users.
-
-                  </p>
-                  <p>
+                  </li>
+                  <li>
                     For sustaining and help advance open source projects.
 
 
-                  </p>
-                  <p>For social and positive impact towards the community and devs.</p>
+                  </li>
+                  <li>For social and positive impact towards the community and devs.</li>
                   {/* <p>(D) Check the box "I understand that u369 cannot recover this password for me".
 </p>
 <p>
@@ -558,19 +558,19 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                 </Accordion.Header>
                 <Accordion.Body> <p>For several reasons.
 
-                  <p> In regards of the donations for public goods funding, here are some examples of considerations for sending the donations manually:
+                  <p>In regards of the donations for public goods funding, here are some of the considerations for sending the donations manually:
                   </p>
-                  <p>- What if the recipient loses the access to that wallet we are sending donations?
+                  <p>-  What if the recipient of donations stops their previous activity (perhaps being that the reason u369 was donating in the first place)?
                   </p>
                   <p>- What if that wallet gets compromised / hacked?
                   </p>
                   <p>- What if the recipient stops their previous activity (perhaps being that the reason u369 was donating in the first place)?
                   </p>
-                  <p>Amongst others, these reasons made us dsitribute donations manually.
+                  <p>Amongst other reasons, as the ones explained above, made us distribute donations manually.
                   </p>
                   <p>In regards of distributing rewards to end-users manually: When testing, we idientified an exploit that can be carried on by end-users with bad intent.
                   </p>
-                  <p>Example the prize-pool is $10,000 -- an end-user with $1,000 to protect and bad intent could do the protection of their $1,000 in sevaral txs (for ex 100 Tx of $10) just for the purpose of having 100 more chances to win the $10,000 than if just they would send the $1,000 in on Tx.
+                  <p>Example: The prize-pool is $10,000 -- an end-user with $1,000 to protect and bad intent could do the protection of their $1,000 in sevaral txs (for ex 100 Tx of $10) just for the purpose of having 100 more chances to win the $10,000 than if just they would send the $1,000 in on Tx.
                   </p>
                   <p>Distributing the funds to the randomly selected winners manually, helps to avoid the exploit as funds are failry distributed according to the amount of funds the end-user involved. No more and no less is rewarded but only what can be matematically-proven as fair.
                   </p>
@@ -627,35 +627,35 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   (14) On which networks is u369 deployed?
                 </Accordion.Header>
                 <Accordion.Body>
-                  <p>
+                  <p className='mb-0'>
 
                     On Ethereum: </p>
-                  <p>
+                  <p >
                     Ethereum is a network of computers all over the world that follow a set of rules called the Ethereum protocol. The Ethereum network acts as the foundation for communities, applications, organizations and digital assets that anyone can build and use.
                   </p>
-                  <p>
+                  <p className='mb-0'>
 
                     On Polygon:
 
                   </p>
-                  <p>Polygon is a layer 2 (L2) scaling solution that allows anyone to create and exchange value, powered by zero-knowledge technology.
+                  <p >Polygon is a layer 2 (L2) scaling solution that allows anyone to create and exchange value, powered by zero-knowledge technology.
 
                   </p>
-                  <p>On Optimism:
+                  <p className='mb-0'>On Optimism:
                   </p>
                   <p>Optimism is a fast and stable L2 blockchain built as a minimal extension to existing Ethereum software, OP Mainnet's EVM-equivalent architecture helps Ethereum with scaling.
                   </p>
-                  <p>On Arbitrum:</p>
+                  <p className='mb-0'>On Arbitrum:</p>
                   <p>Arbitrum is a suite of scaling solutions providing environments with high-throughput, low-cost smart contracts, backed by industry-leading proving technology rooted in Ethereum.</p>
-                  <p>On Binance Smart Chain (BSC):</p>
+                  <p className='mb-0'>On Binance Smart Chain (BSC):</p>
                   <p>BSC is is a Layer 1 (L1) blockchain that allows anyone to deploy smart contracts and build dapps (decentralized applications) on top of.</p>
-                  <p>On Avalnche:</p>
-                  <p>Avalanche is a decentralized, open-source proof of stake blockchain with smart contract functionality. AVAX is the native cryptocurrency of the platform.
+                  <p className='mb-0'>On Avalnche:</p>
+                  <p >Avalanche is a decentralized, open-source proof of stake blockchain with smart contract functionality. AVAX is the native cryptocurrency of the platform.
                   </p>
-                  <p>On Metis:</p>
+                  <p className='mb-0'>On Metis:</p>
                   <p>Metis is an Ethereum Layer-2 scaling solution aiming to solve the blockchain trilemma: (1) Security. (2) Scalability, and (3) Decentralization.
                   </p>
-                  <p>On Base:</p>
+                  <p className='mb-0'>On Base:</p>
                   <p>Base is an Ethereum Layer 2 (L2) chain that offers a safe, low-cost, developer-friendly way to build on-chain. Base is an L2 built on OP Stack in collaboration with Optimism.</p>
                 </Accordion.Body>
               </Accordion.Item>
@@ -877,15 +877,15 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                 className=" accordion-bg"
               >
                 <Accordion.Header className=" accordion-bg">
-                  (18) To whom does u369 gives credit to?
+                  (19) To whom does u369 gives credit to?
                 </Accordion.Header>
                 <Accordion.Body>
-                    <p>To Satoshi Nakamoto for their vision to ignite the peaceful-and-intellectual revolution they unleashed.</p>
-                    <p>To the Ethereum and the crypto community at large.</p>
-                    <p>To all the Layer 2 scaling solutions, Polygon, Optimism, Arbitrum, et cetera.</p>
+                    <p>To Satoshi Nakamoto for the vision and for igniting this peaceful-and-intellectual revolution.</p>
+                    <p>To the Ethereum community and the crypto ecosystem at large.</p>
+                    <p>To all the Layer 2 scaling solutions.</p>
                     <p>To Laser Ice for putting together the idea of u369 and unhackableTokens.</p>
                     <p>To the awesome developers who helped writing the code.</p>
-                    <p>To Kjpargeter via Freepik for the UI background (abstract dark background with colorful waves).</p>
+                    <p>To Kjpargeter via Freepik for the UI abstract dark background with colorful waves.</p>
                 </Accordion.Body>
               </Accordion.Item>
             </div>
