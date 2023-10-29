@@ -2,6 +2,7 @@ import { Button } from 'react-bootstrap'
 import React from 'react'
 import { erc20Instance } from '../../../config';
 import toast from 'react-hot-toast';
+import {IoWalletOutline} from 'react-icons/io5'
 
 function AddtoWallet({ tokenAddress }) {
     const addToken = async () => {
@@ -33,11 +34,12 @@ function AddtoWallet({ tokenAddress }) {
     return (
         <Button
             variant="primary"
-            className="font_size border bg-transparent px-2 p-1 text-clr "
+            className="font_size border_detail  bg-transparent px-2 p-1 text-clr "
             onClick={addToken}
         >
             Add to Wallet
         </Button>
+        //    <IoWalletOutline />
     )
 }
 

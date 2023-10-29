@@ -46,7 +46,7 @@ label{
   /* color: var(--nav-bg); */
 }
 .nav-item a{
-  color: white !important;
+  color: #7e7f8a !important;
 }
 /* .collapse:not(.show){
   display: flex !important;

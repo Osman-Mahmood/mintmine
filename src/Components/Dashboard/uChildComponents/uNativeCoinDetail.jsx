@@ -9,7 +9,7 @@ import Claim from '../../Modals/Claim';
 import TransferModal from './Modals/TransferModal';
 import ClaimModal from './Modals/ClaimModal';
 import { useSelector } from 'react-redux';
-
+import AddtoWallet from './AddtoWallet'
 function UNativeCoinDetail() {
     const { isReferesh } = useSelector((state) => state.refreshFunctions)
     const { address, isConnected } = useAccount();
@@ -34,9 +34,10 @@ function UNativeCoinDetail() {
             nativeUBal()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isReferesh])
+    console.log("chain?.nativeCurrency.symbol.toLowerCase()", chain?.nativeCurrency.symbol.toLowerCase());
     return (
         <tr>
-            <td className="text-light">u{chain?.nativeCurrency.symbol}</td>
+            <td className="text-light"><img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="me-2" />u{chain?.nativeCurrency.symbol}</td>
             <td className="text-light">{
                 uNativeBal !== null ? Number(uNativeBal).toFixed(5) :
                     <Skeleton
@@ -46,12 +47,7 @@ function UNativeCoinDetail() {
                     />
             }</td>
             <td>
-                <Button
-                    variant="primary"
-                    className="font_size border bg-transparent px-2 p-1 text-clr "
-                >
-                    Add to Wallet
-                </Button>
+                <AddtoWallet tokenAddress={ethAddress} />
             </td>
             <td>
                 {" "}

@@ -25,7 +25,7 @@ function ProtectNativeCoinDetail() {
     }, [address, isReferesh])
     return (
         <tr>
-            <td className="text-light">{chain?.nativeCurrency.symbol}</td>
+            <td className="text-light"><img  src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="me-2" />{chain?.nativeCurrency.symbol}</td>
             <td className="text-light">{
                 walletBal !== null ? Number(walletBal).toFixed(5) :
                     <Skeleton

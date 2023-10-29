@@ -132,6 +132,7 @@ import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md";
 import logo from '../../assets/logo.png';
 import '../style.css';
 import { FiSettings } from 'react-icons/fi';
+import { ConnectBtn } from './ConnectButton';
 
 function NavbarMenu() {
     // ... [rest of your useState, useEffect, and other functions]
@@ -207,7 +208,8 @@ function NavbarMenu() {
                   />
                 </div> */}
                 <Nav className='gap-lg-4  gap-3 d-lg-none d-block ms-4'>
-                    <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
+                    <ConnectBtn/>
+                    {/* <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} /> */}
                 </Nav>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setNavExpanded(prev => !prev)} />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -233,7 +235,7 @@ function NavbarMenu() {
                         </NavDropdown> */}
                         <NavLink className="ms-lg-3 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="reward" onClick={closeNavbar}>Rewards</NavLink>
                         <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="tokens" onClick={closeNavbar}>Security</NavLink>
-                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="faq" onClick={closeNavbar}>FAQ</NavLink>
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="faq" onClick={closeNavbar}>Insight</NavLink>
 
                         {/* <NavDropdown className='text-dark new_clr ms-lg-3 ms-0' title="More" id="navbarScrollingDropdownMore">
                             <NavDropdown.Item>
@@ -273,7 +275,8 @@ function NavbarMenu() {
                     id="flexSwitchCheckChecked"
                   />
                 </div> */}
-                        <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} />
+                <ConnectBtn/>
+                        {/* <ConnectButton label="Connect" chainStatus="icon" accountStatus="address" showBalance={false} /> */}
                     </Nav>
                 </Navbar.Collapse>
             </div>

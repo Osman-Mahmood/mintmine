@@ -19,6 +19,7 @@ import { motion } from 'framer-motion';
 import TokenSymbol from '../Dashboard/childComponents/TokenSymbol';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshBalance } from '../../store/refresh';
+import UTokenSymbol from '../Dashboard/uChildComponents/UTokenSymbol';
 function Protect({ show, handleClose, mintType, tokenAddress }) {
   const dispatch = useDispatch();
   const { isReferesh } = useSelector((state) => state.refreshFunctions)
@@ -304,7 +305,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                                 <p className="form-label text-dark text-start mb-0"><strong className=''>You Receive</strong></p>
 
                                 <button disabled className='text-start  bg-primary add_wallet' >
-                                  u{mintType === "token" ? <TokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol}
+                                  {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol}
                                 </button>
                               </div>
 
@@ -328,7 +329,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                               />
                               <div
                                 style={{ background: "rgba(225, 55, 190, 0.45)" }}
-                                className='bg-primary text-light'
+                                className='bg-primary text-light bor'
                                 onClick={() => setIsSeePass(!isSeePass)}
                               >
                                 {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}

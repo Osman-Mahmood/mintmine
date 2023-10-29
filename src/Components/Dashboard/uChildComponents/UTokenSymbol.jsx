@@ -3,7 +3,7 @@ import { useNetwork } from 'wagmi';
 import { remortFactoryInstnce } from '../../../config';
 import Skeleton from "react-loading-skeleton";
 
-function TokenSymbol({ tokenAddress }) {
+function UTokenSymbol({ tokenAddress }) {
     const { chain } = useNetwork()
     const [tokenSymbol, setTokenSymbol] = useState(null)
     const getTokenSymbol = async () => {
@@ -22,7 +22,7 @@ function TokenSymbol({ tokenAddress }) {
     return (
         <>
             {
-                tokenSymbol ?<> <img  src={`./tokenlist/${tokenSymbol.toLowerCase()}.png`} alt="" width={20} className="" /> {tokenSymbol}</> :
+                tokenSymbol ?<> <img  src={`./tokenlist/${tokenSymbol.toLowerCase()}.png`} alt="" width={20} className="" /> u{tokenSymbol}</> :
                     <Skeleton
                         count={1}
                         inline
@@ -33,4 +33,4 @@ function TokenSymbol({ tokenAddress }) {
     )
 }
 
-export default TokenSymbol
+export default UTokenSymbol

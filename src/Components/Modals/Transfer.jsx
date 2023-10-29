@@ -25,6 +25,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import TokenSymbol from '../Dashboard/childComponents/TokenSymbol';
+import UTokenSymbol from '../Dashboard/uChildComponents/UTokenSymbol';
 
 const modalVariants = {
   hidden: { opacity: 0, scale: 0 },
@@ -305,7 +306,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                               />
                             </div>
                             <button className='select_token  bg-primary  rad' variant="primary" >
-                              u{mintType === "token" ? <TokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol} <IoIosArrowDown />
+                              {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol} <IoIosArrowDown />
                             </button>
 
                           </div>
@@ -371,7 +372,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                                 />
                                 <div
                                   style={{ background: "rgba(225, 55, 190, 0.45)" }}
-                                  className="bg-primary text-light"
+                                  className="bg-primary text-light bor"
                                   onClick={() => setIsSeePass(!isSeePass)}
                                 >
                                   {isSeePass ? <AiFillEyeInvisible /> : <AiFillEye />}

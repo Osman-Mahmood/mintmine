@@ -31,7 +31,7 @@ function NativeCoinDetail() {
     }, [address, isReferesh])
     return (
         <tr>
-            <td className="text-light">{chain?.nativeCurrency.symbol}</td>
+            <td className="text-light"><img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="" /> {chain?.nativeCurrency.symbol}</td>
             <td className="text-light">{
                 walletBal !== null ? Number(walletBal).toFixed(5) :
                     <Skeleton
@@ -47,7 +47,7 @@ function NativeCoinDetail() {
                 {" "}
                 <Button
                     variant="primary"
-                    className="bg-transparent border px-3 ms-3 p-1 text-clr font_size"
+                    className="bg-transparent border_detail  px-3 ms-3 p-1 text-clr font_size"
                 >
                     Details
                 </Button>

@@ -31,7 +31,7 @@ function ClaimModal({ tokenAddress, mintType, setRefresh, refresh }) {
     };
     return (
         <>
-            <Button variant="primary" className='font_size border bg-transparent px-3 p-1 text-clr'
+            <Button variant="primary" className='font_size border border-primary bg-transparent px-3 p-1 text-clr'
                 onClick={checkPassword} disabled={!isConnected}
             >
                 Claim

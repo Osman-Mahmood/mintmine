@@ -29,7 +29,7 @@ function TokenBalance({ tokenAddress }) {
     return (
         <>
             {
-                tokenBal !== null ? tokenBal :
+                tokenBal !== null ? Number(tokenBal).toFixed(4) :
                     <Skeleton
                         count={1}
                         inline
