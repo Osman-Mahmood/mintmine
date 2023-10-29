@@ -28,6 +28,7 @@ const Dashboard = () => {
   const { chain } = useNetwork()
   const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork();
   const { address, isConnected } = useAccount();
+  console.log("isConnected", isConnected);
   const [hideTable, setHideTable] = useState(true);
   const [hideTable2, setHideTable2] = useState(true);
   const [radioValue, setRadioValue] = useState('1');
@@ -95,7 +96,7 @@ const Dashboard = () => {
       })
       if (findProtectBal !== undefined) {
         setIsProtectToken(true)
-        
+
       }
     } catch (error) {
       console.error("error while get protected tokens", error);
@@ -214,7 +215,16 @@ const Dashboard = () => {
                       {(() => {
                         if (connected) {
                           return (
-                            <div style={{ display: 'flex', gap: 12 }}>
+                            <div style={{ display: 'flex', gap: 1 }}>
+                              {chain.iconUrl && (
+                                <div style={{ width: '20px', height: '20px', marginTop: "12px" }}>
+                                  <img
+                                    alt={chain.name ?? 'Chain icon'}
+                                    src={chain.iconUrl}
+                                    style={{ width: '100%', height: '100%' }}
+                                  />
+                                </div>
+                              )}
                               <NavDropdown
                                 type="button"
                                 id="nav-dropdown-dark-example"
@@ -330,16 +340,14 @@ const Dashboard = () => {
                   </p>
                 </div>
 
-                <p className="mb-2 mt-1 p-2 ">
+                {/* {isConnected && <p className="mb-2 mt-1 p-2 ">
                   {" "}
                   <HiOutlineInformationCircle className="fs-4" />
                   {
                     isBalInWallet ? "Transfer supported asset(s) to your wallet and click Protect" :
                       "Your Etherium wallet is empty. Purchase or transfer assets."
                   }
-                  {/* Transfer supported asset(s) to your wallet and click "Protect */}
-
-                </p>
+                </p>} */}
 
                 {hideTable2 && (
                   <>
@@ -401,7 +409,7 @@ const Dashboard = () => {
                   (uTokens)
                 </p> */}
                 {hideTable && (
-                  <Table striped className="custom-table flex-wrap mt-5" responsive>
+                  <Table striped className="custom-table flex-wrap " responsive>
                     <thead>
                       <tr>
                         <th>Assets</th>
@@ -486,13 +494,14 @@ const Dashboard = () => {
                       </p>
                     </div>
 
-                    <p className="mb-2 mt-1 p-2 ">
+                    {/* {isConnected && <p className="mb-2 mt-1 p-2 ">
                       {" "}
                       <HiOutlineInformationCircle className="fs-4" />
-
-                      Your
-                      Etherium wallet is empty. Purchase or transfer assets.
-                    </p>
+                      {
+                        isBalInWallet ? "Transfer supported asset(s) to your wallet and click Protect" :
+                          "Your Etherium wallet is empty. Purchase or transfer assets."
+                      }
+                    </p>} */}
 
                     {hideTable2 && (
                       <>
@@ -579,11 +588,11 @@ const Dashboard = () => {
                         {hideTable ? "hide -" : "show +"}
                       </p>
                     </div>
-                    <p className="mb-2 mt-1 p-2 ">
+                    {/* <p className="mb-2 mt-1 p-2 ">
                       {" "}Lock
                       native tokens in the contract to mint 1:1 unhackableTokens
                       (uTokens)
-                    </p>
+                    </p> */}
                     {hideTable && (
                       <Table striped className="custom-table flex-wrap " responsive>
                         <thead>
