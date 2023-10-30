@@ -89,7 +89,7 @@ const Tokens = () => {
 
   return (
     <div className='container pt-5'>
-      <div className='row time_box mt-3'>
+      <div className='row time_box mt-3 border border-primary' style={{borderRadius:'15px'}}>
         <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 mb-0 mb-1'>
           <div className='col-lg-6 col-12 mb-lg-0 mb-5'>
             <h5 className='text-white text-start mt-1' style={{fontSize:'18px'}}>30% of collected-fees is to randomly reward one end-user.</h5>
@@ -135,7 +135,7 @@ const Tokens = () => {
           </div>
         </div>
       </div>
-      <div className='row p-1 mt-5 mb-5 pb-4 rounded-lg time_box'>
+      <div className='row p-1 mt-5 mb-5 pb-4 rounded-lg time_box border border-primary' style={{borderRadius:'15px'}}>
         <div className='col-lg-12'>
           <h3 className='text-center text-white text-truncate'>Winner: {winnerAddress}</h3>
           <Table striped bordered hover >
@@ -174,13 +174,13 @@ const Tokens = () => {
 
 <p className='fw-bold'>Reward system parameters:</p>  
 <p>
-(A) If the end-user protected an amount equal or superior to the amount in the prize-pool, and if the end-user is randomly selected as "the winner" by the system, then the end-user is rewarded with the full amount in the prize pool.
+(A) If the winner protected an amount equal or superior to the amount in the prize-pool, then the winner receives all the funds in the prize pool.
 
 </p>
 
 <p>- Example A: Prize pool = 1 ETH -- if the winner protected 1 ETH or more, then the winner is rewarded the 1 ETH held in the prize pool.</p>
 <p>
-(B) If the funds that the winner protected are less than the amount in the prize pool, then the winner only gets up to what they protected from the prize pool.
+(B) If the winner protected an amount inferior to the amount in the prize-pool, then the winner receives from the prize-pool, only the amount they protected.
 
 </p>
 <p>
@@ -214,7 +214,7 @@ Every 369 hours (~15 days) + ~36 hours grace period; other 30% of u369 collected
 
 </p>
 <p>
-See all donations Tx details since u369 inception here.
+See all donations Tx details since u369 inception <a className='text-primary' href='https://etherscan.io/address/0x4a058b1848d01455daeda203acfaa11d2b133206' target='blank'>here</a>.
 
 </p>
 

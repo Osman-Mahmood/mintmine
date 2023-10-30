@@ -38,7 +38,7 @@ function UNativeCoinDetail() {
     return (
         <tr>
             <td className="text-light"><img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="me-2" />u{chain?.nativeCurrency.symbol}</td>
-            <td className="text-light">{
+            <td className="text-primary">{
                 uNativeBal !== null ? Number(uNativeBal).toFixed(5) :
                     <Skeleton
                         count={1}

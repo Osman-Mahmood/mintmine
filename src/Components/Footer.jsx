@@ -3,6 +3,7 @@ import {MdEmail} from 'react-icons/md'
 import {AiOutlineTwitter,AiOutlineGithub, AiOutlineInstagram} from 'react-icons/ai'
 import {FaTelegramPlane} from 'react-icons/fa'
 import twitter from '../../src/assets/Twitter-new-logo-removebg-preview.png'
+import Adiole from './Modals/Adiole'
 const Footer = () => {
   return (
     <div className='bg_footer'>
@@ -12,8 +13,9 @@ const Footer = () => {
               <p></p>
               <p className=''></p>
             {/* <p className='footer_font'>Ascribing meaningful-safety to your cryptographic assets <br /> &  <br /> contributing to the sustainable expansion of the ecosystem.</p> */}
-        <p className='footer_font'>Ascribing allodial state to your cryptoassets</p>
-        <p className='footer_font'>"Supreme ownership and control of your digital property."</p>
+        <p className='footer_font'><Adiole className="fs-2"/>  Ascribing  allodial state to your cryptoassets</p>
+       
+        {/* <p className='footer_font'>"Supreme ownership and control of your digital property."</p> */}
             <div className='d-flex justify-content-center text-center gap-2 mb-3'>
             <a href="https://twitter.com/u369eth" target='blank'><img src={twitter} alt="" className='img-fluid icon'/></a>
             <a href="https://t.me/+eXB5_gt3wvtlOGE5" target='blank'><FaTelegramPlane className='icon'/></a>

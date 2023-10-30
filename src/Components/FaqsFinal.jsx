@@ -28,9 +28,9 @@ const FaqsFinal = () => {
                 </Accordion.Header>
                 <Accordion.Body> <p> Connect your crypto wallet to u369 via Mobile or Web browsers.
 
-                  
 
-                  
+
+
                   <ul>
                     <li>Via Mobile: Under construction.</li>
                     <li>Via Web browser:</li>
@@ -432,14 +432,14 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                 </Accordion.Header>
                 <Accordion.Body>
                   <p>
-                  A benefaction-fee of 0.369% of the protected amount is automatically collected by u369 smart contract.</p>
+                    A benefaction-fee of 0.369% of the protected amount is automatically collected by u369 smart contract.</p>
                   <p>
-                  Exegesis: If you protect 1 ETH: u369 smart contract automatically collects as a benefaction-fee 0.369% of the safeguarded amount and mints the remaining to your wallet (1 ETH - 0.369% = 0.99631 uETH are minted to your wallet. The name uETH can be read as is "uETH" or as "unhackable ETH or "unstealable ETH").
+                    Exegesis: If you protect 1 ETH: u369 smart contract automatically collects as a benefaction-fee 0.369% of the safeguarded amount and mints the remaining to your wallet (1 ETH - 0.369% = 0.99631 uETH are minted to your wallet. The name uETH can be read as is "uETH" or as "unhackable ETH or "unstealable ETH").
 
                   </p>
                   <p>
 
-                  The protected native token (in our example 1 ETH) stays sfaeguarded within u369 protocol. Only controlled by you. And can only be claimed/released from the u369 smart contarct with the uTokens (i.e., by burning the uTokens).
+                    The protected native token (in our example 1 ETH) stays sfaeguarded within u369 protocol. Only controlled by you. And can only be claimed/released from the u369 smart contarct with the uTokens (i.e., by burning the uTokens).
 
                   </p>
                   {/* <p>(D) Sign the Tx in your wallet to send the uTokens. Done!
@@ -514,7 +514,7 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
 
                 </p>
                   <p>
-                    30% to reward u369 user-base. See reward's recipients here.
+                    30% to reward u369 user-base. See reward's recipients <a className='text-primary' href='https://etherscan.io/address/0x4A058b1848d01455daedA203aCFaA11D2B133206' target='blank'>here</a>.
                   </p>
                   <p>30% to fund public goods. This is:
                   </p>
@@ -528,9 +528,9 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   <p>Donating 10% to Valley Dao
 
                   </p>
-                  <p>See all public goods donations and tx details since u369 inception here.
+                  <p>See all public goods donations and tx details since u369 inception <a className='text-primary' href='https://etherscan.io/address/0x7B95e28d8B4Dd51663b221Cd911d38694F90D196' target='blank'>here</a>.
                   </p>
-                  <p>10% to community & devs. See txs here
+                  <p>10% to community & devs. See txs <a className='text-primary' href='https://etherscan.io/address/0xBeB63FCd4f767985eb535Cd5276103e538729E47' target='blank'>here</a>.
                   </p>
                   <p>
                     30% to sustain u369 itself.
@@ -709,12 +709,12 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
               >
                 <Accordion.Header className=" accordion-bg">
 
-                  (16) Basic crypto knowledge;
+                  (16) Basics
 
 
                 </Accordion.Header>
                 <Accordion.Body>
-                  <ul>
+                  <ul className='p-0'>
                     <li>What is a crypto wallet?</li>
                     <p>A crypto wallet is an interface that allows you to manage your cryptographic tokens. A wallet helps to manage, send, and receive crypto tokens on the blockchain.</p>
                     <p> Your wallet is a combination of a public and a private cryptographic key that are used together to access your crypto.
@@ -796,7 +796,7 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   (18) Which protocols/smart contracts can uTokens interact with?
                 </Accordion.Header>
                 <Accordion.Body>
-                  <ul>
+                  <ul className='p-0'>
                     <p>For the initial main-network-deployments, utokens can seamlessly interact with the following list of protocols/smart contracts, more can always be added later if the respective communities would allow/want to interact with uTokens:</p>
                     <p>Lending protocols:</p>
                     <p>AAVE
@@ -880,12 +880,144 @@ For your wallet to interact with u369 smart contract >> click on "Connect" on yo
                   (19) To whom does u369 gives credit to?
                 </Accordion.Header>
                 <Accordion.Body>
-                    <p>To Satoshi Nakamoto for the vision and for igniting this peaceful-and-intellectual revolution.</p>
-                    <p>To the Ethereum community and the crypto ecosystem at large.</p>
-                    <p>To all the Layer 2 scaling solutions.</p>
-                    <p>To Laser Ice for putting together the idea of u369 and unhackableTokens.</p>
-                    <p>To the awesome developers who helped writing the code.</p>
-                    <p>To Kjpargeter via Freepik for the UI abstract dark background with colorful waves.</p>
+                  <p>To Satoshi Nakamoto for the vision and for igniting this peaceful-and-intellectual revolution.</p>
+                  <p>To the Ethereum community and the crypto ecosystem at large.</p>
+                  <p>To all the Layer 2 scaling solutions.</p>
+                  <p>To Laser Ice for putting together the idea of u369 and unhackableTokens.</p>
+                  <p>To the awesome developers who helped writing the code.</p>
+                  <p>To Kjpargeter via Freepik for the UI abstract dark background with colorful waves.</p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </div>
+          </Accordion>
+        </div>
+        <div className='col-lg-8 mx-auto col-sm-12 mt-2 mt-lg-0 boxes'>
+          <Accordion className="accordion-bg">
+            <div className="col-md-12">
+              <Accordion.Item
+                eventKey={19}
+                className=" accordion-bg"
+              >
+                <Accordion.Header className=" accordion-bg">
+                  (20)  What is the Prize-Pool?
+                </Accordion.Header>
+                <Accordion.Body>
+                  <p>The prize pool is a u369 address that programmatically receives 30% of all the collected benefaction-fees. The funds inside this address are used to reward one u369 end-user every 369 hours (if any address(es) would have interacted with the smart contract.</p>
+
+                </Accordion.Body>
+              </Accordion.Item>
+            </div>
+          </Accordion>
+        </div>
+        <div className='col-lg-8 mx-auto col-sm-12 mt-2 mt-lg-0 boxes'>
+          <Accordion className="accordion-bg">
+            <div className="col-md-12">
+              <Accordion.Item
+                eventKey={20}
+                className=" accordion-bg"
+              >
+                <Accordion.Header className=" accordion-bg">
+                  (21) How does the u369 system selects the winner to receive funds from the prize-pool?
+                </Accordion.Header>
+                <Accordion.Body>
+                  <p>The function get_currentWinner() is used in the smart contract. This is the logic implemented:</p>
+                  <p>(A) The system checks how many addresses protected ETH or native ERC20 tokens and minted uTokens within a period from 0 to 369 hours.</p>
+                  <p>(B) At the end of the 369 hours, if no address interacted with the contract, the system returns a zero result, otherwise the system randomly selects one winner-address from all the addresses that interacted with the contract.
+                  </p>
+                  <p> To implement this the u369 system uses the following formula: </p>
+                  <p>"uint randomNumber = uint(keccak256(abi.encodePacked(previousTimePeriod, deployTime))) % depositorsLength;"</p>
+                  <p>In simple words, the procedure is defined in the following steps:</p>
+                  <p>1. A keccak hash (hashing algorithm) is applied on the previous time period and contract deploy time.</p>
+                  <p>2. Hash is converted to integer value.</p>
+                  <p>3. A modulus operation performs on the converted integer and number of addresses in the last time period.</p>
+                  <p>The this question "Why the donations and the rewards are distributed manually?" would be in #15 and so on and so forth.</p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </div>
+          </Accordion>
+        </div>
+        <div className='col-lg-8 mx-auto col-sm-12 mt-2 mt-lg-0 boxes'>
+          <Accordion className="accordion-bg">
+            <div className="col-md-12">
+              <Accordion.Item
+                eventKey={21}
+                className=" accordion-bg"
+              >
+                <Accordion.Header className=" accordion-bg">
+                  (22) Which tokens can I protect with u369?
+                </Accordion.Header>
+                <Accordion.Body className='remove_mb'>
+                  <p>ETH, ERC20 tokens and NFTs (protection for NFTs coming soon). ETH and the 33 ERC20 tokens in the following list, are supported since u369 launch and initial phase. More tokens can always be added as per communities petitions:</p>
+                  <p>Ethereum (ETH)
+                  </p>
+                  <p>Tether (USDT)
+                  </p>
+                  <p>USDC (USDC) </p>
+                  <p>Polygon Ecosystem Token (POL)
+                  </p>
+                  <p>Wrapped BTC (WBTC)</p>
+                  <p>Dai (DAI)</p>
+                  <p>Shiba Inu (SHIB)</p>
+                  <p>ChainLink (LINK)</p>
+                  <p>Uniswap (UNI)</p>
+                  <p>Aave (AAVE)</p>
+                  <p>1Inch Network (1INCH)</p>
+                  <p>Ethereum Name Services (ENS)</p>
+                  <p>Maker (MKR)</p>
+                  <p>Synthetix (SNX)</p>
+                  <p>Lido Staked ETH (stETH)</p>
+                  <p>Lido Wrapped Staked ETH (wstETH)</p>
+                  <p>Optimism (OP)</p>
+                  <p>ApeCoin (APE)</p>
+                  <p>Avalanche (AVAX)</p>
+                  <p>Rocket Pool (RPL)</p>
+                  <p>Rocket Pool ETH (rETH)
+                  </p>
+                  <p>Compound (COMP)</p>
+                  <p>Gnosis (GNO)</p>
+                  <p>Keeper Network (KEEP)</p>
+                  <p>Keep3rV1 (KP3R)</p>
+                  <p>Lido DAO (LDO)</p>
+                  <p>Ocean Protocol (OCEAN)</p>
+                  <p>Radicle (RAD)</p>
+                  <p>Alchemix (ALCX)</p>
+                  <p>Aragon (ANT)</p>
+                  <p>Arbitrum (ARB)</p>
+                  <p>Badger DAO (BADGER)</p>
+                  <p>BitDAO (BIT)</p>
+                  <p>GHO (GHO)</p>
+                </Accordion.Body>
+              </Accordion.Item>
+            </div>
+          </Accordion>
+        </div>
+        <div className='col-lg-8 mx-auto col-sm-12 mt-2 mt-lg-0 boxes'>
+          <Accordion className="accordion-bg">
+            <div className="col-md-12">
+              <Accordion.Item
+                eventKey={22}
+                className=" accordion-bg"
+              >
+                <Accordion.Header className=" accordion-bg">
+                  (23) Recommended best security practice
+                </Accordion.Header>
+                <Accordion.Body>
+                  <p>Not mandatory, but as a best security precaution, we advise to:</p>
+                  <p>(A) When u369 presents the Concealed Master Key: turn the Wi-Fi/internet off.
+                  </p>
+                  <p>(B) Copy the Master Key u369 provides (for security reasons it is presented encrypted/concealed and only once). And you own it.
+                  </p>
+                  <p> (C) With the Wi-Fi or any internet connection OFF for a moment. Paste the Concealed Master Key in a ephemeral-note* on your device. Important: Ephemeral-note because you should delete that note from your device after the Master Key is saved offline as per further indication in last step (I). </p>
+                  <p>(D) To make sure your Concealed Master Key is saved offline and someplace safe: Momentarily, and without misspelling, write down in a piece of paper your Concealed Master Key that you pasted in the ephemeral-note (more on this in step (I) at the end).
+                  </p>
+                  <p>(E) After you confirmed that the 32 characters are correct and match >> please delete the Concealed Master Key from the ephemeral-note on your device.</p>
+                  <p>(F) Turn on the Wi-Fi.</p>
+                  <p>(G) Set and confirm password by confirming the Tx in your wallet.</p>
+                  <p>(H) Before sending any funds to the u369 contract, try/click "Forgot password" >> turn-off the Wi-Fi again >> input/paste the Concealed Master Key to set new password >> after the Concealed Master Key is in the respective field >> turn on the Wi-Fi >> if the "Reset password" segment displays ("New password" -- "Confirm Password") that means your Concealed Master Key is correct and you have sovereign over your money.</p>
+                  <p>If you lose your password, only the Concealed Master Key can be used to reset the password; otherwise you will not be able to interact with u369 smart contract.</p>
+                  <p>(I) In point D is mentioned: "Momentarily, and without misspelling, write down in a piece of paper the Master Private Key" as a convenient way to have your Master Private Key written down offline; however, the best recommendation to store your Master Private Key (and your wallet's private keys as well) >> better than a piece of paper is a solid, stainless, acid-resistant, shockproof, and fireproof metal.</p>
+                  <p>Happy Crypto Days and Power to the People!!</p>
+                  <p></p>
                 </Accordion.Body>
               </Accordion.Item>
             </div>

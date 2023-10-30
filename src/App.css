@@ -177,6 +177,9 @@ input[type=number] {
 [data-rk] .ju367vec{
   box-shadow: 0px !important;
 } */
+.remove_mb p{
+  margin-bottom: 0px;
+}
 .dropdown-menu{
   /* background-color: #270515;
   color: white;

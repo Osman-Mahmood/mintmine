@@ -47,7 +47,7 @@ function NativeCoinDetail() {
                 {" "}
                 <Button
                     variant="primary"
-                    className="bg-transparent border_detail  px-3 ms-3 p-1 text-clr font_size"
+                    className="bg-transparent border_detail  px-3 ms-3 p-1 text-primary font_size"
                 >
                     Details
                 </Button>

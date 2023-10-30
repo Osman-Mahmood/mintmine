@@ -8,7 +8,7 @@ import { useAccount } from 'wagmi';
 function Tokens() {
     const { isConnected } = useAccount();
     return (
-        <div className='container p-2 mb-5 pb-5 mt-5 p-5'>
+        <div className='container p-2 mb-5 pb-5 mt-5 p-5 height_100vh'>
             <div className='row gx-0 align-items-center'>
                 <div className='col-lg-12'>
                     {/* <div className='d-lg-flex d-block align-items-center'>

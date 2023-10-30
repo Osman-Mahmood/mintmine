@@ -265,7 +265,7 @@ const Dashboard = () => {
         <div className="row gx-0 mt-3 d-lg-flex d-none">
           <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
             <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column  p-3 text-start">
-              <h5>Protected</h5>
+              <h5  style={{ color: "#7e7f8a" }}>Protected</h5>
               {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
@@ -294,7 +294,7 @@ const Dashboard = () => {
               }
             </div>
             <div className="col-lg-6 col-12 boxes mb-3 border border-primary d-flex flex-column   p-3 text-start">
-              <h5>uTokens</h5>
+              <h5  style={{ color: "#7e7f8a" }}>uTokens</h5>
               {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
@@ -329,7 +329,7 @@ const Dashboard = () => {
             <div className="col-lg-6 mb-3 col-12 text-start">
               <div className="boxes p-3 border border-primary">
                 <div className="d-flex boxes justify-content-between">
-                  <h5>Tokens to protect</h5>
+                  <h5  style={{ color: "#7e7f8a" }}>Tokens to protect</h5>
                   <p
                     className="text-clr"
                     onClick={handleHide2}
@@ -351,7 +351,7 @@ const Dashboard = () => {
 
                 {hideTable2 && (
                   <>
-                    <Table striped className="custom-table flex-wrap mb-2" responsive>
+                    <Table striped className="custom-table flex-wrap mb-3" responsive>
                       <thead>
                         <tr>
                           <th>Assets</th>
@@ -374,7 +374,7 @@ const Dashboard = () => {
                                 {" "}
                                 <Button
                                   variant="primary"
-                                  className="bg-transparent border_detail px-3 ms-3 p-1 text-clr font_size"
+                                  className="bg-transparent border_detail px-3 ms-3 p-1 text-primary font_size"
                                 >
                                   Details
                                 </Button>
@@ -392,7 +392,7 @@ const Dashboard = () => {
             <div className="col-lg-6 mb-3 col-12 text-start">
               <div className="boxes p-3 border border-primary">
                 <div className="d-flex justify-content-between" >
-                  <h5>unhackableTokens</h5>
+                  <h5  style={{ color: "#7e7f8a" }}>unhackableTokens</h5>
                   <p
                     className="text-clr"
                     onClick={handleHide}
@@ -424,7 +424,7 @@ const Dashboard = () => {
                         tokensLength.map((tokenItem, index) => {
                           return <tr key={index}>
                             <td className="text-light"><UTokenSymbol tokenAddress={tokenItem} /></td>
-                            <td className="text-light"><UTokenBalance tokenAddress={tokenItem} /></td>
+                            <td className="text-primary"><UTokenBalance tokenAddress={tokenItem} /></td>
                             <td>
                               <AddtoWallet tokenAddress={tokenItem} />
                             </td>
@@ -448,15 +448,15 @@ const Dashboard = () => {
         </div>
         {/* mobile view */}
         <div className="row gx-0 mt-3 mobile-only-cards">
-          <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
+          <div className="col-lg-12 col-12 px-3 d-lg-flex d-block gap-3">
             {radioValue === "1" &&
               <>
-                <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column  p-3 text-start">
-                  <h5>Protected</h5>
+                <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column  p-3 text-start">
+                  <h5  style={{ color: "#7e7f8a" }}>Protected</h5>
                   {uProtectedTokens.symbols.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
                     <thead>
                       <tr>
-                        <th>Assets</th>
+                        <th></th>
                         <th></th>
                       </tr>
                     </thead>
@@ -481,9 +481,9 @@ const Dashboard = () => {
                   }
                 </div>
                 <div className="col-lg-6 mb-3 col-12 text-start">
-                  <div className="boxes p-3">
-                    <div className="d-flex boxes justify-content-between">
-                      <h5>Tokens to protect</h5>
+                  <div className="boxes p-3 border border-primary">
+                    <div className="d-flex boxes  justify-content-between">
+                      <h5  style={{ color: "#7e7f8a" }}>Tokens to protect</h5>
                       <p
                         className="text-clr"
                         onClick={handleHide2}
@@ -519,7 +519,7 @@ const Dashboard = () => {
                             {
                               tokensLength.map((tokenItem, index) => {
                                 return <tr key={index}>
-                                  <td className="text-light"><TokenSymbol tokenAddress={tokenItem} /></td>
+                                  <td className="text-light d-flex me-2"><TokenSymbol tokenAddress={tokenItem} /></td>
                                   <td className="text-light"><TokenBalance tokenAddress={tokenItem} /></td>
                                   <td>
                                     <MintModal tokenAddress={tokenItem} mintType="token" />
@@ -528,7 +528,7 @@ const Dashboard = () => {
                                     {" "}
                                     <Button
                                       variant="primary"
-                                      className="bg-transparent border_detail  px-3 ms-3 p-1 text-clr font_size"
+                                      className="bg-transparent border_detail  px-3 ms-3 p-1 text-primary font_size"
                                     >
                                       Details
                                     </Button>
@@ -547,12 +547,12 @@ const Dashboard = () => {
             }
             {radioValue === "2" &&
               <>
-                <div className="col-lg-6 col-12 boxes mb-3 d-flex flex-column   p-3 text-start">
-                  <h5>uTokens</h5>
+                <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column   p-3 text-start">
+                  <h5  style={{ color: "#7e7f8a" }}>uTokens</h5>
                   {uProtectedTokens.symbols.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
                     <thead>
                       <tr>
-                        <th>Assets</th>
+                        <th></th>
                         <th></th>
                       </tr>
                     </thead>
@@ -577,9 +577,9 @@ const Dashboard = () => {
                   }
                 </div>
                 <div className="col-lg-6 mb-3 col-12 text-start">
-                  <div className="boxes p-3">
+                  <div className="boxes p-3 border border-primary">
                     <div className="d-flex justify-content-between">
-                      <h5>unhackableTokens</h5>
+                      <h5  style={{ color: "#7e7f8a" }}>unhackableTokens</h5>
                       <p
                         className="text-clr"
                         onClick={handleHide}
@@ -608,12 +608,12 @@ const Dashboard = () => {
                           {
                             tokensLength.map((tokenItem, index) => {
                               return <tr key={index}>
-                                <td className="text-light">u<TokenSymbol tokenAddress={tokenItem} /></td>
+                                <td className="text-light d-flex">u<TokenSymbol tokenAddress={tokenItem} /></td>
                                 <td className="text-light"><UTokenBalance tokenAddress={tokenItem} /></td>
                                 <td>
                                   <Button
                                     variant="primary"
-                                    className="font_size border bg-transparent px-2 p-1 text-clr "
+                                    className="font_size border bg-transparent px-2 p-1 text-primary "
                                   >
                                     Add to Wallet
                                   </Button>

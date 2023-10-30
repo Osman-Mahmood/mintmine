@@ -718,3 +718,18 @@ tbody, td, tfoot, th, thead, tr {
   border-top-left-radius: 19px;
   border-top-right-radius: 19px;
 }
+@media screen and (min-width: 768px) and (max-width: 1100px) {
+  /* Apply the 100vh height rule to your element */
+  .height_100vh {
+    height: 100vh;
+  }
+  .navbar-collapse{
+    /* background-color: #292E41;  */
+    border-radius: 15px;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    /* background: rgba(25, 27, 31, 0.9); */
+    /* border-bottom: 1px solid blue; */
+    transition: background-color 0.25s ease 0s;
+  }
+}
