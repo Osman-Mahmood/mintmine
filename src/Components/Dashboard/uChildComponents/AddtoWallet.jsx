@@ -34,7 +34,7 @@ function AddtoWallet({ tokenAddress }) {
     return (
         <Button
             variant="primary"
-            className="font_size border_detail  bg-transparent px-2 p-1 text-primary "
+            className="font_size border_detail  bg-transparent px-2 p-1 text-light "
             onClick={addToken}
         >
             Add to Wallet

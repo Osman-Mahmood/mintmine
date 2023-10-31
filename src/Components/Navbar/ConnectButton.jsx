@@ -84,7 +84,7 @@ export const ConnectBtn = () => {
 
 
 
-                                    <button onClick={openAccountModal} type="button" className='bg-transparent border border-primary rounded-pill text-white fw-bold '>
+                                    <button onClick={openAccountModal} type="button" className='bg-transparent border border-light rounded-pill text-white fw-bold '>
 
                                         {account.displayName}
                                         {account.displayBalance

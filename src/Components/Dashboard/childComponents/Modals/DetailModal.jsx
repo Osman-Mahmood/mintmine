@@ -27,7 +27,7 @@ export default function DetailModal({ tokenAddress, mintType }) {
         <>
             <Button
                 variant="primary"
-                className="bg-transparent border_detail  px-3 ms-3 p-1 text-primary font_size"
+                className="bg-transparent border_detail  px-3 ms-3 p-1 text-white font_size"
                 onClick={handleShow}
             >
                 Details

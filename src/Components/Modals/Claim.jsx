@@ -236,7 +236,7 @@ function Claim({ show, handleClose, mintType, tokenAddress }) {
                                                                     }}
                                                                     className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                                                             </div>
-                                                            <button className='select_token  bg-primary  rad' variant="primary" >
+                                                            <button className='select_token border-0 outline-none  bg-primary  rad' variant="primary" >
                                                                 {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : `u${chain?.nativeCurrency.symbol}`}
                                                             </button>
                                                         </div>

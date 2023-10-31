@@ -332,9 +332,10 @@ const Dashboard = () => {
                 <div className="d-flex boxes justify-content-between">
                   <h5  style={{ color: "#7e7f8a" }}>Tokens to protect</h5>
                   <p
-                    className="text-clr"
+                    className=""
                     onClick={handleHide2}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer",color: "#7e7f8a" }}
+
                   >
                     {" "}
                     {hideTable2 ? "hide -" : "show +"}
@@ -390,9 +391,9 @@ const Dashboard = () => {
                 <div className="d-flex justify-content-between" >
                   <h5  style={{ color: "#7e7f8a" }}>unhackableTokens</h5>
                   <p
-                    className="text-clr"
+                    className=""
                     onClick={handleHide}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer",color: "#7e7f8a" }}
                   >
                     {hideTable ? "hide -" : "show +"}
                   </p>
@@ -420,7 +421,7 @@ const Dashboard = () => {
                         tokensLength.map((tokenItem, index) => {
                           return <tr key={index}>
                             <td className="text-light"><UTokenSymbol tokenAddress={tokenItem} /></td>
-                            <td className="text-primary"><UTokenBalance tokenAddress={tokenItem} /></td>
+                            <td className="text-light"><UTokenBalance tokenAddress={tokenItem} /></td>
                             <td>
                               <AddtoWallet tokenAddress={tokenItem} />
                             </td>
@@ -483,7 +484,7 @@ const Dashboard = () => {
                       <p
                         className="text-clr"
                         onClick={handleHide2}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer",color: "#7e7f8a" }}
                       >
                         {" "}
                         {hideTable2 ? "hide -" : "show +"}
@@ -574,7 +575,7 @@ const Dashboard = () => {
                       <p
                         className="text-clr"
                         onClick={handleHide}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer",color: "#7e7f8a" }}
                       >
                         {hideTable ? "hide -" : "show +"}
                       </p>

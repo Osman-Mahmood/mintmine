@@ -305,7 +305,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                                 aria-describedby="emailHelp"
                               />
                             </div>
-                            <button className='select_token  bg-primary  rad' variant="primary" >
+                            <button className='select_token border-0  bg-primary  rad' variant="primary" >
                               {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : `u${chain?.nativeCurrency.symbol}`}
                             </button>
 
