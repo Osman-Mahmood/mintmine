@@ -15,8 +15,7 @@ const modalVariants = {
 
 export default function DetailModal({ tokenAddress, mintType }) {
     const { chain } = useNetwork();
-    console.log("chain", chain);
-    let { explorer, name, contractAddress } = getChainExplorer(chain.id);
+    let { explorer, name, contractAddress } = getChainExplorer(chain?.id);
     console.log("explorer", explorer);
     const [show, setShow] = useState(false);
 
