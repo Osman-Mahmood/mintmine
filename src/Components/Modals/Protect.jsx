@@ -117,7 +117,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
           dispatch(refreshBalance(!isReferesh));
           let { explorer } = getChainDetails(chain.id)
           setTrxHash({
-            link: `${explorer}/${receipt.transactionHash}`,
+            link: `${explorer}tx/${receipt.transactionHash}`,
             amount: etherAmount,
             address: tokenAddress,
             trxType: "mint",
@@ -161,7 +161,7 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
           let { explorer } = getChainDetails(chain.id)
           dispatch(refreshBalance(!isReferesh));
           setTrxHash({
-            link: `${explorer}/${receipt.transactionHash}`,
+            link: `${explorer}tx/${receipt.transactionHash}`,
             amount: etherAmount,
             address: tokenAddress,
             trxType: "mint",

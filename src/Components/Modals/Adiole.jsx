@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import BeatLoader from "react-spinners/BeatLoader";
 import { motion } from 'framer-motion';
 import {HiOutlineInformationCircle} from 'react-icons/hi'
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { FiCopy } from "react-icons/fi";
 
 const modalVariants = {
     hidden: { opacity: 0, scale: 0 },

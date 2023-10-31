@@ -42,7 +42,7 @@ export const ConnectBtn = () => {
                             }
                             if (chain.unsupported) {
                                 return (
-                                    <button onClick={openChainModal} type="button">
+                                    <button onClick={openChainModal} type="button" className='bg-transparent border border-primary text-white px-4 py-2 rounded-pill'>
                                         Wrong network
                                     </button>
                                 );

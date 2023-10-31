@@ -22,7 +22,7 @@ function TokenSymbol({ tokenAddress }) {
     return (
         <>
             {
-                tokenSymbol ?<> <img  src={`./tokenlist/${tokenSymbol.toLowerCase()}.png`} alt="" width={20} className="" /> {tokenSymbol}</> :
+                tokenSymbol ?<> <img  src={`./tokenlist/${tokenSymbol.toLowerCase()}.png`} alt={tokenSymbol.toLowerCase()} width={20} className="" /> {tokenSymbol}</> :
                     <Skeleton
                         count={1}
                         inline

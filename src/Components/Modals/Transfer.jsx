@@ -143,7 +143,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
        dispatch(refreshBalance(!isReferesh));
         let { explorer } = getChainDetails(chain.id);
         setTrxHash({
-          link: `${explorer}/${receipt.transactionHash}`,
+          link: `${explorer}tx/${receipt.transactionHash}`,
           amount: etherAmount,
           address: tokenAddress,
           trxType: "transfer",
@@ -172,7 +172,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
        dispatch(refreshBalance(!isReferesh));
         let { explorer } = getChainDetails(chain.id);
         setTrxHash({
-          link: `${explorer}/${receipt.transactionHash}`,
+          link: `${explorer}tx/${receipt.transactionHash}`,
           amount: etherAmount,
           address: tokenAddress,
           trxType: "transfer",
@@ -306,7 +306,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                               />
                             </div>
                             <button className='select_token  bg-primary  rad' variant="primary" >
-                              {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol} <IoIosArrowDown />
+                              {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : `u${chain?.nativeCurrency.symbol}`} <IoIosArrowDown />
                             </button>
 
                           </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import { useAccount, useNetwork } from 'wagmi';
-import { erc20Instance, remortFactoryInstnce } from '../../../config';
+import { erc20Instance, getChainDetails, remortFactoryInstnce } from '../../../config';
 import { ethers } from 'ethers';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +22,7 @@ function TokenBalance({ tokenAddress }) {
         }
     }
     useEffect(() => {
-        if (isConnected)
+        if (isConnected && getChainDetails(chain?.id))
             getTokenBal()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isConnected, address, isReferesh])

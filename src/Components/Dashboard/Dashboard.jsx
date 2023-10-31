@@ -9,7 +9,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
-import { erc20Instance, remortFactoryInstnce, walletBalance } from "../../config";
+import { erc20Instance, getChainDetails, remortFactoryInstnce, walletBalance } from "../../config";
 import TokenSymbol from "./childComponents/TokenSymbol";
 import TokenBalance from "./childComponents/TokenBalance";
 import NativeCoinDetail from "./childComponents/NativeCoinDetail";
@@ -23,6 +23,7 @@ import AddtoWallet from "./uChildComponents/AddtoWallet";
 import { useSelector } from "react-redux";
 
 import UTokenSymbol from "./uChildComponents/UTokenSymbol";
+import DetailModal from "./childComponents/Modals/DetailModal";
 const Dashboard = () => {
   const { isReferesh } = useSelector((state) => state.refreshFunctions)
   const { chain } = useNetwork()
@@ -147,7 +148,7 @@ const Dashboard = () => {
   }
   useEffect(() => {
     getUTokens();
-    if (isConnected) {
+    if (isConnected && getChainDetails(chain?.id)) {
       getUProtectedTokens()
       getTokenBal()
       window.ethereum.on("accountsChanged", function (accounts) {
@@ -372,12 +373,7 @@ const Dashboard = () => {
                               </td>
                               <td>
                                 {" "}
-                                <Button
-                                  variant="primary"
-                                  className="bg-transparent border_detail px-3 ms-3 p-1 text-primary font_size"
-                                >
-                                  Details
-                                </Button>
+                                <DetailModal tokenAddress={tokenItem} mintType="token"/>
                               </td>
                             </tr>
                           })
@@ -526,12 +522,7 @@ const Dashboard = () => {
                                   </td>
                                   <td>
                                     {" "}
-                                    <Button
-                                      variant="primary"
-                                      className="bg-transparent border_detail  px-3 ms-3 p-1 text-primary font_size"
-                                    >
-                                      Details
-                                    </Button>
+                                    <DetailModal tokenAddress={tokenItem} />
                                   </td>
                                 </tr>
                               })

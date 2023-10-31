@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import { useAccount, useNetwork } from 'wagmi';
-import { erc20Instance, remortFactoryInstnce } from '../../../config';
+import { erc20Instance, getChainDetails, remortFactoryInstnce } from '../../../config';
 import { ethers } from 'ethers';
 import { useSelector } from 'react-redux';
 
-function UTokenBalance({tokenAddress}) {
+function UTokenBalance({ tokenAddress }) {
     const { isReferesh } = useSelector((state) => state.refreshFunctions)
     const { chain } = useNetwork()
     const { address, isConnected } = useAccount();
@@ -20,13 +20,13 @@ function UTokenBalance({tokenAddress}) {
         }
     }
     useEffect(() => {
-        if (isConnected)
+        if (isConnected && getChainDetails(chain?.id))
             getTokenBal()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isConnected, address, isReferesh])
-  return (
-    <>
-      {
+    return (
+        <>
+            {
                 tokenBal !== null ? Number(tokenBal).toFixed(4) :
                     <Skeleton
                         count={1}
@@ -34,8 +34,8 @@ function UTokenBalance({tokenAddress}) {
                         width={100}
                     />
             }
-    </>
-  )
+        </>
+    )
 }
 
 export default UTokenBalance

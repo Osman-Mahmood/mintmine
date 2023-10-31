@@ -150,9 +150,10 @@ const Tokens = () => {
             <tbody>
               {
                 winnerHistory?.map((item, index) => {
+                  // console.log("");,''
                   return <tr>
                     {/* <td className='text-dark'>{index+1}</td> */}
-                    <td align='center' className='text-white '> <ShowSymbol token={item.uTokenAddress} /> h</td>
+                    <td  className='text-white justify-content-center d-flex text-center'> <ShowSymbol token={item.uTokenAddress} /></td>
                     <td className='text-white'>{ethers.utils.formatEther(item.amount)}</td>
                     {/* <td className='text-dark'>{Date.now()}</td> */}
                   </tr>

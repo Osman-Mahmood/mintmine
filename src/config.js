@@ -16,7 +16,7 @@ const chains = [
         rpc_url: "https://rpc.ankr.com/eth_goerli",
         contractAddress: '0xda071279D98cd69e4E715121DC0A5491Bf5cdff1',
         networkId: 5, // This is mainnet for Ethereum
-        explorer: "https://goerli.etherscan.io/tx",
+        explorer: "https://goerli.etherscan.io/",
         wEthAddress: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
         factoryAddress: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
     },
@@ -26,7 +26,7 @@ const chains = [
         rpc_url: "https://rpc-mumbai.maticvigil.com/",
         contractAddress: '0x647Cba558E9EB6BB30BCA948C9A9c2641584d051',
         networkId: 80001, // Polygon's mainnet ID
-        explorer: "https://mumbai.polygonscan.com/tx"
+        explorer: "https://mumbai.polygonscan.com/"
     },
     // Add more chains as needed...
 ];
@@ -37,6 +37,18 @@ export const getChainDetails = (chainId) => {
     return chain ? chain : null;
 }
 
+export const getChainExplorer = (chainId) => {
+    try {
+        let chain = chains.find(c => c.networkId === chainId);
+        if (chain) {
+            return chain
+        } else {
+            return chains.find(c => c.networkId === defaultrId);
+        }
+    } catch (error) {
+        console.error("error while get chain explorer", error);
+    }
+}
 export const factoryInstance = async (chainId) => {
     try {
         let chain = chains.find(c => c.networkId === chainId);

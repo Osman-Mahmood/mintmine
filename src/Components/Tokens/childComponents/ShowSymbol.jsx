@@ -5,9 +5,9 @@ import { useAccount, useNetwork } from 'wagmi';
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import { ethers } from 'ethers';
-function ShowSymbol({ token}) {
+function ShowSymbol({ token }) {
     const { chain } = useNetwork()
-    let [tokenDetail, setTokenDetail] = useState(null)
+    let [tokenDetail, setTokenDetail] = useState("")
     const getTokenName = async () => {
         try {
             const contract = await remortFactoryInstnce(chain?.id);
@@ -20,19 +20,26 @@ function ShowSymbol({ token}) {
     useEffect(() => {
         getTokenName()
     }, [])
-    
+
     return (
         <>
-  
 
-                <div className='d-flex align-items-center'>
+            <div className='d-flex align-items-center text-light'>
+                <img src={`./tokenlist/${tokenDetail.toLowerCase()}.png`} alt={tokenDetail.toLowerCase()} width={20} />
+                <div className='d-block ms-3'>
+                    <p className='mb-0 eth text-light'>{
+                        tokenDetail
+                    }</p>
+                </div>
+            </div>
+            {/* <div className='d-flex align-items-center'>
                     <img src={All} alt="" />
                     <div className='d-block ms-3'>
                         <p className='mb-0 eth'>{
                             tokenDetail
                         }</p>
                     </div>
-                </div>
+                </div> */}
 
         </>
     )

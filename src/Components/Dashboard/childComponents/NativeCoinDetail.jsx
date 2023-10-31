@@ -7,6 +7,7 @@ import { factoryInstance, getChainDetails, walletBalance } from '../../../config
 import Skeleton from 'react-loading-skeleton';
 import MintModal from './Modals/MintModal';
 import { useSelector } from 'react-redux';
+import DetailModal from './Modals/DetailModal';
 
 function NativeCoinDetail() {
     const { isReferesh } = useSelector((state) => state.refreshFunctions)
@@ -45,12 +46,7 @@ function NativeCoinDetail() {
             </td>
             <td>
                 {" "}
-                <Button
-                    variant="primary"
-                    className="bg-transparent border_detail  px-3 ms-3 p-1 text-primary font_size"
-                >
-                    Details
-                </Button>
+                <DetailModal tokenAddress={ethAddress} mintType="native" />
             </td>
         </tr>
     )
