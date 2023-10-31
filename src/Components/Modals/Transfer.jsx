@@ -306,7 +306,7 @@ function Transfer({ show, handleClose, mintType, tokenAddress,  }) {
                               />
                             </div>
                             <button className='select_token  bg-primary  rad' variant="primary" >
-                              {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : `u${chain?.nativeCurrency.symbol}`} <IoIosArrowDown />
+                              {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : `u${chain?.nativeCurrency.symbol}`}
                             </button>
 
                           </div>

@@ -284,7 +284,12 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                               className="form-control  mb-1 text-dark" id="exampleInputEmail1" aria-describedby="emailHelp" />
                           </div>
                           <button className='select_token text-capitalize text-start  bg-primary add_wallet  rad' >
-                            {mintType === "token" ? <TokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol}
+                            {mintType === "token" ? <TokenSymbol tokenAddress={tokenAddress} /> : 
+                             <>
+                             <img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="me-1" />
+                             {`u${chain?.nativeCurrency.symbol}`}
+                             </>
+                            }
                           </button>
                         </div >
 
@@ -305,7 +310,12 @@ function Protect({ show, handleClose, mintType, tokenAddress }) {
                                 <p className="form-label text-dark text-start mb-0"><strong className=''>You Receive</strong></p>
 
                                 <button disabled className='text-start  bg-primary add_wallet' >
-                                  {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : chain?.nativeCurrency.symbol}
+                                  {mintType === "token" ? <UTokenSymbol tokenAddress={tokenAddress} /> : 
+                                  <>
+                                  <img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="me-1" />
+                                  {`u${chain?.nativeCurrency.symbol}`}
+                                  </>
+                                  }
                                 </button>
                               </div>
 

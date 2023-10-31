@@ -265,9 +265,9 @@ const Dashboard = () => {
 
         <div className="row gx-0 mt-3 d-lg-flex d-none">
           <div className="col-lg-12 col-12 d-lg-flex d-block gap-3">
-            <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column  p-3 text-start">
+            {isConnected &&<div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column  p-3 text-start">
               <h5  style={{ color: "#7e7f8a" }}>Protected</h5>
-              {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
+              {isProtectToken  ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
                     <th></th>
@@ -293,10 +293,10 @@ const Dashboard = () => {
                 :
                 <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
               }
-            </div>
-            <div className="col-lg-6 col-12 boxes mb-3 border border-primary d-flex flex-column   p-3 text-start">
+            </div>}
+           {isConnected && <div className="col-lg-6 col-12 boxes mb-3 border border-primary d-flex flex-column   p-3 text-start">
               <h5  style={{ color: "#7e7f8a" }}>uTokens</h5>
-              {isProtectToken ? <Table striped className="custom-table flex-wrap" responsive>
+              {isProtectToken && isConnected ? <Table striped className="custom-table flex-wrap" responsive>
                 <thead>
                   <tr>
                     <th></th>
@@ -322,7 +322,7 @@ const Dashboard = () => {
                 :
                 <p className="mb-2 mt-4 text-clr">Nothing protected yet</p>
               }
-            </div>
+            </div>}
           </div>
         </div>
         <div className="row gx-0 mt-3 pc-only-cards">
@@ -449,7 +449,7 @@ const Dashboard = () => {
               <>
                 <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column  p-3 text-start">
                   <h5  style={{ color: "#7e7f8a" }}>Protected</h5>
-                  {uProtectedTokens.symbols.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                  {isProtectToken && isConnected ? <Table striped className="custom-table flex-wrap" responsive>
                     <thead>
                       <tr>
                         <th></th>
@@ -540,7 +540,7 @@ const Dashboard = () => {
               <>
                 <div className="col-lg-6 col-12 boxes border border-primary mb-3 d-flex flex-column   p-3 text-start">
                   <h5  style={{ color: "#7e7f8a" }}>uTokens</h5>
-                  {uProtectedTokens.symbols.length > 0 ? <Table striped className="custom-table flex-wrap" responsive>
+                  {isProtectToken && isConnected ? <Table striped className="custom-table flex-wrap" responsive>
                     <thead>
                       <tr>
                         <th></th>
