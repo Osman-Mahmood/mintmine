@@ -122,7 +122,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
               {/* <Form.Label>Phrase</Form.Label> */}
               <div className="d-flex gap-3">
                 <Form.Control
-                  className="w-75 text-dark"
+                  className="w-75 text-light bg-transparent"
                   value={phrase}
                   readOnly
                   disabled
@@ -172,7 +172,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                 <Form.Label>Set Password</Form.Label>
                 <div className="d-flex gap-3">
                   <Form.Control
-                    className="w-75 text-dark"
+                    className="w-75 text-light bg-transparent"
                     type={isSeePass ? "text" : "password"}
                     placeholder=""
                     style={{height:'40px'}}
@@ -197,7 +197,7 @@ export default function PasswordModal({ show, handleClose, handleShow }) {
                     type={isSeeCPass ? "text" : "password"}
                     placeholder=""
                     style={{height:'40px'}}
-                    className="w-75 p-0 text-dark"
+                    className="w-75 p-0 text-light bg-transparent"
                     onChange={(e) => {
                       setPass({ ...pass, confirmPassword: e.target.value });
                     }}

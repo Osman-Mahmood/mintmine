@@ -179,7 +179,7 @@ const Dashboard = () => {
             </ToggleButton>
           ))}
         </ButtonGroup>
-        <Navbar collapseOnSelect expand="lg">
+        {/* <Navbar collapseOnSelect expand="lg">
           <Navbar.Collapse id="navbar-dark-example">
             <Nav>
               <ConnectButton.Custom>
@@ -260,7 +260,7 @@ const Dashboard = () => {
               </ConnectButton.Custom>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
 
 
         <div className="row gx-0 mt-3 d-lg-flex d-none">

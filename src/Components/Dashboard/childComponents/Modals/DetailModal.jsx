@@ -6,7 +6,7 @@ import { HiOutlineInformationCircle } from 'react-icons/hi'
 import TokenSymbol from "../TokenSymbol";
 import { useNetwork } from "wagmi";
 import { getChainExplorer } from "../../../../config";
-
+import {BsArrowUpRight} from 'react-icons/bs'
 const modalVariants = {
     hidden: { opacity: 0, scale: 0 },
     visible: { opacity: 1, scale: 1 },
@@ -39,43 +39,45 @@ export default function DetailModal({ tokenAddress, mintType }) {
                     exit="exit"
                     variants={modalVariants}
                 >
-
-                    <Modal.Header className="p-3 px-3 pe-3" closeButton style={{ backgroundColor: 'transaprent', color: 'white' }}>
+<div className="border border-primary" style={{borderRadius:'15px'}}>
+<Modal.Header className="p-3 px-3 pe-3" closeButton style={{ backgroundColor: 'transaprent', color: 'white' }}>
                         {/* <Modal.Title>Master Key</Modal.Title> */}
                     </Modal.Header>
                     <Modal.Body>
                         {
                             mintType === "token" ?
-                                <p className='footer_font'>Protecting: <TokenSymbol tokenAddress={tokenAddress} /></p>
+                                <p className='footer_font d-flex justify-content-center'>Protecting: <TokenSymbol tokenAddress={tokenAddress} /></p>
 
                                 :
                                 <>
-                                    <p className='footer_font'>Protecting: <img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="" /> {chain?.nativeCurrency.symbol}</p>
+                                    <p className='footer_font d-flex justify-content-center'>Protecting: <img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="" /> {chain?.nativeCurrency.symbol}</p>
                                 </>
                         }
 
-                        <p className='footer_font '>Network: {name}</p>
-                        <div className="d-flex align-items-center">
-                            <p className='footer_font align-items-center mb-0'>Contract address:
+                        <p className='footer_font d-flex justify-content-center'>Network: {name}</p>
+                        <div className="d-flex align-items-center flex-column">
+                            <p className='footer_font align-items-center mb-3 d-flex  justify-content-center'>Contract address:
 
 
                             </p>
                             <a
-                                className='footer_font text-truncate ms-3'
+                                className='footer_font ms-3'
                                 href={`${explorer}/address/${contractAddress}`}
                                 target="blank"
-                                style={{
-                                    maxWidth: '180px', // Set your desired maximum width
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    display: 'inline-block', // Ensure it's treated as a block-level element
-                                }}
+                                // style={{
+                                //     maxWidth: '180px', // Set your desired maximum width
+                                //     whiteSpace: 'nowrap',
+                                //     overflow: 'hidden',
+                                //     textOverflow: 'ellipsis',
+                                //     display: 'inline-block', // Ensure it's treated as a block-level element
+                                // }}
                             >
-                                {contractAddress}
+                                {contractAddress} <BsArrowUpRight />
                             </a>
                         </div>
                     </Modal.Body>
+</div>
+                   
 
                 </motion.div>
             </Modal>

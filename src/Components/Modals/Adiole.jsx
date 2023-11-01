@@ -32,14 +32,17 @@ export default function Adiole() {
           exit="exit"
           variants={modalVariants}
         >
-
-        <Modal.Header className="p-3 px-3 pe-3" closeButton style={{backgroundColor:'transaprent',color:'white'}}>
+            <div className="border border-primary" style={{borderRadius:'15px'}}>
+            <Modal.Header className="p-3 px-3 pe-3" closeButton style={{backgroundColor:'transaprent',color:'white'}}>
           {/* <Modal.Title>Master Key</Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
           {/* <h3>Set Password</h3> */}
-          <p className='footer_font'>"Supreme ownership and control of your digital property."</p>
+          <p className='footer_font text-center'>Supreme ownership and control of your digital property.</p>
         </Modal.Body>
+            </div>
+
+        
      
        </motion.div>
       </Modal>

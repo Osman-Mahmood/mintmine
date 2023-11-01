@@ -90,7 +90,7 @@ const Tokens = () => {
   return (
     <div className='container pt-5'>
       <div className='row time_box mt-3 border border-primary' style={{borderRadius:'15px'}}>
-        <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 mb-0 mb-1'>
+        <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 p-3 mb-0 mb-1'>
           <div className='col-lg-6 col-12 mb-lg-0 mb-5'>
             <h5 className='text-white text-start mt-1' style={{fontSize:'18px'}}>30% of collected-fees is to randomly reward one end-user.</h5>
           <h5 className='text-white text-start'>Every 369 hours the system posts a result.</h5>
@@ -135,9 +135,9 @@ const Tokens = () => {
           </div>
         </div>
       </div>
-      <div className='row p-1 mt-5 mb-5 pb-4 rounded-lg time_box border border-primary' style={{borderRadius:'15px'}}>
+      <div className='row p-3 mt-5 mb-5 pb-4 rounded-lg time_box border border-primary' style={{borderRadius:'15px'}}>
         <div className='col-lg-12'>
-          <h3 className='text-center text-white text-truncate'>Winner: {winnerAddress}</h3>
+          <h3 className='text-center text-white text-truncate' style={{fontSize:'23px'}}>Winner: {winnerAddress}</h3>
           <Table striped bordered hover >
             <thead>
               <tr>
