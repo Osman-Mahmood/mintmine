@@ -61,7 +61,13 @@ label{
   color: var(--nav-bg);
 }
 .btn-close{
-  background-color: white;
+  /* background-color: white; */
+  background:url("../src/assets/close.png") 50%/1em auto no-repeat !important;
+  font-size: 32px!important;
+  outline: none!important;
+  box-shadow: none!important;
+  box-sizing: border-box!important;
+  /* opacity: 1%!important; */
 }
 .disabledDiv {
   cursor: not-allowed;

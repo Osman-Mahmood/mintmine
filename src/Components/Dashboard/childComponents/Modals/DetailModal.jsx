@@ -46,11 +46,11 @@ export default function DetailModal({ tokenAddress, mintType }) {
                     <Modal.Body>
                         {
                             mintType === "token" ?
-                                <p className='footer_font d-flex justify-content-center'>Protecting: <TokenSymbol tokenAddress={tokenAddress} /></p>
+                                <p className='footer_font d-flex justify-content-center'>Protecting:  <TokenSymbol tokenAddress={tokenAddress} /></p>
 
                                 :
                                 <>
-                                    <p className='footer_font d-flex justify-content-center'>Protecting: <img src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="" /> {chain?.nativeCurrency.symbol}</p>
+                                    <p className='footer_font d-flex justify-content-center'><span className="me-2">Protecting:</span> {""} <img  src={`./tokenlist/${chain?.nativeCurrency.symbol.toLowerCase()}.png`} alt="" width={20} className="" /> {chain?.nativeCurrency.symbol}</p>
                                 </>
                         }
 
