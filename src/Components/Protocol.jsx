@@ -2,7 +2,7 @@ import React from 'react'
 
 const Protocol = () => {
   return (
-    <div className='container text-start mb-5 pb-5 mt-5 pt-5'>
+    <div className='container text-start mb-5 pb-5 mt-5 pt-5 bg_trans boxes'>
       {/* <h5>A self-sustainable....</h5> */}
       <p>
       A self-sustained and self-organizing distributed system. <br />

@@ -216,7 +216,7 @@ function NavbarMenu() {
                     <Nav className="me-auto px-0 text-start">
                         {/* <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks d-lg-flex d-none" to="/" onClick={closeNavbar}>u369</NavLink> */}
                         <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="dashboard" onClick={closeNavbar}>Dashboard</NavLink>
-                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="protocol" onClick={closeNavbar}>u369 Protocol</NavLink>
+                        <NavLink className="ms-lg-2 ms-0 p-lg-2 p-0 text-decoration-none text-dark navlinks" to="protocol" onClick={closeNavbar}>u369.eth</NavLink>
                        
                         {/* <NavDropdown className='text-white ms-lg-3 ms-0 new_clr' title="u369 Protocol " id="navbarScrollingDropdown" show={isOpen}
                             onMouseEnter={() => setIsOpen(true)}
