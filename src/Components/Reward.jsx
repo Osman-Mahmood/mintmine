@@ -88,7 +88,7 @@ const Tokens = () => {
   };
 
   return (
-    <div className='container pt-5'>
+    <div className='container pt-5 boxes'>
       <div className='row time_box mt-3 border border-primary' style={{borderRadius:'15px'}}>
         <div className='col-lg-12 d-lg-flex d-block align-items-center gap-3 p-3 mb-0 mb-1'>
           <div className='col-lg-6 col-12 mb-lg-0 mb-5'>

@@ -13,7 +13,7 @@ const Footer = () => {
               <p></p>
               <p className=''></p>
             {/* <p className='footer_font'>Ascribing meaningful-safety to your cryptographic assets <br /> &  <br /> contributing to the sustainable expansion of the ecosystem.</p> */}
-        <p className='footer_font'><Adiole className="fs-2"/>  Ascribing  allodial state to your cryptoassets</p>
+        <p className='footer_font mt-5 pt-3'><Adiole className="fs-2"/>  Ascribing  allodial state to your cryptoassets</p>
        
         {/* <p className='footer_font'>"Supreme ownership and control of your digital property."</p> */}
             <div className='d-flex justify-content-center text-center gap-2 mb-3'>

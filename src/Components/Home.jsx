@@ -6,7 +6,7 @@ const Home = () => {
       <div className='container p-0'>
         <div className='row justify-content-center align-items-center text-start'>
         
-          <div className='col-lg-12 col-12 pt-lg-2 p-4 p-lg-0 ms-0 mb-5 pb-5   pt-0'>
+          <div className='col-lg-12 col-12 pt-lg-0 p-4 p-lg-0 ms-0 mb-5 pb-5   pt-0'>
           <h1 className='text-white mt-0 font'>Immutable Code<span className='d-none'>✨</span></h1>
 
             <h1 className='text-white mt-0 font'>Non-Custodial & Open-Source<span className='d-none'>✨</span></h1>

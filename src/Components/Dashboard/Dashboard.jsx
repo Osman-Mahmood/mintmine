@@ -158,7 +158,7 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isConnected, isReferesh]);
   return (
-    <div className="container p-0">
+    <div className="container p-0 boxes">
       <div className="row justify-content-center align-items-center p-3">
         <ButtonGroup className="mobile-only-buttons">
           {radios.map((radio, idx) => (
