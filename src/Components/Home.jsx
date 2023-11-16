@@ -12,7 +12,7 @@ const Home = () => {
             <h1 className='text-white mt-0 font'>Non-Custodial & Open-Source<span className='d-none'>✨</span></h1>
             <h1 className='text-white font'>Making Your Tokens Unhackable <span className='d-none'>✨</span></h1>
             <h1 className='text-white font'>Funding Public Goods <span className=' d-none'>✨</span></h1>
-          <h1 className='text-white font'>Rewarding You</h1>
+          <h1 className='text-white font mb-5 pb-4'>Rewarding You</h1>
             {/* <button className='reward mt-4' onClick={()=>{ConnectButton()}}>Get Started</button> */}
            {/* <div className='text-center justify-content-center mb-4'>
             <ConnectButton label='Get Started' className="text-center" chainStatus="icon" accountStatus="address" showBalance={false} />
