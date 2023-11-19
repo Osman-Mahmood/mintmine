@@ -195,7 +195,7 @@ function NavbarMenu() {
               
                 <Navbar.Brand className='text-dark fw-bold clr '>
                     <NavLink to="/" className="d-flex align-items-center" onClick={closeNavbar}>
-                        <img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block text-white ms-1 mt-3'>u369</p>
+                        <img src={logo} className='img-fluid logo' /><p className='d-lg-none d-block text-white ms-1 mt-3'>u369.eth</p>
                     </NavLink>
                 </Navbar.Brand>
                 {/* <div className="form-check form-switch switch ms-auto p-0 d-lg-none d-block">
