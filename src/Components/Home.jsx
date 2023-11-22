@@ -1,5 +1,5 @@
 import React from 'react'
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { ConnectButton } from '@rainbow-me/rainbowkit';
 const Home = () => {
   return (
     <div className='margin_top height_100vh'>
